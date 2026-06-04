@@ -1,82 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>CVEs — Dilip Mallavarapu</title>
-  <meta name="description" content="CVE advisories by Dilip Mallavarapu — offensive security researcher." />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
   <style>
-    :root { --bg:#0a0e1a;--bg2:#0f1524;--bg3:#141b2d;--border:#1e2d4a;--cyan:#00d4ff;--green:#00ff88;--gold:#ffd700;--red:#ff4757;--orange:#ff9f43;--purple:#a855f7;--text:#c8d8f0;--dim:#6b82a8;--mono:'IBM Plex Mono',monospace;--sans:'Syne',sans-serif; }
+    :root{--bg:#0d1117;--bg2:#161b22;--bg3:#1c2128;--border:#30363d;--text:#e6edf3;--muted:#7d8590;--green:#3fb950;--red:#f85149;--orange:#d29922;--purple:#bc8cff;--blue:#58a6ff;--sans:'Inter',sans-serif;--mono:'JetBrains Mono',monospace}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{background:var(--bg);color:var(--text);font-family:var(--mono);font-size:15px;line-height:1.75}
-    nav{position:fixed;top:0;left:0;right:0;z-index:200;height:58px;padding:0 2.5rem;background:rgba(10,14,26,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
-    .nav-logo{font-family:var(--sans);font-weight:800;font-size:1.15rem;color:var(--cyan);text-decoration:none}
-    .nav-links{display:flex;gap:.2rem}
-    .nav-links a{color:var(--dim);text-decoration:none;font-size:.8rem;padding:.35rem .75rem;border-radius:5px;transition:color .15s,background .15s}
-    .nav-links a:hover,.nav-links a.active{color:var(--cyan);background:rgba(0,212,255,.07)}
-    .page{max-width:1080px;margin:0 auto;padding:5.5rem 2rem 5rem}
+    body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.7}
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;height:56px;padding:0 2rem;background:rgba(13,17,23,.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+    .nav-logo{font-weight:800;font-size:1.1rem;color:var(--green);text-decoration:none;letter-spacing:-.02em}
+    .nav-links{display:flex;gap:.1rem}
+    .nav-links a{color:var(--muted);text-decoration:none;font-size:.82rem;font-weight:500;padding:.35rem .7rem;border-radius:5px;transition:color .15s,background .15s}
+    .nav-links a:hover,.nav-links a.active{color:var(--text);background:rgba(230,237,243,.07)}
+    .page{max-width:900px;margin:0 auto;padding:5rem 2rem 5rem}
+    .ph{margin-bottom:2.5rem}
+    .ph-label{font-family:var(--mono);font-size:.69rem;color:var(--muted);text-transform:uppercase;letter-spacing:.09em;margin-bottom:.7rem}
+    .ph h1{font-weight:800;font-size:2.2rem;color:#fff;letter-spacing:-.03em;line-height:1.1;margin-bottom:.7rem}
+    .ph h1 em{color:var(--green);font-style:normal}
+    .ph p{font-size:.92rem;color:var(--muted);max-width:480px}
+    .stats{display:flex;gap:2rem;margin-bottom:2.5rem;padding:1rem 1.4rem;background:var(--bg2);border:1px solid var(--border);border-radius:8px;flex-wrap:wrap}
+    .stat{display:flex;flex-direction:column;gap:.15rem}
+    .stat-num{font-weight:800;font-size:1.5rem;color:#fff;letter-spacing:-.02em}
+    .stat-label{font-family:var(--mono);font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+    .s-label{font-family:var(--mono);font-size:.69rem;color:var(--muted);text-transform:uppercase;letter-spacing:.09em;margin-bottom:1.2rem;display:flex;align-items:center;gap:.75rem}
+    .s-label::after{content:'';flex:1;height:1px;background:var(--border)}
 
-    /* Page Header */
-    .ph{margin-bottom:3rem}
-    .ph-label{font-size:.72rem;color:var(--dim);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.6rem}
-    .ph h1{font-family:var(--sans);font-weight:800;font-size:2.6rem;color:#fff;line-height:1.1;margin-bottom:.8rem}
-    .ph h1 em{color:var(--cyan);font-style:normal}
-    .ph p{color:var(--dim);max-width:520px;font-size:.9rem}
+    .cve-list{display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:2.5rem}
+    .cve-row{background:var(--bg2);padding:1.4rem 1.6rem;display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:start;text-decoration:none;color:inherit;transition:background .15s}
+    .cve-row:hover{background:var(--bg3)}
+    .cve-row.static{cursor:default;opacity:.5}
+    .cve-row.static:hover{background:var(--bg2)}
+    .cr-id{font-weight:800;font-size:.97rem;color:#fff;margin-bottom:.2rem;display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}
+    .badge{display:inline-flex;align-items:center;padding:.15rem .55rem;border-radius:3px;font-family:var(--mono);font-size:.65rem;font-weight:700}
+    .badge-high{background:rgba(248,81,73,.12);border:1px solid rgba(248,81,73,.35);color:var(--red)}
+    .badge-mod{background:rgba(210,153,34,.12);border:1px solid rgba(210,153,34,.35);color:var(--orange)}
+    .badge-ip{background:rgba(88,166,255,.07);border:1px solid rgba(88,166,255,.2);color:var(--blue)}
+    .cr-title{font-size:.88rem;color:var(--text);margin-bottom:.35rem;font-weight:500}
+    .cr-desc{font-size:.8rem;color:var(--muted);line-height:1.55}
+    .cr-meta{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.6rem}
+    .cr-tag{font-family:var(--mono);font-size:.63rem;padding:.1rem .4rem;border-radius:3px;background:rgba(63,185,80,.05);border:1px solid rgba(63,185,80,.15);color:var(--green)}
+    .cr-right{display:flex;flex-direction:column;align-items:flex-end;gap:.4rem;flex-shrink:0}
+    .cr-arrow{color:var(--muted);font-size:1.1rem;transition:color .15s}
+    .cve-row:hover .cr-arrow{color:var(--green)}
+    .cr-soon{font-family:var(--mono);font-size:.65rem;padding:.15rem .5rem;border-radius:3px;border:1px solid var(--border);color:var(--muted)}
+    .cr-date{font-family:var(--mono);font-size:.68rem;color:var(--muted)}
+    .cr-ghsa{font-family:var(--mono);font-size:.68rem;color:var(--blue)}
 
-    /* Stats row */
-    .stats{display:flex;flex-wrap:wrap;gap:1.5rem;margin-bottom:3rem;padding:1.25rem 1.5rem;background:var(--bg2);border:1px solid var(--border);border-radius:8px}
-    .stat-item{display:flex;flex-direction:column;gap:.15rem}
-    .stat-n{font-family:var(--sans);font-weight:800;font-size:1.8rem}
-    .stat-n.red{color:var(--red)}.stat-n.cyan{color:var(--cyan)}.stat-n.green{color:var(--green)}.stat-n.orange{color:var(--orange)}
-    .stat-l{font-size:.7rem;color:var(--dim);text-transform:uppercase;letter-spacing:.06em}
-    .sdiv{width:1px;background:var(--border);align-self:stretch}
-
-    /* Section label */
-    .slabel{font-size:.72rem;color:var(--dim);text-transform:uppercase;letter-spacing:.1em;margin-bottom:1.2rem;display:flex;align-items:center;gap:.8rem}
-    .slabel::after{content:'';flex:1;height:1px;background:var(--border)}
-
-    /* CVE Grid */
-    .cve-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:3rem}
-    .cve-card{background:var(--bg2);padding:1.5rem;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:.9rem;transition:background .15s;position:relative}
-    .cve-card:hover{background:var(--bg3)}
-    .cve-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem}
-    .cve-id-box{display:flex;flex-direction:column;gap:.3rem}
-    .cve-id{font-family:var(--sans);font-weight:800;font-size:1.05rem;color:#fff;letter-spacing:-.01em}
-    .cve-ghsa{font-size:.68rem;color:var(--dim)}
-    .badge{display:inline-flex;align-items:center;padding:.2rem .65rem;border-radius:4px;font-size:.72rem;font-weight:700}
-    .badge-high{background:rgba(255,71,87,.15);border:1px solid rgba(255,71,87,.4);color:var(--red)}
-    .badge-med{background:rgba(255,159,67,.15);border:1px solid rgba(255,159,67,.4);color:var(--orange)}
-    .cve-title{font-family:var(--sans);font-weight:700;font-size:.95rem;color:#fff;line-height:1.35}
-    .cve-meta{display:flex;flex-wrap:wrap;gap:.5rem}
-    .cve-tag{font-size:.68rem;padding:.15rem .5rem;border-radius:3px;background:rgba(0,212,255,.06);border:1px solid rgba(0,212,255,.15);color:var(--cyan)}
-    .cve-footer{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border);padding-top:.8rem;margin-top:auto}
-    .cve-product{font-size:.75rem;color:var(--dim)}
-    .cve-product strong{color:var(--text)}
-    .cve-date{font-size:.7rem;color:var(--dim)}
-    .cve-arrow{font-size:.85rem;color:var(--dim);transition:color .15s}
-    .cve-card:hover .cve-arrow{color:var(--cyan)}
-
-    /* accent bar top */
-    .cve-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
-    .cve-card.acc-red::before{background:linear-gradient(90deg,var(--red),transparent)}
-    .cve-card.acc-orange::before{background:linear-gradient(90deg,var(--orange),transparent)}
-    .cve-card.acc-purple::before{background:linear-gradient(90deg,var(--purple),transparent)}
-
-    /* CVSS vector display */
-    .cvss-vec{font-size:.68rem;color:var(--dim);font-family:var(--mono);margin-top:.2rem;word-break:break-all}
-
-    /* In progress section */
-    .ip-list{display:flex;flex-direction:column;gap:.75rem;margin-bottom:3rem}
-    .ip-item{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:1.2rem 1.4rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
-    .ip-left h3{font-family:var(--sans);font-weight:700;font-size:.9rem;color:#fff;margin-bottom:.2rem}
-    .ip-left p{font-size:.78rem;color:var(--dim);margin:0}
-    .ip-status{font-size:.7rem;padding:.2rem .6rem;border-radius:4px;border:1px solid var(--border);color:var(--orange);white-space:nowrap}
-
-    footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-size:.78rem;color:var(--dim);margin-top:4rem}
-    footer a{color:var(--dim);text-decoration:none}
-    footer a:hover{color:var(--cyan)}
-    @media(max-width:640px){nav{padding:0 1rem}.nav-links a{padding:.3rem .45rem;font-size:.72rem}.ph h1{font-size:1.7rem}.cve-grid{grid-template-columns:1fr}}
+    footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-family:var(--mono);font-size:.75rem;color:var(--muted);margin-top:2rem}
+    footer a{color:var(--muted);text-decoration:none;transition:color .15s}
+    footer a:hover{color:var(--text)}
+    @media(max-width:640px){nav{padding:0 1rem}.nav-links a{padding:.3rem .4rem;font-size:.74rem}.ph h1{font-size:1.7rem}.cve-row{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -84,142 +59,121 @@
   <a class="nav-logo" href="../index.html">dilip.</a>
   <div class="nav-links">
     <a href="../index.html">Home</a>
-    <a href="../about.html">About</a>
     <a href="index.html" class="active">CVEs</a>
     <a href="../articles/index.html">Articles</a>
     <a href="../exploits/index.html">Exploits</a>
+    <a href="../contact.html">Contact</a>
   </div>
 </nav>
 
 <div class="page">
   <div class="ph">
-    <div class="ph-label">// Security Research</div>
-    <h1>CVE <em>Advisories</em></h1>
-    <p>Vulnerabilities I discovered and responsibly disclosed. Each entry links to a full technical writeup including root cause analysis, proof of concept, patch review, and disclosure timeline.</p>
+    <div class="ph-label">// CVE Research</div>
+    <h1>Assigned <em>CVEs</em></h1>
+    <p>Vulnerabilities I discovered through source code review, responsibly disclosed to vendors, and received CVE assignments for.</p>
   </div>
 
   <div class="stats">
-    <div class="stat-item">
-      <span class="stat-n red">3</span>
-      <span class="stat-l">CVEs Assigned</span>
-    </div>
-    <div class="sdiv"></div>
-    <div class="stat-item">
-      <span class="stat-n orange">2</span>
-      <span class="stat-l">In Progress</span>
-    </div>
-    <div class="sdiv"></div>
-    <div class="stat-item">
-      <span class="stat-n cyan">2026</span>
-      <span class="stat-l">Year</span>
-    </div>
-    <div class="sdiv"></div>
-    <div class="stat-item">
-      <span class="stat-n green">FOSSBilling</span>
-      <span class="stat-l">Primary Target</span>
-    </div>
+    <div class="stat"><div class="stat-num">3</div><div class="stat-label">CVEs Assigned</div></div>
+    <div class="stat"><div class="stat-num">2</div><div class="stat-label">In Progress</div></div>
+    <div class="stat"><div class="stat-num">1</div><div class="stat-label">High Severity</div></div>
+    <div class="stat"><div class="stat-num">2</div><div class="stat-label">Moderate Severity</div></div>
   </div>
 
-  <!-- Assigned CVEs -->
-  <div class="slabel">Assigned CVEs</div>
-  <div class="cve-grid">
+  <div class="s-label">Published</div>
+  <div class="cve-list">
 
-    <a class="cve-card acc-red" href="cve-2026-43921.html">
-      <div class="cve-card-top">
-        <div class="cve-id-box">
-          <span class="cve-id">CVE-2026-43921</span>
-          <span class="cve-ghsa">GHSA-v4j9-w6pj-38w5</span>
+    <a class="cve-row" href="cve-2026-43921.html">
+      <div>
+        <div class="cr-id">CVE-2026-43921 <span class="badge badge-high">HIGH</span></div>
+        <div class="cr-title">Arbitrary PHP Code Injection via Unescaped Config Serialization → Remote Code Execution</div>
+        <div class="cr-desc">FOSSBilling serializes config values into a PHP file using string interpolation with no escaping. A single quote in any string value breaks out of the PHP string literal, injecting arbitrary code that executes on every subsequent HTTP request as www-data.</div>
+        <div class="cr-meta">
+          <span class="cr-tag">CWE-94</span><span class="cr-tag">RCE</span><span class="cr-tag">PHP</span><span class="cr-tag">FOSSBilling ≤ 0.7.2</span><span class="cr-tag">Admin Auth Required</span>
         </div>
-        <span class="badge badge-high">HIGH</span>
+        <div style="display:flex;gap:1rem;margin-top:.5rem;flex-wrap:wrap">
+          <span class="cr-date">Published 2026-06-11</span>
+          <span class="cr-ghsa">GHSA-v4j9-w6pj-38w5</span>
+        </div>
       </div>
-      <div class="cve-title">Arbitrary PHP Code Injection via Unescaped Config Serialization → Remote Code Execution</div>
-      <div class="cvss-vec">CVSS:4.0/AV:N/AC:L/AT:P/PR:H/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H</div>
-      <div class="cve-meta">
-        <span class="cve-tag">CWE-94</span>
-        <span class="cve-tag">RCE</span>
-        <span class="cve-tag">Config Injection</span>
-        <span class="cve-tag">PHP</span>
-      </div>
-      <div class="cve-footer">
-        <div class="cve-product">Product: <strong>FOSSBilling &lt;= 0.7.2</strong></div>
-        <span class="cve-arrow">→</span>
+      <div class="cr-right">
+        <span class="cr-arrow">→</span>
       </div>
     </a>
 
-    <a class="cve-card acc-orange" href="cve-2026-43925.html">
-      <div class="cve-card-top">
-        <div class="cve-id-box">
-          <span class="cve-id">CVE-2026-43925</span>
-          <span class="cve-ghsa">GHSA-q4rq-9844-r9w2</span>
+    <a class="cve-row" href="cve-2026-43925.html">
+      <div>
+        <div class="cr-id">CVE-2026-43925 <span class="badge badge-mod">MODERATE</span></div>
+        <div class="cr-title">Mass Assignment of group_id in Guest Registration Allows Unauthorized Promo Code Use</div>
+        <div class="cr-desc">The public registration endpoint passes the full request body into the internal client creation method without stripping admin-only fields. An unauthenticated attacker can supply a group_id to assign themselves to any client group and access group-restricted promo codes.</div>
+        <div class="cr-meta">
+          <span class="cr-tag">CWE-915</span><span class="cr-tag">Mass Assignment</span><span class="cr-tag">FOSSBilling ≤ 0.7.2</span><span class="cr-tag">No Auth Required</span>
         </div>
-        <span class="badge badge-med">MODERATE</span>
+        <div style="display:flex;gap:1rem;margin-top:.5rem;flex-wrap:wrap">
+          <span class="cr-date">Published 2026-06-04</span>
+          <span class="cr-ghsa">GHSA-q4rq-9844-r9w2</span>
+        </div>
       </div>
-      <div class="cve-title">Mass Assignment of group_id in Guest Registration Allows Unauthorized Promo Code Use</div>
-      <div class="cvss-vec">CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:L/SA:N</div>
-      <div class="cve-meta">
-        <span class="cve-tag">CWE-915</span>
-        <span class="cve-tag">Mass Assignment</span>
-        <span class="cve-tag">No Auth</span>
-      </div>
-      <div class="cve-footer">
-        <div class="cve-product">Product: <strong>FOSSBilling &lt;= 0.7.2</strong></div>
-        <span class="cve-arrow">→</span>
+      <div class="cr-right">
+        <span class="cr-arrow">→</span>
       </div>
     </a>
 
-    <a class="cve-card acc-purple" href="cve-2026-43927.html">
-      <div class="cve-card-top">
-        <div class="cve-id-box">
-          <span class="cve-id">CVE-2026-43927</span>
-          <span class="cve-ghsa">GHSA-w898-cx35-25gh</span>
+    <a class="cve-row" href="cve-2026-43927.html">
+      <div>
+        <div class="cr-id">CVE-2026-43927 <span class="badge badge-mod">MODERATE</span></div>
+        <div class="cr-title">Race Condition in Cart Checkout Bypasses Promo Code Usage Limits</div>
+        <div class="cr-desc">FOSSBilling's promo usage check and increment are non-atomic — three separate operations with no database locking. Concurrent checkout requests all read the same stale counter, all pass, and all create discounted orders. A single-use code can be exploited unlimited times.</div>
+        <div class="cr-meta">
+          <span class="cr-tag">CWE-367</span><span class="cr-tag">TOCTOU</span><span class="cr-tag">Race Condition</span><span class="cr-tag">FOSSBilling ≤ 0.7.2</span><span class="cr-tag">Client Auth Required</span>
         </div>
-        <span class="badge badge-med">MODERATE</span>
+        <div style="display:flex;gap:1rem;margin-top:.5rem;flex-wrap:wrap">
+          <span class="cr-date">Published 2026-06-04</span>
+          <span class="cr-ghsa">GHSA-w898-cx35-25gh</span>
+        </div>
       </div>
-      <div class="cve-title">Race Condition in Cart Checkout Bypasses Promo Code Usage Limits</div>
-      <div class="cvss-vec">CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N</div>
-      <div class="cve-meta">
-        <span class="cve-tag">CWE-367</span>
-        <span class="cve-tag">TOCTOU</span>
-        <span class="cve-tag">Race Condition</span>
-      </div>
-      <div class="cve-footer">
-        <div class="cve-product">Product: <strong>FOSSBilling &lt;= 0.7.2</strong></div>
-        <span class="cve-arrow">→</span>
+      <div class="cr-right">
+        <span class="cr-arrow">→</span>
       </div>
     </a>
 
   </div>
 
-  <!-- In Progress -->
-  <div class="slabel">In Progress / Pending CVE</div>
-  <div class="ip-list">
+  <div class="s-label">In Progress</div>
+  <div class="cve-list">
 
-    <div class="ip-item">
-      <div class="ip-left">
-        <h3>SSRF via SMTP Check Endpoint — InvoiceNinja v5.13.19</h3>
-        <p>GHSA-p952-xcx3-46v3 &nbsp;·&nbsp; CWE-918 &nbsp;·&nbsp; Accepted by maintainer, CVE pending</p>
+    <div class="cve-row static">
+      <div>
+        <div class="cr-id">Akaunting ≤ 3.1.21 <span class="badge badge-ip">Awaiting CVE</span></div>
+        <div class="cr-title">Settings Namespace Injection → proc_open() RCE via sendmail_path Poisoning</div>
+        <div class="cr-desc">Injecting into the email settings namespace via _prefix parameter rewrites sendmail_path with shell metacharacters. Triggers on any outbound email. CVSS 9.9.</div>
+        <div class="cr-meta">
+          <span class="cr-tag">RCE</span><span class="cr-tag">Laravel</span><span class="cr-tag">Admin Auth Required</span><span class="cr-tag">CVSS 9.9</span>
+        </div>
       </div>
-      <span class="ip-status">CVE Pending</span>
+      <div class="cr-right"><span class="cr-soon">Awaiting vendor</span></div>
     </div>
 
-    <div class="ip-item">
-      <div class="ip-left">
-        <h3>Authenticated RCE via Settings Namespace Injection — Akaunting &lt;= 3.1.21</h3>
-        <p>proc_open shell injection via sendmail_path &nbsp;·&nbsp; Reported 2026-06-02, awaiting vendor response</p>
+    <div class="cve-row static">
+      <div>
+        <div class="cr-id">InvoiceNinja v5.13.19 <span class="badge badge-ip">Awaiting CVE</span></div>
+        <div class="cr-title">SSRF via SMTP Check Endpoint — Internal Port Oracle</div>
+        <div class="cr-desc">The SMTP test endpoint accepts an attacker-controlled host with no RFC1918 filtering, turning it into an internal network scanner that leaks service state via response timing and error messages.</div>
+        <div class="cr-meta">
+          <span class="cr-tag">CWE-918</span><span class="cr-tag">SSRF</span><span class="cr-tag">Laravel</span><span class="cr-tag">Admin Auth Required</span>
+        </div>
       </div>
-      <span class="ip-status">Disclosed</span>
+      <div class="cr-right"><span class="cr-soon">Awaiting vendor</span></div>
     </div>
 
   </div>
-
 </div>
 
 <footer>
   <a href="../index.html">dilip.</a> &nbsp;·&nbsp;
-  <a href="../about.html">About</a> &nbsp;·&nbsp;
-  <a href="../articles/index.html">Articles</a> &nbsp;·&nbsp;
+  <a href="../exploits/index.html">Exploits</a> &nbsp;·&nbsp;
   <a href="https://github.com/DilipMallavarapu">GitHub</a> &nbsp;·&nbsp;
-  <a href="https://linkedin.com/in/dilip-mallavarapu-18b96626b">LinkedIn</a>
+  <a href="../contact.html">Contact</a>
 </footer>
 </body>
 </html>
