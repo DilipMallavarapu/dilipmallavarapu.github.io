@@ -1,0 +1,72 @@
+/* Shared design system — Dilip Mallavarapu portfolio.
+   Page-specific layout rules stay inline per page; anything here is
+   shared across every page (nav, footer, tokens, section labels, badges). */
+
+:root{
+  --bg:#0d1117;--bg2:#161b22;--bg3:#1c2128;--border:#30363d;
+  --text:#e6edf3;--muted:#7d8590;
+  --green:#3fb950;--red:#f85149;--orange:#d29922;--purple:#bc8cff;--blue:#58a6ff;--gold:#e3b341;
+  --sans:'Inter',sans-serif;--mono:'JetBrains Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.7}
+
+/* Nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:56px;padding:0 2rem;background:rgba(13,17,23,.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-weight:800;font-size:1.1rem;color:var(--green);text-decoration:none;letter-spacing:-.02em}
+.nav-links{display:flex;gap:.1rem}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.82rem;font-weight:500;padding:.35rem .7rem;border-radius:5px;transition:color .15s,background .15s}
+.nav-links a:hover,.nav-links a.active{color:var(--text);background:rgba(230,237,243,.07)}
+
+/* Page container */
+.page{max-width:900px;margin:0 auto;padding:5rem 2rem 5rem}
+
+/* Page header pattern (used on section index pages) */
+.ph{margin-bottom:2.5rem}
+.ph-label{font-family:var(--mono);font-size:.69rem;color:var(--muted);text-transform:uppercase;letter-spacing:.09em;margin-bottom:.7rem}
+.ph h1{font-weight:800;font-size:2.2rem;color:#fff;letter-spacing:-.03em;line-height:1.1;margin-bottom:.7rem}
+.ph h1 em{font-style:normal}
+.ph p{font-size:.92rem;color:var(--muted);max-width:480px}
+
+/* Section label rule */
+.s-label{font-family:var(--mono);font-size:.69rem;color:var(--muted);text-transform:uppercase;letter-spacing:.09em;margin-bottom:1.2rem;display:flex;align-items:center;gap:.75rem}
+.s-label::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* Badges (severity pills) shared across CVEs/Exploits */
+.badge{display:inline-flex;align-items:center;padding:.15rem .55rem;border-radius:3px;font-family:var(--mono);font-size:.65rem;font-weight:700}
+.badge-high{background:rgba(248,81,73,.12);border:1px solid rgba(248,81,73,.35);color:var(--red)}
+.badge-mod{background:rgba(210,153,34,.12);border:1px solid rgba(210,153,34,.35);color:var(--orange)}
+.badge-ip{background:rgba(88,166,255,.07);border:1px solid rgba(88,166,255,.2);color:var(--blue)}
+
+/* Experience timeline (Home + About) */
+.exp-list{display:flex;flex-direction:column;gap:2rem}
+.exp-item{display:grid;grid-template-columns:1fr auto;gap:.5rem 2rem;align-items:start}
+.exp-role{font-weight:700;font-size:.97rem;color:#fff;margin-bottom:.15rem}
+.exp-org{font-size:.85rem;color:var(--green);font-weight:600;margin-bottom:.5rem}
+.exp-body{font-size:.87rem;color:var(--muted);line-height:1.65}
+.exp-date{font-family:var(--mono);font-size:.7rem;color:var(--muted);white-space:nowrap;padding-top:.2rem;text-align:right}
+
+/* Skills grid (Home + About) */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:1rem}
+.skill-group{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:1.1rem 1.2rem}
+.sg-title{font-family:var(--mono);font-size:.66rem;color:var(--green);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.85rem}
+.sg-list{list-style:none;display:flex;flex-direction:column;gap:0}
+.sg-list li{font-size:.83rem;color:var(--text);padding:.22rem 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.5rem}
+.sg-list li:last-child{border-bottom:none}
+.sg-list li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--green);flex-shrink:0;opacity:.7}
+
+/* Footer */
+footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-family:var(--mono);font-size:.75rem;color:var(--muted);margin-top:2rem}
+footer a{color:var(--muted);text-decoration:none;transition:color .15s}
+footer a:hover{color:var(--text)}
+
+/* Skip link for keyboard/screen-reader users */
+.skip-link{position:absolute;left:-999px;top:0;background:var(--green);color:#04120a;padding:.6rem 1rem;border-radius:0 0 6px 0;font-family:var(--mono);font-size:.8rem;font-weight:700;z-index:999;text-decoration:none}
+.skip-link:focus{left:0}
+
+@media(max-width:640px){
+  nav{padding:0 1rem}
+  .nav-links a{padding:.3rem .4rem;font-size:.74rem}
+  .ph h1{font-size:1.7rem}
+}
