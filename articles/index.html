@@ -38,6 +38,12 @@
     .ac-tags{display:flex;flex-wrap:wrap;gap:.35rem}
     .act{font-family:var(--mono);font-size:.63rem;padding:.1rem .4rem;border-radius:3px;background:rgba(63,185,80,.05);border:1px solid rgba(63,185,80,.15);color:var(--green)}
     .soon-badge{font-family:var(--mono);font-size:.63rem;padding:.12rem .45rem;border-radius:3px;border:1px solid var(--border);color:var(--muted);float:right;margin-top:-2rem}
+    .article-card.published{opacity:1;text-decoration:none;color:inherit;display:flex;flex-direction:column}
+    .article-card.published.ac-red:hover{border-color:rgba(248,81,73,.4)}
+    .article-card.published.ac-orange:hover{border-color:rgba(210,153,34,.4)}
+    .article-card.published.ac-purple:hover{border-color:rgba(188,140,255,.4)}
+    .ac-link{font-size:.78rem;color:var(--green);font-weight:500;margin-top:auto;padding-top:.75rem}
+    .article-card.published:hover .ac-link{text-decoration:underline}
     @media(max-width:640px){.article-grid{grid-template-columns:1fr}}
   </style>
 </head>
@@ -62,41 +68,48 @@
     <p>Deep-dive writeups on vulnerability classes, methodology, binary analysis, and security research — written for researchers and engineers.</p>
   </div>
 
-  <div class="coming-box">
-    <div class="coming-icon">&#x270D;</div>
-    <div class="coming-title">Articles coming soon</div>
-    <div class="coming-sub">Full writeups for the CVE research and bug bounty findings listed below are in progress. Check back or follow on GitHub for updates.</div>
-  </div>
-
-  <div class="s-label">Planned</div>
-  <div class="article-grid">
-    <div class="article-card ac-red">
+  <div class="s-label">Published</div>
+  <div class="article-grid" style="margin-bottom:2.5rem">
+    <a class="article-card published ac-red" href="../cves/cve-2026-43921.html">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem">
         <div class="ac-cat">CVE Writeup</div>
-        <span class="soon-badge" style="float:none">Coming soon</span>
+        <span class="badge badge-high">HIGH</span>
       </div>
       <div class="ac-title">CVE-2026-43921: From Config Update to Root Shell in FOSSBilling</div>
       <div class="ac-desc">A single missing escape in PHP config serialization turns an admin API call into persistent RCE. Full root cause walkthrough, exploit chain, and patch analysis.</div>
       <div class="ac-tags"><span class="act">RCE</span><span class="act">PHP</span><span class="act">Code Injection</span></div>
-    </div>
-    <div class="article-card ac-orange">
+      <div class="ac-link">Read full writeup →</div>
+    </a>
+    <a class="article-card published ac-orange" href="../cves/cve-2026-43925.html">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem">
         <div class="ac-cat">CVE Writeup</div>
-        <span class="soon-badge" style="float:none">Coming soon</span>
+        <span class="badge badge-mod">MODERATE</span>
       </div>
       <div class="ac-title">CVE-2026-43925: Mass Assignment Hidden in Plain Sight</div>
       <div class="ac-desc">How an undocumented field in a public API endpoint lets any visitor self-assign to admin-controlled client groups and claim discounts they were never meant to have.</div>
       <div class="ac-tags"><span class="act">Mass Assignment</span><span class="act">CWE-915</span><span class="act">No Auth</span></div>
-    </div>
-    <div class="article-card ac-purple">
+      <div class="ac-link">Read full writeup →</div>
+    </a>
+    <a class="article-card published ac-purple" href="../cves/cve-2026-43927.html">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem">
         <div class="ac-cat">CVE Writeup</div>
-        <span class="soon-badge" style="float:none">Coming soon</span>
+        <span class="badge badge-mod">MODERATE</span>
       </div>
       <div class="ac-title">CVE-2026-43927: Race Conditions in Billing Systems and Why They're Underreported</div>
       <div class="ac-desc">A TOCTOU race in FOSSBilling's cart checkout lets a client bypass promo code limits by firing concurrent requests. Includes timing diagrams and threaded PoC.</div>
       <div class="ac-tags"><span class="act">TOCTOU</span><span class="act">Race Condition</span><span class="act">CWE-367</span></div>
-    </div>
+      <div class="ac-link">Read full writeup →</div>
+    </a>
+  </div>
+
+  <div class="coming-box">
+    <div class="coming-icon">&#x270D;</div>
+    <div class="coming-title">More articles coming soon</div>
+    <div class="coming-sub">Full writeups for the bug bounty and in-progress research findings listed below are in progress. Check back or follow on GitHub for updates.</div>
+  </div>
+
+  <div class="s-label">Planned</div>
+  <div class="article-grid">
     <div class="article-card ac-red">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem">
         <div class="ac-cat">Research Blog</div>
