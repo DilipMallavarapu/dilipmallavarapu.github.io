@@ -30,6 +30,7 @@
     .open-badges{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.4rem}
     .open-badge{display:inline-flex;align-items:center;padding:.25rem .8rem;border-radius:99px;font-size:.75rem;font-weight:600;border:1px solid var(--green);color:var(--green);background:rgba(63,185,80,.06)}
     .open-badge.neutral{border-color:var(--border);color:var(--muted);background:transparent;font-weight:500}
+    .open-badge.gold{border-color:var(--gold);color:var(--gold);background:rgba(227,179,65,.06)}
     .intro-links{display:flex;gap:.5rem;flex-wrap:wrap}
     .ilink{display:inline-flex;align-items:center;padding:.38rem .9rem;border-radius:6px;font-size:.8rem;font-weight:500;text-decoration:none;border:1px solid var(--border);color:var(--text);transition:border-color .15s,color .15s}
     .ilink:hover{border-color:var(--green);color:var(--green)}
@@ -108,6 +109,7 @@
       I find vulnerabilities in open-source web applications, billing platforms, IoT firmware, and mobile SDKs, through careful source code review, binary analysis, and targeted security testing. My work doesn't stop at finding a bug, I trace each one back to its root cause, build a working exploit to prove real impact, and write it up clearly enough for a vendor to fix it fast. That process has produced 3 assigned CVEs and responsible disclosures accepted by Microsoft, Cisco, Western Union, and Mastercard. Open to PhD research positions and full-time security engineering roles starting December 2026.
     </p>
     <div class="open-badges">
+      <span class="open-badge gold">&#127942; Best Paper Award · DCS-CI'26</span>
       <span class="open-badge">Open to PhD positions</span>
       <span class="open-badge">Open to full-time roles</span>
       <span class="open-badge neutral">Graduating Dec 2026</span>
@@ -169,11 +171,12 @@
 
       <div class="proj-card research">
         <div class="proj-name">LLM Security Research</div>
-        <span class="proj-status">UAB · Coursework</span>
-        <p class="proj-desc">Research into adversarial attacks on large language models as part of the LLM Security Research graduate course at UAB. Focus areas include prompt injection, jailbreaking techniques, indirect injection via tool outputs, and empirical evaluation of guardrail robustness in production AI systems.</p>
+        <span class="proj-status" style="border-color:rgba(227,179,65,.4);color:var(--gold)">🏆 Best Paper, DCS-CI'26</span>
+        <p class="proj-desc">Peer-reviewed research on indirect prompt injection against LLM SOC copilots in industrial control systems, published and awarded Best Paper at DCS-CI'26. Built a full testbed (SWaT + OpenPLC), an attack generator across three channels, and a layered defense that cuts attack success rate from 68.8% to 8.1%.</p>
         <div class="proj-tags">
-          <span class="ptag purple">LLM</span><span class="ptag purple">Adversarial ML</span><span class="ptag purple">Prompt Injection</span>
+          <span class="ptag purple">LLM</span><span class="ptag purple">Prompt Injection</span><span class="ptag purple">ICS Security</span>
         </div>
+        <a class="proj-link" href="articles/llm-copilot-prompt-injection-ics.html">Read the writeup →</a>
       </div>
 
     </div>

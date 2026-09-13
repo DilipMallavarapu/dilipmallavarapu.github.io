@@ -44,6 +44,16 @@
     .article-card.published.ac-purple:hover{border-color:rgba(188,140,255,.4)}
     .ac-link{font-size:.78rem;color:var(--green);font-weight:500;margin-top:auto;padding-top:.75rem}
     .article-card.published:hover .ac-link{text-decoration:underline}
+    .featured-paper{display:block;background:var(--bg2);border:1px solid rgba(227,179,65,.35);border-radius:10px;padding:1.8rem 2rem;margin-bottom:2.5rem;text-decoration:none;color:inherit;position:relative;overflow:hidden;transition:border-color .15s}
+    .featured-paper::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent)}
+    .featured-paper:hover{border-color:rgba(227,179,65,.6)}
+    .fp-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(227,179,65,.08);border:1px solid rgba(227,179,65,.35);color:var(--gold);padding:.3rem .8rem;border-radius:99px;font-family:var(--mono);font-size:.7rem;font-weight:700;margin-bottom:1rem}
+    .fp-title{font-weight:800;font-size:1.3rem;color:#fff;line-height:1.35;margin-bottom:.6rem;letter-spacing:-.01em}
+    .fp-authors{font-size:.82rem;color:var(--muted);margin-bottom:.9rem}
+    .fp-authors strong{color:var(--text)}
+    .fp-desc{font-size:.87rem;color:var(--muted);line-height:1.65;max-width:640px;margin-bottom:1rem}
+    .fp-link{font-size:.83rem;color:var(--green);font-weight:600}
+    .featured-paper:hover .fp-link{text-decoration:underline}
     @media(max-width:640px){.article-grid{grid-template-columns:1fr}}
   </style>
 </head>
@@ -67,6 +77,14 @@
     <h1>Research <em>Articles</em></h1>
     <p>Deep-dive writeups on vulnerability classes, methodology, binary analysis, and security research — written for researchers and engineers.</p>
   </div>
+
+  <a class="featured-paper" href="llm-copilot-prompt-injection-ics.html">
+    <div class="fp-badge">&#127942; Best Paper Award &middot; DCS-CI'26</div>
+    <div class="fp-title">Indirect Prompt Injection Against LLM Copilots in Industrial Control Systems</div>
+    <div class="fp-authors"><strong>Salman Shahid</strong> and <strong>Dilip Mallavarapu</strong> — University of Alabama at Birmingham</div>
+    <div class="fp-desc">Peer-reviewed research on hijacking LangChain-based SOC copilots through poisoned advisories and telemetry, with attack success rates up to 86.4% and a layered defense that cuts it to 8.1%. Includes the full attack taxonomy (C1/C2/C3), workflow diagrams, and results.</div>
+    <div class="fp-link">Read the paper writeup →</div>
+  </a>
 
   <div class="s-label">Published</div>
   <div class="article-grid" style="margin-bottom:2.5rem">
