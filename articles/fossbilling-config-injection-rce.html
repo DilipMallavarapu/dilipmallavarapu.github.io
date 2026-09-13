@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>From Config Update to Root Shell in FOSSBilling — Dilip Mallavarapu</title>
+  <meta name="description" content="How a single missing escape in FOSSBilling's config serialization turns a routine admin API call into persistent remote code execution."/>
+  <link rel="canonical" href="https://dilipmallavarapu.github.io/articles/fossbilling-config-injection-rce.html"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:title" content="From Config Update to Root Shell in FOSSBilling"/>
+  <meta property="og:description" content="How a single missing escape in FOSSBilling's config serialization turns a routine admin API call into persistent remote code execution."/>
+  <meta property="og:url" content="https://dilipmallavarapu.github.io/articles/fossbilling-config-injection-rce.html"/>
+  <meta property="og:image" content="https://dilipmallavarapu.github.io/assets/img/og-image.png"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml"/>
+  <link rel="icon" href="../assets/img/favicon-32.png" sizes="32x32" type="image/png"/>
+  <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../assets/css/site.css"/>
+  <style>
+    body{line-height:1.8}
+    .page{max-width:740px}
+    .post-top{margin-bottom:2.5rem;padding-bottom:2rem;border-bottom:1px solid var(--border)}
+    .breadcrumb{font-family:var(--mono);font-size:.7rem;color:var(--muted);margin-bottom:1rem}
+    .breadcrumb a{color:var(--muted);text-decoration:none}
+    .breadcrumb a:hover{color:var(--green)}
+    .post-cat{font-family:var(--mono);font-size:.68rem;color:var(--red);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.9rem}
+    .post-title{font-weight:800;font-size:2.1rem;color:#fff;line-height:1.2;letter-spacing:-.02em;margin-bottom:1rem}
+    .post-meta{display:flex;gap:1.2rem;flex-wrap:wrap;font-family:var(--mono);font-size:.72rem;color:var(--muted)}
+    .lede{font-size:1.05rem;color:var(--text);line-height:1.75;margin:2rem 0;font-weight:500}
+    .section{margin-bottom:2.2rem}
+    h2{font-weight:700;font-size:1.15rem;color:#fff;margin-bottom:1rem}
+    p{margin-bottom:1.1rem;color:var(--text);font-size:.95rem}
+    ul{padding-left:1.4rem;margin-bottom:1.1rem}
+    li{margin-bottom:.5rem;color:var(--text);font-size:.95rem}
+    a{color:var(--blue);text-decoration:none}
+    a:hover{text-decoration:underline}
+    code{font-family:var(--mono);font-size:.85em;color:var(--blue);background:rgba(88,166,255,.08);padding:.1rem .35rem;border-radius:3px}
+    pre{background:#010409;border:1px solid var(--border);border-radius:6px;padding:1.2rem;overflow-x:auto;margin:1.3rem 0;font-size:.8rem;line-height:1.65;font-family:var(--mono)}
+    pre code{background:none;padding:0;color:var(--text)}
+    .kw{color:var(--gold)}.fn{color:var(--blue)}.str{color:var(--green)}.cmt{color:#484f58}.hl{color:var(--red)}
+    .pull{border-left:3px solid var(--red);padding:.9rem 1.3rem;margin:1.6rem 0;font-size:.98rem;font-style:italic;color:var(--text);background:rgba(248,81,73,.05);border-radius:0 6px 6px 0}
+    .advisory-cta{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:1.3rem 1.5rem;margin:2.2rem 0;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+    .advisory-cta-text{font-size:.88rem;color:var(--muted)}
+    .advisory-cta-text strong{color:#fff;display:block;margin-bottom:.2rem;font-size:.95rem}
+    .advisory-cta a{color:var(--green);font-weight:600;white-space:nowrap}
+    .post-footer{margin-top:3rem;padding-top:1.8rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+    .back-link{color:var(--green);font-size:.85rem;font-weight:500}
+    @media(max-width:640px){.post-title{font-size:1.5rem}}
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav>
+  <a class="nav-logo" href="../index.html">dilip.</a>
+  <div class="nav-links">
+    <a href="../index.html">Home</a>
+    <a href="../about.html">About</a>
+    <a href="../cves/index.html">CVEs</a>
+    <a href="index.html" class="active">Articles</a>
+    <a href="../exploits/index.html">Exploits</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+</nav>
+
+<div class="page" id="main">
+  <div class="post-top">
+    <div class="breadcrumb"><a href="index.html">Articles</a> / From Config Update to Root Shell</div>
+    <div class="post-cat">CVE Writeup · CVE-2026-43921</div>
+    <h1 class="post-title">From Config Update to Root Shell in FOSSBilling</h1>
+    <div class="post-meta">
+      <span>Published 2026-06-11</span>
+      <span>6 min read</span>
+      <span>FOSSBilling ≤ 0.7.2</span>
+    </div>
+  </div>
+
+  <p class="lede">The most dangerous bugs I find are rarely in the code that looks scary. They're in the code that looks like a formality, the kind nobody reviews twice because it's "just writing a config file."</p>
+
+  <div class="section">
+    <h2>A boring function, on purpose</h2>
+    <p>I was doing a source review of FOSSBilling, an open-source billing platform a lot of small hosting providers run to manage invoices and client accounts. I wasn't hunting for anything specific. I was reading through the admin API surface the way I usually do: module by module, asking what each endpoint is allowed to touch and whether the code trusts anything it shouldn't.</p>
+    <p>One function stopped me: <code>Config::prettyPrintArrayToPHP()</code>. Most apps store settings in JSON or a database row. FOSSBilling writes its config out as literal PHP source, a file that gets <code>include</code>d on every single request. That's an unusual design choice, and unusual choices are exactly where I slow down.</p>
+  </div>
+
+  <div class="section">
+    <h2>The line that shouldn't exist</h2>
+    <p>Here's the string-serialization branch, more or less verbatim:</p>
+    <pre><code><span class="kw">if</span> (is_string($value)) {
+    <span class="kw">return</span> <span class="str">" =&gt; '{<span class="hl">$value</span>}',"</span> . PHP_EOL;
+}</code></pre>
+    <p>No escaping. None. The value gets dropped straight between two single quotes and written into a file that PHP will execute. I've seen this exact mistake in junior code before, just usually not shipping in production billing software with database credentials sitting a few lines above it in the same file.</p>
+    <div class="pull">If <code>$value</code> can contain a single quote, it isn't a string value anymore. It's a line of PHP.</div>
+    <p>I traced where a value like that could actually reach this function from the outside world, and found <code>set_interface_ip()</code>, an admin endpoint meant to let an operator change the server's bound IP address. It reads <code>interface</code> from the request, hands it straight to <code>Config::setProperty()</code>, and that eventually calls the vulnerable serializer. No validation. No escaping. Just a string, in, and a rewritten PHP file, out.</p>
+  </div>
+
+  <div class="section">
+    <h2>Turning a quote into a shell</h2>
+    <p>The payload writes itself once you see the shape of the bug. Something like:</p>
+    <pre><code>x']; passthru($_GET['c']); //</code></pre>
+    <p>Substituted into the template, that closes the string, closes the array literal, terminates the <code>return</code> statement, and hands PHP a brand-new statement to execute, a <code>passthru()</code> call reading a command from the query string. The trailing <code>//</code> comments out whatever was supposed to follow. It's syntactically clean. PHP has no idea anything went wrong.</p>
+    <p>From there the chain is almost anticlimactic: log in as any admin, POST the payload to <code>set_interface_ip</code>, then send any request at all to the server. <code>config.php</code> runs on every page load, so the shell is live immediately, and it stays live even after the admin session that planted it is gone. Revoking credentials doesn't clean up a file already sitting on disk.</p>
+  </div>
+
+  <div class="section">
+    <h2>Why "just an admin bug" undersells it</h2>
+    <p>It's tempting to write this off because it needs admin access first. I don't think that holds up. Admin panels get exposed to the internet more often than anyone wants to admit, credential stuffing against them is routine, and the point of least-privilege design is that an admin changing a server IP address should not be able to read the database password sitting in the same file, let alone execute arbitrary shell commands as the web server user. This bug turns a narrow, auditable action into total compromise. That gap between what an action is supposed to do and what it actually allows is usually where the real severity of a bug lives, and it's the question I try to ask about every finding now, not just this one.</p>
+  </div>
+
+  <div class="section">
+    <h2>What actually fixed it</h2>
+    <p>The FOSSBilling team's patch was small and correct: swap the hand-rolled string template for PHP's own <code>var_export()</code>, which escapes correctly by construction.</p>
+    <pre><code><span class="cmt">// After</span>
+<span class="kw">return</span> <span class="str">' =&gt; '</span> . <span class="fn">var_export</span>($value, <span class="kw">true</span>) . <span class="str">','</span> . PHP_EOL;</code></pre>
+    <p>I reviewed the patched commit on the private advisory fork before it shipped and confirmed the same payload comes out safely escaped. That's a step I try never to skip: a patch that "looks right" and a patch I've actually re-tested against my own payload are not the same thing.</p>
+  </div>
+
+  <div class="advisory-cta">
+    <div class="advisory-cta-text"><strong>Want the formal writeup?</strong>Full CVSS v4.0 scoring, the working proof-of-concept script, root-cause line references, and the complete disclosure timeline.</div>
+    <a href="../cves/cve-2026-43921.html">Read the technical advisory →</a>
+  </div>
+
+  <div class="post-footer">
+    <a class="back-link" href="index.html">← Back to Articles</a>
+    <span style="font-family:var(--mono);font-size:.72rem;color:var(--muted)">Dilip Mallavarapu</span>
+  </div>
+</div>
+
+<footer>
+  <a href="../index.html">dilip.</a> &nbsp;·&nbsp;
+  <a href="../about.html">About</a> &nbsp;·&nbsp;
+  <a href="../cves/index.html">CVEs</a> &nbsp;·&nbsp;
+  <a href="../exploits/index.html">Exploits</a> &nbsp;·&nbsp;
+  <a href="../contact.html">Contact</a> &nbsp;·&nbsp;
+  <a href="https://github.com/DilipMallavarapu">GitHub</a>
+</footer>
+</body>
+</html>

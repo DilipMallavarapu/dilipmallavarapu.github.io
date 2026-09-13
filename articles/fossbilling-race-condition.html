@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Race Conditions in Billing Systems and Why They're Underreported — Dilip Mallavarapu</title>
+  <meta name="description" content="A TOCTOU race in FOSSBilling's cart checkout lets a client bypass promo code limits, and a look at why timing bugs like this get missed so often."/>
+  <link rel="canonical" href="https://dilipmallavarapu.github.io/articles/fossbilling-race-condition.html"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:title" content="Race Conditions in Billing Systems and Why They're Underreported"/>
+  <meta property="og:description" content="A TOCTOU race in FOSSBilling's cart checkout lets a client bypass promo code limits, and a look at why timing bugs get missed so often."/>
+  <meta property="og:url" content="https://dilipmallavarapu.github.io/articles/fossbilling-race-condition.html"/>
+  <meta property="og:image" content="https://dilipmallavarapu.github.io/assets/img/og-image.png"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml"/>
+  <link rel="icon" href="../assets/img/favicon-32.png" sizes="32x32" type="image/png"/>
+  <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../assets/css/site.css"/>
+  <style>
+    body{line-height:1.8}
+    .page{max-width:740px}
+    .post-top{margin-bottom:2.5rem;padding-bottom:2rem;border-bottom:1px solid var(--border)}
+    .breadcrumb{font-family:var(--mono);font-size:.7rem;color:var(--muted);margin-bottom:1rem}
+    .breadcrumb a{color:var(--muted);text-decoration:none}
+    .breadcrumb a:hover{color:var(--green)}
+    .post-cat{font-family:var(--mono);font-size:.68rem;color:var(--purple);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.9rem}
+    .post-title{font-weight:800;font-size:2.1rem;color:#fff;line-height:1.2;letter-spacing:-.02em;margin-bottom:1rem}
+    .post-meta{display:flex;gap:1.2rem;flex-wrap:wrap;font-family:var(--mono);font-size:.72rem;color:var(--muted)}
+    .lede{font-size:1.05rem;color:var(--text);line-height:1.75;margin:2rem 0;font-weight:500}
+    .section{margin-bottom:2.2rem}
+    h2{font-weight:700;font-size:1.15rem;color:#fff;margin-bottom:1rem}
+    p{margin-bottom:1.1rem;color:var(--text);font-size:.95rem}
+    ul{padding-left:1.4rem;margin-bottom:1.1rem}
+    li{margin-bottom:.5rem;color:var(--text);font-size:.95rem}
+    a{color:var(--blue);text-decoration:none}
+    a:hover{text-decoration:underline}
+    code{font-family:var(--mono);font-size:.85em;color:var(--blue);background:rgba(88,166,255,.08);padding:.1rem .35rem;border-radius:3px}
+    pre{background:#010409;border:1px solid var(--border);border-radius:6px;padding:1.2rem;overflow-x:auto;margin:1.3rem 0;font-size:.8rem;line-height:1.65;font-family:var(--mono)}
+    pre code{background:none;padding:0;color:var(--text)}
+    .kw{color:var(--gold)}.fn{color:var(--blue)}.str{color:var(--green)}.cmt{color:#484f58}
+    .pull{border-left:3px solid var(--purple);padding:.9rem 1.3rem;margin:1.6rem 0;font-size:.98rem;font-style:italic;color:var(--text);background:rgba(188,140,255,.06);border-radius:0 6px 6px 0}
+    .race-mini{display:flex;flex-direction:column;gap:.4rem;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:1.2rem 1.4rem;margin:1.4rem 0;font-family:var(--mono);font-size:.78rem}
+    .race-mini .rm-req{color:var(--muted)}
+    .race-mini .rm-req strong{color:var(--purple)}
+    .advisory-cta{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:1.3rem 1.5rem;margin:2.2rem 0;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+    .advisory-cta-text{font-size:.88rem;color:var(--muted)}
+    .advisory-cta-text strong{color:#fff;display:block;margin-bottom:.2rem;font-size:.95rem}
+    .advisory-cta a{color:var(--green);font-weight:600;white-space:nowrap}
+    .post-footer{margin-top:3rem;padding-top:1.8rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+    .back-link{color:var(--green);font-size:.85rem;font-weight:500}
+    @media(max-width:640px){.post-title{font-size:1.5rem}}
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav>
+  <a class="nav-logo" href="../index.html">dilip.</a>
+  <div class="nav-links">
+    <a href="../index.html">Home</a>
+    <a href="../about.html">About</a>
+    <a href="../cves/index.html">CVEs</a>
+    <a href="index.html" class="active">Articles</a>
+    <a href="../exploits/index.html">Exploits</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+</nav>
+
+<div class="page" id="main">
+  <div class="post-top">
+    <div class="breadcrumb"><a href="index.html">Articles</a> / Race Conditions in Billing Systems</div>
+    <div class="post-cat">CVE Writeup · CVE-2026-43927</div>
+    <h1 class="post-title">Race Conditions in Billing Systems and Why They're Underreported</h1>
+    <div class="post-meta">
+      <span>Published 2026-06-04</span>
+      <span>5 min read</span>
+      <span>FOSSBilling ≤ 0.7.2</span>
+    </div>
+  </div>
+
+  <p class="lede">Of the three FOSSBilling bugs I found, this is the one I think gets missed most often across the industry, not because it's subtle, but because finding it requires thinking about the app in a dimension most testing simply doesn't cover: time.</p>
+
+  <div class="section">
+    <h2>What black-box scanners don't ask</h2>
+    <p>Automated scanners send one request, look at one response, and move on. Manual testers, myself included on a rushed day, tend to think the same way: does this input get validated, does this action require auth, does this response leak something. Almost nobody's default question is "what happens if I send this exact same request twice, at the exact same instant?" Race conditions live entirely in that gap.</p>
+    <p>I started looking at FOSSBilling's promo code logic specifically because discount codes are a classic place for check-then-act mistakes, an application has to check that a code is still valid, then separately record that it's been used, and there's always a window between those two steps.</p>
+  </div>
+
+  <div class="section">
+    <h2>Two operations, no lock between them</h2>
+    <p>The cart checkout flow: read the promo code's current usage count, compare it to the limit, and if it passes, increment the count and create the order. Three separate database operations. No transaction wrapping them, no row-level lock holding the count steady in between.</p>
+    <div class="pull">Between "check" and "act," the database doesn't know you already decided. It just answers the same question again, honestly, for whoever asks next.</div>
+    <p>If two checkout requests for the same single-use code arrive close enough together, both read the counter before either one increments it. Both see the code as unused. Both pass the check. Both create a discounted order. The code was single-use in name only.</p>
+  </div>
+
+  <div class="section">
+    <h2>Building the window wide enough to walk through</h2>
+    <p>Proving this needed more than "send it twice and hope." I used Python's <code>threading.Barrier</code> to hold a pool of worker threads at a starting line and release them in the same instant, so the requests actually land on the server concurrently instead of trickling in one after another:</p>
+    <pre><code><span class="kw">import</span> threading, requests
+
+barrier = threading.Barrier(N)
+
+<span class="kw">def</span> <span class="fn">checkout</span>():
+    barrier.wait()  <span class="cmt"># hold every thread here, then release together</span>
+    requests.post(checkout_url, json=order_payload)
+
+threads = [threading.Thread(target=checkout) <span class="kw">for</span> _ <span class="kw">in</span> range(N)]
+[t.start() <span class="kw">for</span> t <span class="kw">in</span> threads]
+[t.join() <span class="kw">for</span> t <span class="kw">in</span> threads]</code></pre>
+    <div class="race-mini">
+      <div class="rm-req">t=0ms &nbsp;<strong>10 requests</strong> released simultaneously, all read usage_count = 0</div>
+      <div class="rm-req">t=12ms &nbsp;all 10 pass the "is code valid" check</div>
+      <div class="rm-req">t=18ms &nbsp;all 10 increment the counter and create a discounted order</div>
+    </div>
+    <p>In testing, a single-use code cleared ten or more successful discounted checkouts from one burst. The fix on the vendor's side was straightforward once the race was demonstrated: wrap the check and the increment in one atomic operation instead of two independent ones.</p>
+  </div>
+
+  <div class="section">
+    <h2>Why I think this class stays underreported</h2>
+    <p>A few reasons keep coming up whenever I compare notes with other researchers. Race conditions don't reproduce reliably with a single request, so they're invisible to anyone testing sequentially. They require the tester to model the application's state transitions, not just its inputs and outputs. And exploiting them well needs tooling most web testers don't reach for by default, precise concurrency, not just a for-loop. None of that is exotic, but it is a different mental model than "fuzz the parameter," and that gap is exactly why this bug class is where I want to keep digging, both in bug bounty work and, longer term, in research: the tooling and methodology for finding logic-timing bugs at scale is genuinely underdeveloped compared to what exists for memory safety or injection classes.</p>
+  </div>
+
+  <div class="advisory-cta">
+    <div class="advisory-cta-text"><strong>Want the formal writeup?</strong>Full CVSS scoring, the threaded PoC in full, and the complete disclosure timeline.</div>
+    <a href="../cves/cve-2026-43927.html">Read the technical advisory →</a>
+  </div>
+
+  <div class="post-footer">
+    <a class="back-link" href="index.html">← Back to Articles</a>
+    <span style="font-family:var(--mono);font-size:.72rem;color:var(--muted)">Dilip Mallavarapu</span>
+  </div>
+</div>
+
+<footer>
+  <a href="../index.html">dilip.</a> &nbsp;·&nbsp;
+  <a href="../about.html">About</a> &nbsp;·&nbsp;
+  <a href="../cves/index.html">CVEs</a> &nbsp;·&nbsp;
+  <a href="../exploits/index.html">Exploits</a> &nbsp;·&nbsp;
+  <a href="../contact.html">Contact</a> &nbsp;·&nbsp;
+  <a href="https://github.com/DilipMallavarapu">GitHub</a>
+</footer>
+</body>
+</html>
