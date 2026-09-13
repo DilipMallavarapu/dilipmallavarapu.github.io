@@ -124,6 +124,24 @@
       <div class="ac-desc">ARM ELF analysis of a physical access control terminal revealed a 34-entry hardcoded no-auth table — bypassing authentication for config export, iris enrollment, and ONVIF factory reset.</div>
       <div class="ac-tags"><span class="act">Binary Analysis</span><span class="act">ARM ELF</span><span class="act">IoT</span></div>
     </div>
+    <div class="article-card ac-red">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem">
+        <div class="ac-cat">Research Blog</div>
+        <span class="soon-badge" style="float:none">Coming soon</span>
+      </div>
+      <div class="ac-title">SSRF via Redirect Bypass in Graylog's URL Allowlist</div>
+      <div class="ac-desc">Graylog validates a URL against its allowlist once, then OkHttp follows 3xx redirects without re-checking each hop, letting an allowlisted or open-redirect host pivot server-side requests into internal services like an unauthenticated OpenSearch cluster or the cloud metadata endpoint. CVSS 9.9 Critical.</div>
+      <div class="ac-tags"><span class="act">SSRF</span><span class="act">CWE-918</span><span class="act">Java</span></div>
+    </div>
+    <div class="article-card ac-orange">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem">
+        <div class="ac-cat">Research Blog</div>
+        <span class="soon-badge" style="float:none">Coming soon</span>
+      </div>
+      <div class="ac-title">Unauthenticated Decompression Bomb DoS in Graylog's Beats Input</div>
+      <div class="ac-desc">The Beats frame decoder bounds every frame type it handles except one, the compressed frame inflates with no size limit. A modest concurrent burst of small zlib payloads drives a sustained OutOfMemoryError storm and JVM-wide GC stalls, with no authentication required.</div>
+      <div class="ac-tags"><span class="act">DoS</span><span class="act">CWE-409</span><span class="act">Decompression Bomb</span></div>
+    </div>
   </div>
 </div>
 

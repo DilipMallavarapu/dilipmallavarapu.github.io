@@ -69,7 +69,7 @@
 
   <div class="stats">
     <div class="stat"><div class="stat-num">3</div><div class="stat-label">CVEs Assigned</div></div>
-    <div class="stat"><div class="stat-num">2</div><div class="stat-label">In Progress</div></div>
+    <div class="stat"><div class="stat-num">4</div><div class="stat-label">In Progress</div></div>
     <div class="stat"><div class="stat-num">1</div><div class="stat-label">High Severity</div></div>
     <div class="stat"><div class="stat-num">2</div><div class="stat-label">Moderate Severity</div></div>
   </div>
@@ -158,6 +158,38 @@
         </div>
       </div>
       <div class="cr-right"><span class="cr-soon">Awaiting vendor</span></div>
+    </div>
+
+    <div class="cve-row static">
+      <div>
+        <div class="cr-id">Graylog ≤ 7.1.7 <span class="badge badge-ip">Awaiting CVE</span></div>
+        <div class="cr-title">SSRF via URL Allowlist Redirect Bypass → Internal OpenSearch &amp; Metadata Access</div>
+        <div class="cr-desc">The URL allowlist is validated once against the configured URL, then OkHttp follows 3xx redirects without re-checking each hop. An allowlisted or open-redirect host can pivot the server's requests into internal services, reading stored logs from an unauthenticated OpenSearch cluster or exfiltrating cloud instance-role credentials via IMDS. CVSS 9.9 Critical.</div>
+        <div class="cr-meta">
+          <span class="cr-tag">CWE-918</span><span class="cr-tag">SSRF</span><span class="cr-tag">Java</span><span class="cr-tag">Lookup/Notification Permission Required</span>
+        </div>
+        <div style="display:flex;gap:1rem;margin-top:.5rem;flex-wrap:wrap">
+          <span class="cr-date">Reported 2026-08</span>
+          <span class="cr-ghsa">GHSA-73c3-3q9x-5wq3</span>
+        </div>
+      </div>
+      <div class="cr-right"><span class="cr-soon">In triage</span></div>
+    </div>
+
+    <div class="cve-row static">
+      <div>
+        <div class="cr-id">Graylog ≤ 7.1.7 <span class="badge badge-ip">Awaiting CVE</span></div>
+        <div class="cr-title">Unauthenticated Decompression Bomb DoS in the Beats Input</div>
+        <div class="cr-desc">The Beats frame decoder bounds every frame type it handles except the compressed one, which inflates with no size limit. A modest concurrent burst of small zlib payloads drives a sustained OutOfMemoryError storm and JVM-wide GC stalls, denying Beats ingestion with no authentication required.</div>
+        <div class="cr-meta">
+          <span class="cr-tag">CWE-409</span><span class="cr-tag">DoS</span><span class="cr-tag">Netty</span><span class="cr-tag">No Auth Required</span>
+        </div>
+        <div style="display:flex;gap:1rem;margin-top:.5rem;flex-wrap:wrap">
+          <span class="cr-date">Reported 2026-08</span>
+          <span class="cr-ghsa">GHSA-6r58-hv2p-fgx2</span>
+        </div>
+      </div>
+      <div class="cr-right"><span class="cr-soon">In triage</span></div>
     </div>
 
   </div>
