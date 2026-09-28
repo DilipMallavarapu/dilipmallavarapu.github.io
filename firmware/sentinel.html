@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Sentinel firmware scanner — Dilip Mallavarapu</title>
+  <meta name="description" content="Sentinel is a static firmware analysis tool whose findings carry a proof you can re-check offline, and which reports unknown instead of guessing."/>
+  <link rel="canonical" href="https://dilipmallavarapu.github.io/firmware/sentinel.html"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:title" content="Sentinel: a firmware scanner that will not guess"/>
+  <meta property="og:description" content="A static firmware analysis tool whose findings carry a proof you can re-check offline, and which reports unknown instead of guessing."/>
+  <meta property="og:url" content="https://dilipmallavarapu.github.io/firmware/sentinel.html"/>
+  <meta property="og:image" content="https://dilipmallavarapu.github.io/assets/img/og-image.png"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml"/>
+  <link rel="icon" href="../assets/img/favicon-32.png" sizes="32x32" type="image/png"/>
+  <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../assets/css/site.css"/>
+  <style>
+    body{line-height:1.8}
+    .page{max-width:740px}
+    .back{font-family:var(--mono);font-size:.75rem;color:var(--muted);text-decoration:none;display:inline-block;margin-bottom:1.6rem}
+    .back:hover{color:var(--green)}
+    .post-cat{font-family:var(--mono);font-size:.68rem;color:var(--blue);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.9rem}
+    .post-title{font-weight:800;font-size:2.1rem;color:#fff;line-height:1.2;letter-spacing:-.02em;margin-bottom:1rem}
+    .post-meta{display:flex;gap:1.2rem;flex-wrap:wrap;font-family:var(--mono);font-size:.72rem;color:var(--muted);margin-bottom:2.2rem;padding-bottom:1.4rem;border-bottom:1px solid var(--border)}
+    .post-meta a{color:var(--green);text-decoration:none}
+    h2{font-weight:700;font-size:1.18rem;color:#fff;margin:2.4rem 0 .9rem;letter-spacing:-.01em}
+    p{margin-bottom:1.1rem;color:var(--text);font-size:.95rem}
+    ul{padding-left:1.4rem;margin-bottom:1.2rem}
+    li{margin-bottom:.55rem;color:var(--text);font-size:.95rem}
+    strong{color:#fff;font-weight:600}
+    code{font-family:var(--mono);font-size:.85em;color:var(--blue);background:rgba(88,166,255,.08);padding:.1rem .35rem;border-radius:3px}
+    .callout{background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--green);border-radius:6px;padding:1.1rem 1.3rem;margin:1.6rem 0;font-size:.9rem;color:var(--muted)}
+    .callout strong{color:var(--text)}
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav>
+  <a class="nav-logo" href="../index.html">dilip.</a>
+  <div class="nav-links">
+    <a href="../index.html">Home</a>
+    <a href="../about.html">About</a>
+    <a href="../cves/index.html">CVEs</a>
+    <a href="index.html" class="active">Firmware</a>
+    <a href="../articles/index.html">Articles</a>
+    <a href="../exploits/index.html">Exploits</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+</nav>
+
+<div class="page" id="main">
+  <a class="back" href="index.html">&larr; Firmware Security</a>
+  <div class="post-cat">// Tool</div>
+  <h1 class="post-title">Sentinel: a firmware scanner that will not guess</h1>
+  <div class="post-meta">
+    <span>Open source</span>
+    <a href="https://github.com/DilipMallavarapu/sentinel-firmware">github.com/DilipMallavarapu/sentinel-firmware</a>
+    <span>Go and Python</span>
+  </div>
+
+  <p>Sentinel is a static analysis tool for extracted firmware. It walks a root filesystem and reports things like exploit mitigation posture, hardcoded keys and certificates, shipped SSH backdoors, and the services a device exposes. That part is not new. Tools like EMBA and FACT already do a lot of it, and they cover more formats than I do.</p>
+
+  <p>What is different is the rule Sentinel holds itself to: it does not state a finding it cannot back with evidence, and it does not report something as absent when it only failed to look.</p>
+
+  <h2>The problem it is built around</h2>
+  <p>Most firmware scanners are tuned for recall. They surface everything that might matter and leave you to sort the real issues from the noise. That is fine until you need to hand a finding to a vendor who will push back, or until the scanner quietly reports something false and you repeat it.</p>
+  <p>Two ideas keep Sentinel honest:</p>
+  <ul>
+    <li><strong>Presence is separate from reachability.</strong> Saying a binary has no stack canary is a statement about the file on disk. Saying it is exploitable is a much bigger claim. Sentinel keeps those apart and never lets the first quietly become the second.</li>
+    <li><strong>Every confirmed finding carries a proof.</strong> When Sentinel marks a finding as confirmed, it stores the exact bytes the claim was derived from, plus a check that re-runs offline with no network and no target attached. If the proof does not re-verify, the finding does not get to be confirmed.</li>
+  </ul>
+
+  <h2>Present, absent, or unknown</h2>
+  <p>The part I care about most is the third state. A scanner that reads a mitigation from an ELF symbol table has to admit when the symbol table is not readable. If it prints <code>absent</code> in that case, it is guessing, and the guess is wrong often enough to matter.</p>
+  <p>Sentinel reports <code>present</code>, <code>absent</code>, or <code>unknown</code>, and every image-wide number is stated over the population it was actually measured on. If it could not read the symbols for 40 of 100 binaries, it says coverage was measured on 60, not that 40 are unprotected.</p>
+
+  <div class="callout">
+    <strong>This is not theory.</strong> An earlier version of Sentinel read stack canary data through ELF section headers. OpenWrt strips those headers to save space, so the tool reported zero canaries across every binary, when the truth was the opposite. The fix was to read the dynamic symbol table straight from the program headers, and to make the result three-valued so an unreadable table reads as unknown, not as a false zero. The tool now measures it correctly and says so with a denominator.
+  </div>
+
+  <h2>Where it fits</h2>
+  <p>Sentinel is not trying to replace the large firmware frameworks on breadth of detection. It is useful in a narrower spot: when you need a finding that is defensible, reproducible, and honest about its own limits. For disclosure work, an evidence package a vendor or a CNA can re-check byte for byte is worth more than a longer list of maybes.</p>
+  <p>It is written as a fast Go worker for the binary scanning, with the analysis and the evidence model in Python. The code and the checks are on GitHub.</p>
+</div>
+
+<footer>
+  <a href="../index.html">dilip.</a> &nbsp;·&nbsp;
+  <a href="index.html">Firmware</a> &nbsp;·&nbsp;
+  <a href="https://github.com/DilipMallavarapu/sentinel-firmware">Sentinel</a> &nbsp;·&nbsp;
+  <a href="../contact.html">Contact</a>
+</footer>
+</body>
+</html>

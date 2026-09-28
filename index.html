@@ -91,6 +91,7 @@
     <a href="index.html" class="active">Home</a>
     <a href="about.html">About</a>
     <a href="cves/index.html">CVEs</a>
+    <a href="firmware/index.html">Firmware</a>
     <a href="articles/index.html">Articles</a>
     <a href="exploits/index.html">Exploits</a>
     <a href="contact.html">Contact</a>
@@ -177,6 +178,41 @@
           <span class="ptag purple">LLM</span><span class="ptag purple">Prompt Injection</span><span class="ptag purple">ICS Security</span>
         </div>
         <a class="proj-link" href="articles/llm-copilot-prompt-injection-ics.html">Read the writeup →</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FIRMWARE SECURITY -->
+  <div class="section">
+    <div class="s-label">Firmware Security</div>
+    <p style="font-size:.9rem;color:var(--muted);max-width:640px;margin-bottom:1.5rem;line-height:1.7">
+      Static analysis and reverse engineering of router, camera, and BMC firmware, plus the tooling behind it. Numbers come from binaries I unpacked and measured, not from vendor claims.
+    </p>
+    <div class="proj-grid">
+
+      <div class="proj-card">
+        <div class="proj-name">OpenWrt hardening study</div>
+        <span class="proj-status">Measurement · Published</span>
+        <p class="proj-desc">Measured stack canary coverage across three OpenWrt 23.05 architectures. Protection is on by default (74 to 80 percent), and the same core packages opt out on every build. Includes the measurement bug that made an earlier pass read zero.</p>
+        <div class="proj-tags"><span class="ptag">OpenWrt</span><span class="ptag">MIPS</span><span class="ptag">x86-64</span></div>
+        <a class="proj-link" href="firmware/openwrt-ssp.html">Read the study &rarr;</a>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-name">Sentinel</div>
+        <span class="proj-status">Tool · Open source</span>
+        <p class="proj-desc">A firmware scanner whose confirmed findings carry a proof you can re-check offline, and which reports present, absent, or unknown rather than reporting a mitigation as missing when it could not read it.</p>
+        <div class="proj-tags"><span class="ptag">Go</span><span class="ptag">Python</span><span class="ptag">ELF</span></div>
+        <a class="proj-link" href="firmware/sentinel.html">Read &rarr;</a>
+      </div>
+
+      <div class="proj-card wip">
+        <div class="proj-name">Vendor disclosures</div>
+        <span class="proj-status">Hikvision · OpenBMC · QNAP</span>
+        <p class="proj-desc">Device firmware research across a Hikvision access terminal (reported to HSRC), an OpenBMC finding under coordinated disclosure, and an ongoing QNAP QTS review. Details on the firmware page.</p>
+        <div class="proj-tags"><span class="ptag orange">ARM ELF</span><span class="ptag orange">IoT</span><span class="ptag orange">BMC</span></div>
+        <a class="proj-link" href="firmware/index.html">View all &rarr;</a>
       </div>
 
     </div>
