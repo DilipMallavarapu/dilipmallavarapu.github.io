@@ -69,14 +69,32 @@
   </div>
 
   <div class="stats">
-    <div class="stat"><div class="stat-num">3</div><div class="stat-label">CVEs Assigned</div></div>
+    <div class="stat"><div class="stat-num">4</div><div class="stat-label">CVEs Assigned</div></div>
     <div class="stat"><div class="stat-num">4</div><div class="stat-label">In Progress</div></div>
     <div class="stat"><div class="stat-num">1</div><div class="stat-label">High Severity</div></div>
-    <div class="stat"><div class="stat-num">2</div><div class="stat-label">Moderate Severity</div></div>
+    <div class="stat"><div class="stat-num">3</div><div class="stat-label">Moderate Severity</div></div>
   </div>
 
   <div class="s-label">Published</div>
   <div class="cve-list">
+
+    <a class="cve-row" href="cve-2026-111055.html">
+      <div>
+        <div class="cr-id">CVE-2026-111055 <span class="badge badge-mod">MODERATE</span></div>
+        <div class="cr-title">Concurrent Checkouts Reuse a once-per-client Promo Code Unlimited Times</div>
+        <div class="cr-desc">A once_per_client promo validates eligibility with a non-atomic COUNT query and writes the redemption row much later with no lock or unique constraint. Concurrent POST /api/client/cart/checkout requests all read zero and pass, so one client can redeem a single-use-per-client code on many orders — free provisioning or draining a finite global pool.</div>
+        <div class="cr-meta">
+          <span class="cr-tag">CWE-367</span><span class="cr-tag">TOCTOU</span><span class="cr-tag">Race Condition</span><span class="cr-tag">FOSSBilling ≤ 0.8.7</span><span class="cr-tag">Client Auth Required</span>
+        </div>
+        <div style="display:flex;gap:1rem;margin-top:.5rem;flex-wrap:wrap">
+          <span class="cr-date">Published 2026-10-28</span>
+          <span class="cr-ghsa">GHSA-qpq2-vvh9-hwfw</span>
+        </div>
+      </div>
+      <div class="cr-right">
+        <span class="cr-arrow">→</span>
+      </div>
+    </a>
 
     <a class="cve-row" href="cve-2026-43921.html">
       <div>
