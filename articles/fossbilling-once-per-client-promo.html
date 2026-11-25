@@ -1,25 +1,26 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>One Code, One Client, Many Freebies — Dilip Mallavarapu</title>
-  <meta name="description" content="How a check-then-write gap in FOSSBilling's checkout lets a single client redeem a once-per-client promo code as many times as they can click at once."/>
-  <link rel="canonical" href="https://dilipmallavarapu.github.io/articles/fossbilling-once-per-client-promo.html"/>
-  <meta property="og:type" content="article"/>
-  <meta property="og:title" content="One Code, One Client, Many Freebies"/>
-  <meta property="og:description" content="How a check-then-write gap in FOSSBilling's checkout lets a single client redeem a once-per-client promo code as many times as they can click at once."/>
-  <meta property="og:url" content="https://dilipmallavarapu.github.io/articles/fossbilling-once-per-client-promo.html"/>
-  <meta property="og:image" content="https://dilipmallavarapu.github.io/assets/img/og-image.png"/>
-  <meta name="twitter:card" content="summary_large_image"/>
-  <link rel="icon" href="../favicon.svg" type="image/svg+xml"/>
-  <link rel="icon" href="../assets/img/favicon-32.png" sizes="32x32" type="image/png"/>
-  <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="../assets/css/site.css"/>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<title>One Code, One Client, Many Freebies - Dilip Mallavarapu</title>
+<meta content="How a check-then-write gap in FOSSBilling's checkout lets a single client redeem a once-per-client promo code as many times as they can click at once." name="description"/>
+<link href="https://dilipmallavarapu.github.io/articles/fossbilling-once-per-client-promo.html" rel="canonical"/>
+<meta content="article" property="og:type"/>
+<meta content="One Code, One Client, Many Freebies" property="og:title"/>
+<meta content="How a check-then-write gap in FOSSBilling's checkout lets a single client redeem a once-per-client promo code as many times as they can click at once." property="og:description"/>
+<meta content="https://dilipmallavarapu.github.io/articles/fossbilling-once-per-client-promo.html" property="og:url"/>
+<meta content="https://dilipmallavarapu.github.io/assets/img/og-image.png" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<link href="../favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="../assets/img/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="../assets/css/site.css" rel="stylesheet"/>
+<style>
     body{line-height:1.8}
     .page{max-width:740px}
     .post-top{margin-bottom:2.5rem;padding-bottom:2rem;border-bottom:1px solid var(--border)}
@@ -27,11 +28,11 @@
     .breadcrumb a{color:var(--muted);text-decoration:none}
     .breadcrumb a:hover{color:var(--green)}
     .post-cat{font-family:var(--mono);font-size:.68rem;color:var(--purple);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.9rem}
-    .post-title{font-weight:800;font-size:2.1rem;color:#fff;line-height:1.2;letter-spacing:-.02em;margin-bottom:1rem}
+    .post-title{font-weight:800;font-size:2.1rem;color:var(--text);line-height:1.2;letter-spacing:-.02em;margin-bottom:1rem}
     .post-meta{display:flex;gap:1.2rem;flex-wrap:wrap;font-family:var(--mono);font-size:.72rem;color:var(--muted)}
     .lede{font-size:1.05rem;color:var(--text);line-height:1.75;margin:2rem 0;font-weight:500}
     .section{margin-bottom:2.2rem}
-    h2{font-weight:700;font-size:1.15rem;color:#fff;margin-bottom:1rem}
+    h2{font-weight:700;font-size:1.15rem;color:var(--text);margin-bottom:1rem}
     p{margin-bottom:1.1rem;color:var(--text);font-size:.95rem}
     ul{padding-left:1.4rem;margin-bottom:1.1rem}
     li{margin-bottom:.5rem;color:var(--text);font-size:.95rem}
@@ -44,7 +45,7 @@
     .pull{border-left:3px solid var(--purple);padding:.9rem 1.3rem;margin:1.6rem 0;font-size:.98rem;font-style:italic;color:var(--text);background:rgba(188,140,255,.05);border-radius:0 6px 6px 0}
     .advisory-cta{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:1.3rem 1.5rem;margin:2.2rem 0;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
     .advisory-cta-text{font-size:.88rem;color:var(--muted)}
-    .advisory-cta-text strong{color:#fff;display:block;margin-bottom:.2rem;font-size:.95rem}
+    .advisory-cta-text strong{color:var(--text);display:block;margin-bottom:.2rem;font-size:.95rem}
     .advisory-cta a{color:var(--green);font-weight:600;white-space:nowrap}
     .post-footer{margin-top:3rem;padding-top:1.8rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
     .back-link{color:var(--green);font-size:.85rem;font-weight:500}
@@ -54,73 +55,65 @@
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 <nav>
-  <a class="nav-logo" href="../index.html">dilip.</a>
-  <div class="nav-links">
-    <a href="../index.html">Home</a>
-    <a href="../about.html">About</a>
-    <a href="../cves/index.html">CVEs</a>
-    <a href="../firmware/index.html">Firmware</a>
-    <a href="index.html" class="active">Articles</a>
-    <a href="../exploits/index.html">Exploits</a>
-    <a href="../contact.html">Contact</a>
-  </div>
+<a class="nav-logo" href="../index.html">dilip.</a>
+<div class="nav-links">
+<a href="../index.html">Home</a>
+<a href="../about.html">About</a>
+<a href="../cves/index.html">CVEs</a>
+<a href="../firmware/index.html">Firmware</a>
+<a class="active" href="index.html">Articles</a>
+<a href="../exploits/index.html">Exploits</a>
+<a href="../contact.html">Contact</a>
+<a href="../research.html">Research</a></div>
 </nav>
-
 <div class="page" id="main">
-  <div class="post-top">
-    <div class="breadcrumb"><a href="index.html">Articles</a> / One Code, One Client, Many Freebies</div>
-    <div class="post-cat">CVE Writeup · CVE-2026-111055</div>
-    <h1 class="post-title">One Code, One Client, Many Freebies</h1>
-    <div class="post-meta">
-      <span>Published 2026-10-28</span>
-      <span>4 min read</span>
-      <span>FOSSBilling ≤ 0.8.7</span>
-    </div>
-  </div>
-
-  <p class="lede">"Once per customer" sounds like a rule the database enforces. In a lot of billing code it's really a rule a <code>SELECT COUNT(*)</code> politely asks about — and if you ask the same question from ten tabs at once, you get ten yeses.</p>
-
-  <div class="section">
-    <h2>The rule, and the gap under it</h2>
-    <p>FOSSBilling lets an operator mark a promo code as <code>once_per_client</code>: each client account can redeem it at most once. When a client checks out, the code re-checks eligibility by counting how many times that client has already redeemed the promo. Zero redemptions means "go ahead." That check lives in <code>Cart\Service::checkoutCart()</code> and bottoms out in a <code>COUNT</code> query.</p>
-    <p>The problem is <em>when</em> the matching write happens. The redemption row that records "this client used this code" isn't inserted at the moment of the check — it's written much later, at the end of the checkout, in <code>Product\Service::createCheckoutPromoRedemptions()</code>, with an ordinary persist. Nothing in between takes a lock, and there's no unique constraint on the table. The count-check and the redemption-write are two separate moments with the entire checkout sitting between them.</p>
-    <div class="pull">The check asks "has this client used the code?" The honest answer, for a few hundred milliseconds, is "not yet" — to everyone who asks at once.</div>
-  </div>
-
-  <div class="section">
-    <h2>Racing the window</h2>
-    <p>This is a textbook time-of-check-to-time-of-use (TOCTOU) race, and a comfortable one to exploit because the window is wide. You don't need to hit a microsecond gap; you need several checkout requests in flight together. I drove it with a <code>threading.Barrier</code> so a batch of checkouts all release at the same instant:</p>
-    <pre><code><span class="kw">def</span> <span class="fn">checkout</span>():
+<div class="post-top">
+<div class="breadcrumb"><a href="index.html">Articles</a> / One Code, One Client, Many Freebies</div>
+<div class="post-cat">CVE Writeup · CVE-2026-111055</div>
+<h1 class="post-title">One Code, One Client, Many Freebies</h1>
+<div class="post-meta">
+<span>Published 2026-10-28</span>
+<span>4 min read</span>
+<span>FOSSBilling ≤ 0.8.7</span>
+</div>
+</div>
+<p class="lede">"Once per customer" sounds like a rule the database enforces. In a lot of billing code it's really a rule a <code>SELECT COUNT(*)</code> politely asks about - and if you ask the same question from ten tabs at once, you get ten yeses.</p>
+<div class="section">
+<h2>The rule, and the gap under it</h2>
+<p>FOSSBilling lets an operator mark a promo code as <code>once_per_client</code>: each client account can redeem it at most once. When a client checks out, the code re-checks eligibility by counting how many times that client has already redeemed the promo. Zero redemptions means "go ahead." That check lives in <code>Cart\Service::checkoutCart()</code> and bottoms out in a <code>COUNT</code> query.</p>
+<p>The problem is <em>when</em> the matching write happens. The redemption row that records "this client used this code" isn't inserted at the moment of the check - it's written much later, at the end of the checkout, in <code>Product\Service::createCheckoutPromoRedemptions()</code>, with an ordinary persist. Nothing in between takes a lock, and there's no unique constraint on the table. The count-check and the redemption-write are two separate moments with the entire checkout sitting between them.</p>
+<div class="pull">The check asks "has this client used the code?" The honest answer, for a few hundred milliseconds, is "not yet" - to everyone who asks at once.</div>
+</div>
+<div class="section">
+<h2>Racing the window</h2>
+<p>This is a textbook time-of-check-to-time-of-use (TOCTOU) race, and a comfortable one to exploit because the window is wide. You don't need to hit a microsecond gap; you need several checkout requests in flight together. I drove it with a <code>threading.Barrier</code> so a batch of checkouts all release at the same instant:</p>
+<pre><code><span class="kw">def</span> <span class="fn">checkout</span>():
     barrier.wait()                   <span class="cmt"># everybody goes at once</span>
     requests.post(f<span class="str">"{TARGET}/api/client/cart/checkout"</span>,
                   headers={<span class="str">"Authorization"</span>: f<span class="str">"Bearer {TOKEN}"</span>},
                   json={<span class="str">"promocode"</span>: PROMO})</code></pre>
-    <p>Every request in the batch reads a redemption count of zero, every request passes the eligibility check, and every request goes on to create its own discounted order. One client, one code, as many redemptions as the batch size.</p>
-  </div>
-
-  <div class="section">
-    <h2>Why it only rates Moderate — and why it still matters</h2>
-    <p>I want to be honest about severity. Promos in FOSSBilling are discount-only, and a zero-total order creates no invoice and no balance, so the blast radius is free or underpriced provisioning — not account takeover, not data loss. That caps it at Moderate. But it's a real money bug: a 100%-off code meant to onboard a single trial client can instead hand that one client a stack of free services, and a promo with a finite global cap can be drained entirely by one person before anyone else sees it.</p>
-    <p>What makes it interesting to me is that the project had already learned this lesson once. The <em>global</em> usage limit was made atomic back in 0.8.0 with a conditional increment. The per-client check was the same shape of bug sitting right next to the fixed one, and it never got the same treatment — a good reminder that when you fix a race, it's worth grepping for its siblings. The maintainers closed this one in 0.8.9.</p>
-  </div>
-
-  <div class="advisory-cta">
-    <div class="advisory-cta-text"><strong>Want the formal writeup?</strong>CVSS v4.0 metrics, the vulnerable <code>COUNT</code> query, the full attack chain, the threaded PoC, and the disclosure timeline.</div>
-    <a href="../cves/cve-2026-111055.html">Read the technical advisory →</a>
-  </div>
-
-  <div class="post-footer">
-    <a class="back-link" href="index.html">← Back to Articles</a>
-    <span style="font-family:var(--mono);font-size:.72rem;color:var(--muted)">Dilip Mallavarapu</span>
-  </div>
+<p>Every request in the batch reads a redemption count of zero, every request passes the eligibility check, and every request goes on to create its own discounted order. One client, one code, as many redemptions as the batch size.</p>
 </div>
-
+<div class="section">
+<h2>Why it only rates Moderate - and why it still matters</h2>
+<p>I want to be honest about severity. Promos in FOSSBilling are discount-only, and a zero-total order creates no invoice and no balance, so the blast radius is free or underpriced provisioning - not account takeover, not data loss. That caps it at Moderate. But it's a real money bug: a 100%-off code meant to onboard a single trial client can instead hand that one client a stack of free services, and a promo with a finite global cap can be drained entirely by one person before anyone else sees it.</p>
+<p>What makes it interesting to me is that the project had already learned this lesson once. The <em>global</em> usage limit was made atomic back in 0.8.0 with a conditional increment. The per-client check was the same shape of bug sitting right next to the fixed one, and it never got the same treatment - a good reminder that when you fix a race, it's worth grepping for its siblings. The maintainers closed this one in 0.8.9.</p>
+</div>
+<div class="advisory-cta">
+<div class="advisory-cta-text"><strong>Want the formal writeup?</strong>CVSS v4.0 metrics, the vulnerable <code>COUNT</code> query, the full attack chain, the threaded PoC, and the disclosure timeline.</div>
+<a href="../cves/cve-2026-111055.html">Read the technical advisory →</a>
+</div>
+<div class="post-footer">
+<a class="back-link" href="index.html">← Back to Articles</a>
+<span style="font-family:var(--mono);font-size:.72rem;color:var(--muted)">Dilip Mallavarapu</span>
+</div>
+</div>
 <footer>
-  <a href="../index.html">dilip.</a> &nbsp;·&nbsp;
-  <a href="../about.html">About</a> &nbsp;·&nbsp;
-  <a href="../cves/index.html">CVEs</a> &nbsp;·&nbsp;
-  <a href="../exploits/index.html">Exploits</a> &nbsp;·&nbsp;
-  <a href="../contact.html">Contact</a> &nbsp;·&nbsp;
+<a href="../index.html">dilip.</a>  · 
+  <a href="../about.html">About</a>  · 
+  <a href="../cves/index.html">CVEs</a>  · 
+  <a href="../exploits/index.html">Exploits</a>  · 
+  <a href="../contact.html">Contact</a>  · 
   <a href="https://github.com/DilipMallavarapu">GitHub</a>
 </footer>
 </body>

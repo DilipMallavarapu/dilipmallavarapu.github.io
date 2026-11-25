@@ -1,29 +1,30 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Home — Dilip Mallavarapu</title>
-  <meta name="description" content="Security researcher specializing in CVEs, responsible disclosure, web application security, IoT firmware, and mobile SDK research. M.S. Cybersecurity at UAB."/>
-  <link rel="canonical" href="https://dilipmallavarapu.github.io/index.html"/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:title" content="Dilip Mallavarapu — Security Researcher"/>
-  <meta property="og:description" content="Security researcher specializing in CVEs, responsible disclosure, web application security, IoT firmware, and mobile SDK research. M.S. Cybersecurity at UAB."/>
-  <meta property="og:url" content="https://dilipmallavarapu.github.io/index.html"/>
-  <meta property="og:image" content="https://dilipmallavarapu.github.io/assets/img/og-image.png"/>
-  <meta name="twitter:card" content="summary_large_image"/>
-  <link rel="icon" href="favicon.svg" type="image/svg+xml"/>
-  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png"/>
-  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="assets/css/site.css"/>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<title>Home - Dilip Mallavarapu</title>
+<meta content="Security researcher specializing in CVEs, responsible disclosure, web application security, IoT firmware, and mobile SDK research. M.S. Cybersecurity at UAB." name="description"/>
+<link href="https://dilipmallavarapu.github.io/index.html" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="Dilip Mallavarapu — Security Researcher" property="og:title"/>
+<meta content="Security researcher specializing in CVEs, responsible disclosure, web application security, IoT firmware, and mobile SDK research. M.S. Cybersecurity at UAB." property="og:description"/>
+<meta content="https://dilipmallavarapu.github.io/index.html" property="og:url"/>
+<meta content="https://dilipmallavarapu.github.io/assets/img/og-image.png" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<link href="favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="assets/img/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="assets/css/site.css" rel="stylesheet"/>
+<style>
     /* INTRO */
     .intro{padding-bottom:3rem;margin-bottom:3.5rem;border-bottom:1px solid var(--border)}
     .intro-eyebrow{font-family:var(--mono);font-size:.7rem;color:var(--green);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.9rem}
-    .intro-name{font-weight:800;font-size:2.6rem;color:#fff;line-height:1.1;letter-spacing:-.03em;margin-bottom:.45rem}
+    .intro-name{font-weight:800;font-size:2.6rem;color:var(--text);line-height:1.1;letter-spacing:-.03em;margin-bottom:.45rem}
     .intro-sub{font-size:.97rem;color:var(--muted);font-weight:500;margin-bottom:.3rem}
     .intro-grad{font-family:var(--mono);font-size:.76rem;color:var(--muted);margin-bottom:1.4rem}
     .intro-bio{font-size:.95rem;color:var(--text);line-height:1.78;max-width:660px;margin-bottom:1.4rem}
@@ -48,7 +49,7 @@
     .proj-card.wip:hover{border-color:rgba(210,153,34,.4)}
     .proj-card.research::before{background:linear-gradient(90deg,var(--purple),transparent)}
     .proj-card.research:hover{border-color:rgba(188,140,255,.4)}
-    .proj-name{font-weight:700;font-size:.97rem;color:#fff;margin-bottom:.3rem}
+    .proj-name{font-weight:700;font-size:.97rem;color:var(--text);margin-bottom:.3rem}
     .proj-status{display:inline-block;font-family:var(--mono);font-size:.63rem;padding:.1rem .45rem;border-radius:3px;border:1px solid var(--border);color:var(--muted);margin-bottom:.75rem}
     .proj-desc{font-size:.84rem;color:var(--muted);line-height:1.65;margin-bottom:1rem;flex:1}
     .proj-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:.9rem}
@@ -69,7 +70,7 @@
     .wd-orange{background:var(--orange)}
     .work-type{font-family:var(--mono);font-size:.65rem;color:var(--muted)}
     .work-text{color:var(--text)}
-    .work-text strong{color:#fff;font-weight:600}
+    .work-text strong{color:var(--text);font-weight:600}
     .work-text a{color:var(--text);text-decoration:none}
     .work-text a:hover{color:var(--green)}
     .work-meta{font-family:var(--mono);font-size:.65rem;color:var(--muted);text-align:right;white-space:nowrap}
@@ -83,248 +84,201 @@
     }
   </style>
 </head>
-<body>
+<body class="home">
 <a class="skip-link" href="#main">Skip to content</a>
 <nav>
-  <a class="nav-logo" href="index.html">dilip.</a>
-  <div class="nav-links">
-    <a href="index.html" class="active">Home</a>
-    <a href="about.html">About</a>
-    <a href="cves/index.html">CVEs</a>
-    <a href="firmware/index.html">Firmware</a>
-    <a href="articles/index.html">Articles</a>
-    <a href="exploits/index.html">Exploits</a>
-    <a href="contact.html">Contact</a>
-  </div>
+<a class="nav-logo" href="index.html">dilip.</a>
+<div class="nav-links">
+<a class="active" href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="cves/index.html">CVEs</a>
+<a href="firmware/index.html">Firmware</a>
+<a href="articles/index.html">Articles</a>
+<a href="exploits/index.html">Exploits</a>
+<a href="contact.html">Contact</a>
+<a href="research.html">Research</a></div>
 </nav>
-
 <div class="page" id="main">
+<!-- HOME -->
+<div class="intro"><div class="hero-copy"><div class="intro-eyebrow"><span class="status-dot"></span> Open to full-time opportunities</div><h1 class="intro-name">Dilip Mallavarapu<span>.</span></h1><div class="intro-sub">Application Security Engineer &amp; Vulnerability Researcher</div><p class="intro-bio">I investigate how software and embedded systems fail, validate vulnerabilities, and help developers fix them. My work spans application security, software supply chains, AI infrastructure and firmware.</p><p class="intro-grad">M.S. Cybersecurity · University of Alabama at Birmingham · Dec 2026</p><div class="intro-links">
+<a class="ilink primary-link" href="research.html">Explore security research →</a>
+<a class="ilink" href="https://github.com/DilipMallavarapu">GitHub</a>
+<a class="ilink" href="https://linkedin.com/in/dilip-mallavarapu-18b96626b">LinkedIn</a>
+<a class="ilink" href="https://bugcrowd.com/DilipMallavarapu">Bugcrowd</a>
+<a class="ilink" href="mailto:dilipchowdary21@gmail.com">Email</a>
+<a class="ilink" href="contact.html">Request resume</a></div></div></div><div class="impact-grid"><a href="cves/index.html"><strong>4</strong><span>Assigned CVEs</span></a><a href="research.html"><strong>20+</strong><span>Coordinated disclosures</span></a><a href="articles/llm-copilot-prompt-injection-ics.html"><strong>Best Paper</strong><span>DCS-CI 2026</span></a><a href="research.html"><strong>MSRC</strong><span>Hall of Fame recognition</span></a></div><section class="section" id="featured"><div class="s-label">01 / Selected research</div><h2 class="display-heading">Research with real-world impact.</h2><p class="section-intro">From source-code review to coordinated remediation. Explore the evidence behind my work.</p><div class="feature-grid"><article class="feature-main"><div class="feature-kicker">01 / APPLICATION SECURITY <span>Patched</span></div><div aria-hidden="true" class="diagram"><span>Source audit</span><b>→</b><span>Validation</span><b>→</b><span>Remediation</span></div><h3>FOSSBilling</h3><p>Four assigned CVEs covering remote code execution, mass assignment and checkout race conditions.</p><a href="cves/index.html">Explore all four CVEs ↗</a></article><article class="feature-tile blue"><small>02 / TRAIL OF BITS</small><h3>Fickling</h3><p>Variant analysis of a prior fix uncovered a scanner bypass. Remediation merged in PR #347.</p><a href="https://github.com/trailofbits/fickling/pull/347">View merged fix ↗</a><a href="exploits/fickling-dossier.html">Research dossier ↗</a></article><article class="feature-tile sand"><small>03 / EMBEDDED SYSTEMS</small><h3>U-Boot</h3><p>Five parser memory-safety findings. Authored a btrfs patch reviewed by a maintainer.</p><a href="research.html">Explore research ↗</a></article><article class="feature-tile sage"><small>04 / BEST PAPER AWARD</small><h3>LLM security</h3><p>Published research on indirect prompt injection against industrial control system copilots.</p><a href="articles/llm-copilot-prompt-injection-ics.html">Read publication ↗</a></article><article class="feature-tile rose"><small>05 / FIRMWARE SECURITY</small><h3>OpenBMC</h3><p>Configuration security research validated in an emulated BMC. Coordinated disclosure.</p><a href="firmware/index.html">Firmware research ↗</a></article></div></section><div class="section" id="skills">
+<div class="s-label">02 / Technical expertise</div><h2 class="display-heading">My engineering toolkit.</h2>
+<div class="skills-grid">
+<div class="skill-group">
+<div class="sg-title">Offensive Security</div>
+<ul class="sg-list">
+<li>Web Application Pentesting</li>
+<li>Source Code Review</li>
+<li>Binary Analysis (ARM ELF)</li>
+<li>Mobile SDK Analysis</li>
+<li>Race Condition Testing</li>
+<li>OSINT Automation</li>
+<li>API security</li><li>SAST / DAST / SCA</li><li>Threat modeling</li><li>OWASP Top 10</li><li>SSRF / SSTI / RCE</li><li>Insecure deserialization</li><li>Mass assignment / TOCTOU</li><li>Memory safety</li><li>CVSS / CWE</li><li>Coordinated disclosure</li></ul>
+</div>
+<div class="skill-group">
+<div class="sg-title">Tools</div>
+<ul class="sg-list">
+<li>Burp Suite Pro</li>
+<li>Ghidra / Binary Ninja</li>
+<li>Nmap / ZGrab2</li>
+<li>Metasploit</li>
+<li>Wireshark</li>
+<li>Docker</li>
+<li>radare2</li><li>Binwalk</li><li>QEMU</li><li>ASAN / UBSAN</li><li>Git / GitHub</li></ul>
+</div>
+<div class="skill-group">
+<div class="sg-title">Languages</div>
+<ul class="sg-list">
+<li>Python (exploit dev)</li>
+<li>PHP (source review)</li>
+<li>Bash scripting</li>
+<li>Kotlin (Android)</li>
+<li>SQL</li>
+<li>Java</li><li>JavaScript / Node.js</li><li>Go</li><li>C/C++ (security code review)</li></ul>
+</div>
+<div class="skill-group">
+<div class="sg-title">Platforms</div>
+<ul class="sg-list">
+<li>Linux / Kali</li>
+<li>AWS / GCP</li>
+<li>Azure AD</li>
+<li>IoT / Embedded</li>
+<li>Windows Server AD</li>
+<li>CI/CD pipelines</li></ul>
+</div>
+</div>
+</div><div class="section" id="experience">
+<div class="s-label">Experience</div><h2 class="display-heading">Experience</h2>
+<div class="exp-list"><div class="exp-item"><div><div class="exp-role">IT Specialist</div><div class="exp-org">Bentley Automotive Group</div><div class="exp-body">Conducted an authorized assessment of dealership websites, identified exposure to seven known CVEs in outdated WordPress components, and delivered prioritized remediation guidance. Support network security across dealership locations and develop tested CRM-integrated call-routing workflows.</div></div><div class="exp-date">Aug 2026 - Present</div></div><div class="exp-item"><div><div class="exp-role">Security Researcher Intern</div><div class="exp-org">Appsecrew</div><div class="exp-body">Performed web application and API assessments across 5+ client environments. Delivered 10+ findings with proof-of-concept evidence and remediation guidance; collaborated with developers on secure coding fixes.</div></div><div class="exp-date">Aug - Dec 2024</div></div><div class="exp-item"><div><div class="exp-role">Independent Vulnerability Researcher</div><div class="exp-org">d3sec</div><div class="exp-body">Conduct source audits, variant analysis, controlled validation and coordinated disclosure across applications, security tooling and firmware. Research includes four assigned CVEs and maintainer-merged remediation.</div></div><div class="exp-date">2024 - Present</div></div></div>
+</div><div class="section" id="projects">
+<div class="s-label">Projects</div><h2 class="display-heading">Projects</h2>
+<div class="proj-grid">
+<div class="proj-card">
+<div class="proj-name">CRYPT</div>
+<span class="proj-status">Python · HTML</span>
+<p class="proj-desc">Symmetric file encryption utility with recursive directory traversal. Implements AES-256 in four modes (CBC/CTR/OFB/CFB) and ChaCha20 with per-file IV randomization. Ships both a Python CLI for batch operations and a zero-dependency browser GUI built on the WebCrypto API, drag-and-drop, no server required.</p>
+<div class="proj-tags">
+<span class="ptag">AES-256</span><span class="ptag">ChaCha20</span><span class="ptag">Python</span><span class="ptag">WebCrypto</span>
+</div>
+<a class="proj-link" href="https://github.com/DilipMallavarapu/cipher">View on GitHub →</a>
+</div>
+<div class="proj-card wip">
+<div class="proj-name">ASN Intelligence Mapper</div>
+<span class="proj-status">In progress</span>
+<p class="proj-desc">Python automation pipeline that ingests an organization name or ASN and outputs a workflow diagram of all associated IPs, domains, netblocks, and infrastructure relationships. Integrates BGP ASN data, passive DNS, and certificate transparency logs for OSINT-driven attack surface enumeration, designed for recon at scale.</p>
+<div class="proj-tags">
+<span class="ptag orange">Python</span><span class="ptag orange">ASN</span><span class="ptag orange">OSINT</span><span class="ptag orange">Automation</span>
+</div>
+</div>
+<div class="proj-card research">
+<div class="proj-name">LLM Security Research</div>
+<span class="proj-status" style="border-color:rgba(227,179,65,.4);color:var(--gold)">🏆 Best Paper, DCS-CI'26</span>
+<p class="proj-desc">Peer-reviewed research on indirect prompt injection against LLM SOC copilots in industrial control systems, published and awarded Best Paper at DCS-CI'26. The study evaluates three attack channels using a SWaT and OpenPLC testbed and reports an 8.1% attack success rate with layered defenses.</p>
+<div class="proj-tags">
+<span class="ptag purple">LLM</span><span class="ptag purple">Prompt Injection</span><span class="ptag purple">ICS Security</span>
+</div>
+<a class="proj-link" href="articles/llm-copilot-prompt-injection-ics.html">Read the writeup →</a>
+</div>
+<article class="proj-card"><h3 class="proj-name">AI Security Agent</h3><span class="proj-status">In progress</span><p class="proj-desc">AI-assisted source-code review workflow designed to identify security vulnerabilities.</p></article><article class="proj-card"><h3 class="proj-name">Sentinel</h3><p class="proj-desc">Firmware analysis with re-verifiable evidence and full-system emulation.</p><a class="proj-link" href="firmware/sentinel.html">Explore project ↗</a></article></div>
+</div>
+<!-- RECENT WORK -->
+<div class="section" id="disclosures">
+<div class="s-label">Selected Vulnerabilities &amp; Disclosures</div><h2 class="display-heading">Selected Vulnerabilities &amp; Disclosures</h2>
+<div class="work-list">
+<a class="work-item" href="cves/cve-2026-111055.html" style="text-decoration:none"><div class="work-dot wd-green"></div><div class="work-type">CVE</div><div class="work-text"><strong>CVE-2026-111055</strong> - Concurrent checkout bypass of per-client promotion limits</div><div class="work-meta" style="color:var(--orange)">MODERATE</div></a>
+<a class="work-item" href="cves/cve-2026-43921.html" style="text-decoration:none">
+<div class="work-dot wd-green"></div>
+<div class="work-type">CVE</div>
+<div class="work-text"><strong>CVE-2026-43921</strong> - PHP Code Injection via unescaped config serialization → RCE in FOSSBilling</div>
+<div class="work-meta" style="color:var(--red)">HIGH</div>
+</a>
+<a class="work-item" href="cves/cve-2026-43925.html" style="text-decoration:none">
+<div class="work-dot wd-green"></div>
+<div class="work-type">CVE</div>
+<div class="work-text"><strong>CVE-2026-43925</strong> - Mass assignment of group_id in FOSSBilling guest registration → promo code bypass</div>
+<div class="work-meta" style="color:var(--orange)">MODERATE</div>
+</a>
+<a class="work-item" href="cves/cve-2026-43927.html" style="text-decoration:none">
+<div class="work-dot wd-green"></div>
+<div class="work-type">CVE</div>
+<div class="work-text"><strong>CVE-2026-43927</strong> - TOCTOU race condition in FOSSBilling cart checkout → unlimited promo use</div>
+<div class="work-meta" style="color:var(--orange)">MODERATE</div>
+</a>
+<div class="work-item">
+<div class="work-dot wd-blue"></div>
+<div class="work-type">Bug Bounty</div>
+<div class="work-text"><strong>Microsoft</strong> - Stored HTML injection, MSRC Case 101912</div>
+<div class="work-meta">Sep 2025</div>
+</div>
+<div class="work-item">
+<div class="work-dot wd-orange"></div>
+<div class="work-type">Bug Bounty</div>
+<div class="work-text"><strong>Western Union</strong> - Sensitive data exposure via ServiceNow instance (P3, Bugcrowd)</div>
+<div class="work-meta">Jul 2024</div>
+</div>
+<div class="work-item">
+<div class="work-dot wd-orange"></div>
+<div class="work-type">Bug Bounty</div>
+<div class="work-text"><strong>Cisco</strong> - Reflected XSS via return_url parameter (P3, Bugcrowd VDP)</div>
+<div class="work-meta">Jan 2024</div>
+</div>
+<div class="work-item">
+<div class="work-dot wd-orange"></div>
+<div class="work-type">Bug Bounty</div>
+<div class="work-text"><strong>Mastercard</strong> - Open redirect in customer portal login (P4, Bugcrowd)</div>
+<div class="work-meta">Jan 2025</div>
+</div>
+</div>
+</div>
+<!-- EXPERIENCE -->
 
-  <!-- HOME -->
-  <div class="intro">
-    <div class="intro-eyebrow">// Home</div>
-    <h1 class="intro-name">Dilip Mallavarapu</h1>
-    <div class="intro-sub">Security Researcher &nbsp;·&nbsp; M.S. Cybersecurity @ UAB</div>
-    <div class="intro-grad">Jan 2025 – Dec 2026 &nbsp;·&nbsp; GPA 3.5</div>
-    <p class="intro-bio">
-      I find vulnerabilities in open-source web applications, billing platforms, IoT firmware, and mobile SDKs, through careful source code review, binary analysis, and targeted security testing. My work doesn't stop at finding a bug, I trace each one back to its root cause, build a working exploit to prove real impact, and write it up clearly enough for a vendor to fix it fast. That process has produced 3 assigned CVEs and responsible disclosures accepted by Microsoft, Cisco, Western Union, and Mastercard. Open to PhD research positions and full-time security engineering roles starting December 2026.
+<!-- PROJECTS -->
+
+<!-- FIRMWARE SECURITY -->
+<div class="section" id="firmware">
+<div class="s-label">Firmware Security</div><h2 class="display-heading">Firmware Security</h2>
+<p style="font-size:.9rem;color:var(--muted);max-width:640px;margin-bottom:1.5rem;line-height:1.7">
+      Static analysis and reverse engineering of router, camera, and BMC firmware, plus the tooling behind it. Research emphasizes reproducible measurements and evidence derived directly from firmware binaries.
     </p>
-    <div class="open-badges">
-      <span class="open-badge gold">&#127942; Best Paper Award · DCS-CI'26</span>
-      <span class="open-badge">Open to PhD positions</span>
-      <span class="open-badge">Open to full-time roles</span>
-      <span class="open-badge neutral">Graduating Dec 2026</span>
-    </div>
-    <div class="intro-links">
-      <a class="ilink" href="https://github.com/DilipMallavarapu">GitHub</a>
-      <a class="ilink" href="https://linkedin.com/in/dilip-mallavarapu-18b96626b">LinkedIn</a>
-      <a class="ilink" href="https://bugcrowd.com/DilipMallavarapu">Bugcrowd</a>
-      <a class="ilink" href="mailto:dilipchowdary21@gmail.com">Email</a>
-    </div>
-  </div>
-
-  <!-- EXPERIENCE -->
-  <div class="section">
-    <div class="s-label">Experience</div>
-    <div class="exp-list">
-      <div class="exp-item">
-        <div>
-          <div class="exp-role">Security Researcher Intern</div>
-          <div class="exp-org">Appsecrew</div>
-          <div class="exp-body">Web application penetration testing, vulnerability assessment, and detailed security report writing for enterprise clients. Conducted assessments covering OWASP Top 10, business logic vulnerabilities, and API security across client-facing production applications.</div>
-        </div>
-        <div class="exp-date">Aug 2024 – Dec 2024</div>
-      </div>
-      <div class="exp-item">
-        <div>
-          <div class="exp-role">Security Engineer &amp; Researcher</div>
-          <div class="exp-org">Freelance / Bug Bounty</div>
-          <div class="exp-body">Independent vulnerability research across open-source billing software, IoT firmware, and mobile payment SDKs. Responsible disclosure to Cisco, Microsoft, Western Union, Mastercard, and government targets. Awarded 3 CVEs through GitHub's CNA for original vulnerability research in FOSSBilling.</div>
-        </div>
-        <div class="exp-date">Mar 2022 – Present</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- PROJECTS -->
-  <div class="section">
-    <div class="s-label">Projects</div>
-    <div class="proj-grid">
-
-      <div class="proj-card">
-        <div class="proj-name">CRYPT</div>
-        <span class="proj-status">Python · HTML</span>
-        <p class="proj-desc">Symmetric file encryption utility with recursive directory traversal. Implements AES-256 in four modes (CBC/CTR/OFB/CFB) and ChaCha20 with per-file IV randomization. Ships both a Python CLI for batch operations and a zero-dependency browser GUI built on the WebCrypto API, drag-and-drop, no server required.</p>
-        <div class="proj-tags">
-          <span class="ptag">AES-256</span><span class="ptag">ChaCha20</span><span class="ptag">Python</span><span class="ptag">WebCrypto</span>
-        </div>
-        <a class="proj-link" href="https://github.com/DilipMallavarapu/cipher">View on GitHub →</a>
-      </div>
-
-      <div class="proj-card wip">
-        <div class="proj-name">ASN Intelligence Mapper</div>
-        <span class="proj-status">In progress</span>
-        <p class="proj-desc">Python automation pipeline that ingests an organization name or ASN and outputs a workflow diagram of all associated IPs, domains, netblocks, and infrastructure relationships. Integrates BGP ASN data, passive DNS, and certificate transparency logs for OSINT-driven attack surface enumeration, designed for recon at scale.</p>
-        <div class="proj-tags">
-          <span class="ptag orange">Python</span><span class="ptag orange">ASN</span><span class="ptag orange">OSINT</span><span class="ptag orange">Automation</span>
-        </div>
-      </div>
-
-      <div class="proj-card research">
-        <div class="proj-name">LLM Security Research</div>
-        <span class="proj-status" style="border-color:rgba(227,179,65,.4);color:var(--gold)">🏆 Best Paper, DCS-CI'26</span>
-        <p class="proj-desc">Peer-reviewed research on indirect prompt injection against LLM SOC copilots in industrial control systems, published and awarded Best Paper at DCS-CI'26. Built a full testbed (SWaT + OpenPLC), an attack generator across three channels, and a layered defense that cuts attack success rate from 68.8% to 8.1%.</p>
-        <div class="proj-tags">
-          <span class="ptag purple">LLM</span><span class="ptag purple">Prompt Injection</span><span class="ptag purple">ICS Security</span>
-        </div>
-        <a class="proj-link" href="articles/llm-copilot-prompt-injection-ics.html">Read the writeup →</a>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- FIRMWARE SECURITY -->
-  <div class="section">
-    <div class="s-label">Firmware Security</div>
-    <p style="font-size:.9rem;color:var(--muted);max-width:640px;margin-bottom:1.5rem;line-height:1.7">
-      Static analysis and reverse engineering of router, camera, and BMC firmware, plus the tooling behind it. Numbers come from binaries I unpacked and measured, not from vendor claims.
-    </p>
-    <div class="proj-grid">
-
-      <div class="proj-card">
-        <div class="proj-name">OpenWrt hardening study</div>
-        <span class="proj-status">Measurement · Published</span>
-        <p class="proj-desc">Measured stack canary coverage across three OpenWrt 23.05 architectures. Protection is on by default (74 to 80 percent), and the same core packages opt out on every build. Includes the measurement bug that made an earlier pass read zero.</p>
-        <div class="proj-tags"><span class="ptag">OpenWrt</span><span class="ptag">MIPS</span><span class="ptag">x86-64</span></div>
-        <a class="proj-link" href="firmware/openwrt-ssp.html">Read the study &rarr;</a>
-      </div>
-
-      <div class="proj-card">
-        <div class="proj-name">Sentinel</div>
-        <span class="proj-status">Tool · Open source</span>
-        <p class="proj-desc">A firmware scanner whose confirmed findings carry a proof you can re-check offline, and which reports present, absent, or unknown rather than reporting a mitigation as missing when it could not read it.</p>
-        <div class="proj-tags"><span class="ptag">Go</span><span class="ptag">Python</span><span class="ptag">ELF</span></div>
-        <a class="proj-link" href="firmware/sentinel.html">Read &rarr;</a>
-      </div>
-
-      <div class="proj-card wip">
-        <div class="proj-name">Vendor disclosures</div>
-        <span class="proj-status">Hikvision · OpenBMC · QNAP</span>
-        <p class="proj-desc">Device firmware research across a Hikvision access terminal (reported to HSRC), an OpenBMC finding under coordinated disclosure, and an ongoing QNAP QTS review. Details on the firmware page.</p>
-        <div class="proj-tags"><span class="ptag orange">ARM ELF</span><span class="ptag orange">IoT</span><span class="ptag orange">BMC</span></div>
-        <a class="proj-link" href="firmware/index.html">View all &rarr;</a>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- RECENT WORK -->
-  <div class="section">
-    <div class="s-label">Recent Work</div>
-    <div class="work-list">
-      <a class="work-item" href="cves/cve-2026-43921.html" style="text-decoration:none">
-        <div class="work-dot wd-green"></div>
-        <div class="work-type">CVE</div>
-        <div class="work-text"><strong>CVE-2026-43921</strong> — PHP Code Injection via unescaped config serialization → RCE in FOSSBilling</div>
-        <div class="work-meta" style="color:var(--red)">HIGH</div>
-      </a>
-      <a class="work-item" href="cves/cve-2026-43925.html" style="text-decoration:none">
-        <div class="work-dot wd-green"></div>
-        <div class="work-type">CVE</div>
-        <div class="work-text"><strong>CVE-2026-43925</strong> — Mass assignment of group_id in FOSSBilling guest registration → promo code bypass</div>
-        <div class="work-meta" style="color:var(--orange)">MODERATE</div>
-      </a>
-      <a class="work-item" href="cves/cve-2026-43927.html" style="text-decoration:none">
-        <div class="work-dot wd-green"></div>
-        <div class="work-type">CVE</div>
-        <div class="work-text"><strong>CVE-2026-43927</strong> — TOCTOU race condition in FOSSBilling cart checkout → unlimited promo use</div>
-        <div class="work-meta" style="color:var(--orange)">MODERATE</div>
-      </a>
-      <div class="work-item">
-        <div class="work-dot wd-blue"></div>
-        <div class="work-type">Bug Bounty</div>
-        <div class="work-text"><strong>Microsoft</strong> — Stored HTML injection, MSRC Case 101912</div>
-        <div class="work-meta">Sep 2025</div>
-      </div>
-      <div class="work-item">
-        <div class="work-dot wd-orange"></div>
-        <div class="work-type">Bug Bounty</div>
-        <div class="work-text"><strong>Western Union</strong> — Sensitive data exposure via ServiceNow instance (P3, Bugcrowd)</div>
-        <div class="work-meta">Jul 2024</div>
-      </div>
-      <div class="work-item">
-        <div class="work-dot wd-orange"></div>
-        <div class="work-type">Bug Bounty</div>
-        <div class="work-text"><strong>Cisco</strong> — Reflected XSS via return_url parameter (P3, Bugcrowd VDP)</div>
-        <div class="work-meta">Jan 2024</div>
-      </div>
-      <div class="work-item">
-        <div class="work-dot wd-orange"></div>
-        <div class="work-type">Bug Bounty</div>
-        <div class="work-text"><strong>Mastercard</strong> — Open redirect in customer portal login (P4, Bugcrowd)</div>
-        <div class="work-meta">Jan 2025</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SKILLS -->
-  <div class="section">
-    <div class="s-label">Skills &amp; Tools</div>
-    <div class="skills-grid">
-      <div class="skill-group">
-        <div class="sg-title">Offensive Security</div>
-        <ul class="sg-list">
-          <li>Web Application Pentesting</li>
-          <li>Source Code Review</li>
-          <li>Binary Analysis (ARM ELF)</li>
-          <li>Mobile SDK Analysis</li>
-          <li>Race Condition Testing</li>
-          <li>OSINT Automation</li>
-        </ul>
-      </div>
-      <div class="skill-group">
-        <div class="sg-title">Tools</div>
-        <ul class="sg-list">
-          <li>Burp Suite Pro</li>
-          <li>Ghidra / Binary Ninja</li>
-          <li>Nmap / ZGrab2</li>
-          <li>Metasploit</li>
-          <li>Wireshark</li>
-          <li>Docker</li>
-        </ul>
-      </div>
-      <div class="skill-group">
-        <div class="sg-title">Languages</div>
-        <ul class="sg-list">
-          <li>Python (exploit dev)</li>
-          <li>PHP (source review)</li>
-          <li>Bash scripting</li>
-          <li>Kotlin (Android)</li>
-          <li>SQL</li>
-        </ul>
-      </div>
-      <div class="skill-group">
-        <div class="sg-title">Platforms</div>
-        <ul class="sg-list">
-          <li>Linux / Kali</li>
-          <li>AWS / GCP</li>
-          <li>Azure AD</li>
-          <li>IoT / Embedded</li>
-          <li>Windows Server AD</li>
-        </ul>
-      </div>
-    </div>
-  </div>
+<div class="proj-grid">
+<div class="proj-card">
+<div class="proj-name">OpenWrt hardening study</div>
+<span class="proj-status">Measurement · Published</span>
+<p class="proj-desc">Measured stack canary coverage across three OpenWrt 23.05 architectures. Protection is on by default (74 to 80 percent), and the same core packages opt out on every build. Includes the measurement bug that made an earlier pass read zero.</p>
+<div class="proj-tags"><span class="ptag">OpenWrt</span><span class="ptag">MIPS</span><span class="ptag">x86-64</span></div>
+<a class="proj-link" href="firmware/openwrt-ssp.html">Read the study →</a>
+</div>
+<div class="proj-card">
+<div class="proj-name">Sentinel</div>
+<span class="proj-status">Tool · Open source</span>
+<p class="proj-desc">A firmware scanner whose confirmed findings carry a proof you can re-check offline, and which reports present, absent, or unknown rather than reporting a mitigation as missing when it could not read it.</p>
+<div class="proj-tags"><span class="ptag">Go</span><span class="ptag">Python</span><span class="ptag">ELF</span></div>
+<a class="proj-link" href="firmware/sentinel.html">Read →</a>
+</div>
+<div class="proj-card wip">
+<div class="proj-name">Vendor disclosures</div>
+<span class="proj-status">Hikvision · OpenBMC · QNAP</span>
+<p class="proj-desc">Device firmware research across a Hikvision access terminal (reported to HSRC), an OpenBMC finding under coordinated disclosure, and an ongoing QNAP QTS review. Details on the firmware page.</p>
+<div class="proj-tags"><span class="ptag orange">ARM ELF</span><span class="ptag orange">IoT</span><span class="ptag orange">BMC</span></div>
+<a class="proj-link" href="firmware/index.html">View all →</a>
+</div>
+</div>
+</div>
+<!-- SKILLS -->
 
 </div>
-
 <footer>
-  <a href="index.html">dilip.</a> &nbsp;·&nbsp;
-  <a href="about.html">About</a> &nbsp;·&nbsp;
-  <a href="cves/index.html">CVEs</a> &nbsp;·&nbsp;
-  <a href="articles/index.html">Articles</a> &nbsp;·&nbsp;
-  <a href="exploits/index.html">Exploits</a> &nbsp;·&nbsp;
-  <a href="contact.html">Contact</a> &nbsp;·&nbsp;
+<a href="index.html">dilip.</a>  · 
+  <a href="about.html">About</a>  · 
+  <a href="cves/index.html">CVEs</a>  · 
+  <a href="articles/index.html">Articles</a>  · 
+  <a href="exploits/index.html">Exploits</a>  · 
+  <a href="contact.html">Contact</a>  · 
   <a href="https://github.com/DilipMallavarapu">GitHub</a>
 </footer>
 </body>

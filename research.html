@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<title>Selected Research - Dilip Mallavarapu</title>
+<meta content="Selected application, supply-chain and firmware security research — Dilip Mallavarapu" name="description"/>
+<link href="https://dilipmallavarapu.github.io/research.html" rel="canonical"/>
+<meta content="profile" property="og:type"/>
+<meta content="Selected application, supply-chain and firmware security research — Dilip Mallavarapu" property="og:title"/>
+<meta content="Selected application, supply-chain and firmware security research — Dilip Mallavarapu" property="og:description"/>
+<meta content="https://dilipmallavarapu.github.io/research.html" property="og:url"/>
+<meta content="https://dilipmallavarapu.github.io/assets/img/og-image.png" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<link href="favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="assets/img/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="assets/css/site.css" rel="stylesheet"/>
+<style>
+    /* INTRO (matches index.html) */
+    .intro{padding-bottom:3rem;margin-bottom:3.5rem;border-bottom:1px solid var(--border)}
+    .intro-eyebrow{font-family:var(--mono);font-size:.7rem;color:var(--green);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.9rem}
+    .intro-name{font-weight:800;font-size:2.6rem;color:var(--text);line-height:1.1;letter-spacing:-.03em;margin-bottom:.45rem}
+    .intro-sub{font-size:.97rem;color:var(--muted);font-weight:500;margin-bottom:.3rem}
+    .intro-grad{font-family:var(--mono);font-size:.76rem;color:var(--muted);margin-bottom:1.4rem}
+    .intro-bio{font-size:.95rem;color:var(--text);line-height:1.78;max-width:660px;margin-bottom:1.4rem}
+    .intro-bio + .intro-bio{margin-top:-1rem}
+    .intro-links{display:flex;gap:.5rem;flex-wrap:wrap}
+    .ilink{display:inline-flex;align-items:center;padding:.38rem .9rem;border-radius:6px;font-size:.8rem;font-weight:500;text-decoration:none;border:1px solid var(--border);color:var(--text);transition:border-color .15s,color .15s}
+    .ilink:hover{border-color:var(--green);color:var(--green)}
+
+    .section{margin-bottom:3.5rem}
+    .s-label{margin-bottom:1.5rem}
+    .s-intro{font-size:.87rem;color:var(--muted);line-height:1.7;max-width:680px;margin-bottom:1.5rem}
+
+    /* RESEARCH INTERESTS */
+    .research-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
+    .research-card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:1.4rem}
+    .ri-title{display:flex;align-items:center;gap:.6rem;font-weight:700;font-size:.92rem;color:var(--text);margin-bottom:.6rem}
+    .ri-num{font-family:var(--mono);font-size:.68rem;color:var(--green);border:1px solid rgba(63,185,80,.3);background:rgba(63,185,80,.06);border-radius:4px;padding:.1rem .4rem}
+    .ri-desc{font-size:.83rem;color:var(--muted);line-height:1.65}
+
+    /* CVE MINI LIST */
+    .cve-mini-list{display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+    .cve-mini-row{background:var(--bg2);padding:1rem 1.25rem;display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:center;text-decoration:none;color:inherit;transition:background .15s}
+    .cve-mini-row:hover{background:var(--bg3)}
+    .cmr-id{font-weight:700;font-size:.87rem;color:var(--text);margin-bottom:.2rem;display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+    .cmr-title{font-size:.8rem;color:var(--muted)}
+    .cmr-arrow{color:var(--muted);font-size:1rem}
+    .cve-mini-row:hover .cmr-arrow{color:var(--green)}
+    .cve-cta{margin-top:1rem;font-size:.83rem}
+    .cve-cta a{color:var(--green);text-decoration:none;font-weight:500}
+    .cve-cta a:hover{text-decoration:underline}
+
+    /* BUG BOUNTY */
+    .bug-list{display:flex;flex-direction:column;gap:.6rem}
+    .bug-item{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:.85rem 1.1rem;font-size:.85rem;display:flex;gap:.8rem;align-items:flex-start}
+    .bug-dot{width:7px;height:7px;border-radius:50%;background:var(--green);margin-top:.5rem;flex-shrink:0}
+    .bug-body strong{color:var(--text)}
+    .bug-body span{color:var(--muted)}
+
+    /* TIMELINE (Experience / Education) */
+    .timeline{position:relative;padding-left:1.6rem}
+    .timeline::before{content:'';position:absolute;left:0;top:.4rem;bottom:0;width:2px;background:var(--border)}
+    .tl{position:relative;margin-bottom:1.6rem}
+    .tl:last-child{margin-bottom:0}
+    .tl::before{content:'';position:absolute;left:-1.7rem;top:.35rem;width:10px;height:10px;border-radius:50%;background:var(--bg);border:2px solid var(--green)}
+    .tl-head{display:flex;justify-content:space-between;align-items:baseline;gap:.8rem;flex-wrap:wrap;margin-bottom:.3rem}
+    .tl-title{font-weight:700;color:var(--text);font-size:.93rem}
+    .tl-org{font-size:.82rem;color:var(--green);font-weight:600}
+    .tl-date{font-family:var(--mono);font-size:.7rem;color:var(--muted);white-space:nowrap}
+    .tl-body{font-size:.85rem;color:var(--muted);line-height:1.65;margin-top:.35rem}
+
+    @media(max-width:640px){
+      .intro-name{font-size:1.9rem}
+      .research-grid,.skills-grid{grid-template-columns:1fr}
+      .cve-mini-row{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav>
+<a class="nav-logo" href="index.html">dilip.</a>
+<div class="nav-links">
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="cves/index.html">CVEs</a>
+<a href="firmware/index.html">Firmware</a>
+<a href="articles/index.html">Articles</a>
+<a href="exploits/index.html">Exploits</a>
+<a href="contact.html">Contact</a>
+<a class="active" href="research.html">Research</a></div>
+</nav>
+<div class="page" id="main"><h1>Selected security research</h1><p>Source-code auditing, variant analysis, controlled validation and coordinated remediation. Statuses reflect my latest resume; pending work is described at a high level.</p><section class="section"><h2>Application security</h2><p>Four assigned FOSSBilling CVEs covering code injection, mass assignment and checkout race conditions. <a href="cves/index.html">Published CVE case studies</a>.</p></section><section class="section"><h2>Open-source and supply-chain security</h2><p><strong>Fickling (Trail of Bits):</strong> scanner bypass identified through variant analysis; fix merged and credited. <a href="https://github.com/trailofbits/fickling/pull/347">PR #347</a>.</p><p><strong>it-depends:</strong> supply-chain security findings triaged High; remediation status not confirmed here.</p><p><strong>crytic-compile and LMCache:</strong> security reports submitted; technical details withheld pending coordinated disclosure.</p></section><section class="section"><h2>Firmware and embedded systems</h2><p><strong>U-Boot:</strong> five parser memory-safety findings; authored a btrfs patch reviewed by a maintainer.</p><p><strong>OpenBMC:</strong> configuration injection reproduced in an emulated BMC and coordinated with the security team.</p><p><strong>Hikvision:</strong> firmware reverse engineering and coordinated reports of cryptographic weaknesses.</p><p><a href="firmware/index.html">Firmware research archive</a></p></section><section class="section"><h2>Recognition and publications</h2><p>Microsoft Security Response Center Hall of Fame recognition for a validated report.</p><p>Co-author, “Indirect Prompt Injection Against LLM Copilots in Industrial Control Systems,” DCS-CI 2026, Springer CCIS 3109. Best Paper Award. <a href="articles/llm-copilot-prompt-injection-ics.html">Publication details</a>.</p></section></div>
+<footer>
+<a href="index.html">dilip.</a>  · 
+  <a href="cves/index.html">CVEs</a>  · 
+  <a href="articles/index.html">Articles</a>  · 
+  <a href="exploits/index.html">Exploits</a>  · 
+  <a href="contact.html">Contact</a>  · 
+  <a href="https://github.com/DilipMallavarapu">GitHub</a>
+</footer>
+</body>
+</html>

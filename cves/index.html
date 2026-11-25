@@ -1,29 +1,30 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>CVEs — Dilip Mallavarapu</title>
-  <meta name="description" content="Vulnerabilities discovered by Dilip Mallavarapu through source code review, responsibly disclosed to vendors, and assigned CVEs."/>
-  <link rel="canonical" href="https://dilipmallavarapu.github.io/cves/index.html"/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:title" content="Assigned CVEs — Dilip Mallavarapu"/>
-  <meta property="og:description" content="Vulnerabilities discovered through source code review, responsibly disclosed to vendors, and assigned CVEs."/>
-  <meta property="og:url" content="https://dilipmallavarapu.github.io/cves/index.html"/>
-  <meta property="og:image" content="https://dilipmallavarapu.github.io/assets/img/og-image.png"/>
-  <meta name="twitter:card" content="summary_large_image"/>
-  <link rel="icon" href="../favicon.svg" type="image/svg+xml"/>
-  <link rel="icon" href="../assets/img/favicon-32.png" sizes="32x32" type="image/png"/>
-  <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="../assets/css/site.css"/>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<title>CVEs - Dilip Mallavarapu</title>
+<meta content="Vulnerabilities discovered by Dilip Mallavarapu through source code review, responsibly disclosed to vendors, and assigned CVEs." name="description"/>
+<link href="https://dilipmallavarapu.github.io/cves/index.html" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="Assigned CVEs — Dilip Mallavarapu" property="og:title"/>
+<meta content="Vulnerabilities discovered through source code review, responsibly disclosed to vendors, and assigned CVEs." property="og:description"/>
+<meta content="https://dilipmallavarapu.github.io/cves/index.html" property="og:url"/>
+<meta content="https://dilipmallavarapu.github.io/assets/img/og-image.png" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<link href="../favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="../assets/img/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="../assets/css/site.css" rel="stylesheet"/>
+<style>
     .ph h1 em{color:var(--green);font-style:normal}
     .stats{display:flex;gap:2rem;margin-bottom:2.5rem;padding:1rem 1.4rem;background:var(--bg2);border:1px solid var(--border);border-radius:8px;flex-wrap:wrap}
     .stat{display:flex;flex-direction:column;gap:.15rem}
-    .stat-num{font-weight:800;font-size:1.5rem;color:#fff;letter-spacing:-.02em}
+    .stat-num{font-weight:800;font-size:1.5rem;color:var(--text);letter-spacing:-.02em}
     .stat-label{font-family:var(--mono);font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
 
     .cve-list{display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:2.5rem}
@@ -31,7 +32,7 @@
     .cve-row:hover{background:var(--bg3)}
     .cve-row.static{cursor:default;opacity:.5}
     .cve-row.static:hover{background:var(--bg2)}
-    .cr-id{font-weight:800;font-size:.97rem;color:#fff;margin-bottom:.2rem;display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}
+    .cr-id{font-weight:800;font-size:.97rem;color:var(--text);margin-bottom:.2rem;display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}
     .cr-title{font-size:.88rem;color:var(--text);margin-bottom:.35rem;font-weight:500}
     .cr-desc{font-size:.8rem;color:var(--muted);line-height:1.55}
     .cr-meta{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.6rem}
@@ -49,177 +50,114 @@
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 <nav>
-  <a class="nav-logo" href="../index.html">dilip.</a>
-  <div class="nav-links">
-    <a href="../index.html">Home</a>
-    <a href="../about.html">About</a>
-    <a href="index.html" class="active">CVEs</a>
-    <a href="../firmware/index.html">Firmware</a>
-    <a href="../articles/index.html">Articles</a>
-    <a href="../exploits/index.html">Exploits</a>
-    <a href="../contact.html">Contact</a>
-  </div>
+<a class="nav-logo" href="../index.html">dilip.</a>
+<div class="nav-links">
+<a href="../index.html">Home</a>
+<a href="../about.html">About</a>
+<a class="active" href="index.html">CVEs</a>
+<a href="../firmware/index.html">Firmware</a>
+<a href="../articles/index.html">Articles</a>
+<a href="../exploits/index.html">Exploits</a>
+<a href="../contact.html">Contact</a>
+<a href="../research.html">Research</a></div>
 </nav>
-
 <div class="page" id="main">
-  <div class="ph">
-    <div class="ph-label">// CVE Research</div>
-    <h1>Assigned <em>CVEs</em></h1>
-    <p>Vulnerabilities I discovered through source code review, responsibly disclosed to vendors, and received CVE assignments for.</p>
-  </div>
-
-  <div class="stats">
-    <div class="stat"><div class="stat-num">4</div><div class="stat-label">CVEs Assigned</div></div>
-    <div class="stat"><div class="stat-num">4</div><div class="stat-label">In Progress</div></div>
-    <div class="stat"><div class="stat-num">1</div><div class="stat-label">High Severity</div></div>
-    <div class="stat"><div class="stat-num">3</div><div class="stat-label">Moderate Severity</div></div>
-  </div>
-
-  <div class="s-label">Published</div>
-  <div class="cve-list">
-
-    <a class="cve-row" href="cve-2026-111055.html">
-      <div>
-        <div class="cr-id">CVE-2026-111055 <span class="badge badge-mod">MODERATE</span></div>
-        <div class="cr-title">Concurrent Checkouts Reuse a once-per-client Promo Code Unlimited Times</div>
-        <div class="cr-desc">A once_per_client promo validates eligibility with a non-atomic COUNT query and writes the redemption row much later with no lock or unique constraint. Concurrent POST /api/client/cart/checkout requests all read zero and pass, so one client can redeem a single-use-per-client code on many orders — free provisioning or draining a finite global pool.</div>
-        <div class="cr-meta">
-          <span class="cr-tag">CWE-367</span><span class="cr-tag">TOCTOU</span><span class="cr-tag">Race Condition</span><span class="cr-tag">FOSSBilling ≤ 0.8.7</span><span class="cr-tag">Client Auth Required</span>
-        </div>
-        <div style="display:flex;gap:1rem;margin-top:.5rem;flex-wrap:wrap">
-          <span class="cr-date">Published 2026-10-28</span>
-          <span class="cr-ghsa">GHSA-qpq2-vvh9-hwfw</span>
-        </div>
-      </div>
-      <div class="cr-right">
-        <span class="cr-arrow">→</span>
-      </div>
-    </a>
-
-    <a class="cve-row" href="cve-2026-43921.html">
-      <div>
-        <div class="cr-id">CVE-2026-43921 <span class="badge badge-high">HIGH</span></div>
-        <div class="cr-title">Arbitrary PHP Code Injection via Unescaped Config Serialization → Remote Code Execution</div>
-        <div class="cr-desc">FOSSBilling serializes config values into a PHP file using string interpolation with no escaping. A single quote in any string value breaks out of the PHP string literal, injecting arbitrary code that executes on every subsequent HTTP request as www-data.</div>
-        <div class="cr-meta">
-          <span class="cr-tag">CWE-94</span><span class="cr-tag">RCE</span><span class="cr-tag">PHP</span><span class="cr-tag">FOSSBilling ≤ 0.7.2</span><span class="cr-tag">Admin Auth Required</span>
-        </div>
-        <div style="display:flex;gap:1rem;margin-top:.5rem;flex-wrap:wrap">
-          <span class="cr-date">Published 2026-06-11</span>
-          <span class="cr-ghsa">GHSA-v4j9-w6pj-38w5</span>
-        </div>
-      </div>
-      <div class="cr-right">
-        <span class="cr-arrow">→</span>
-      </div>
-    </a>
-
-    <a class="cve-row" href="cve-2026-43925.html">
-      <div>
-        <div class="cr-id">CVE-2026-43925 <span class="badge badge-mod">MODERATE</span></div>
-        <div class="cr-title">Mass Assignment of group_id in Guest Registration Allows Unauthorized Promo Code Use</div>
-        <div class="cr-desc">The public registration endpoint passes the full request body into the internal client creation method without stripping admin-only fields. An unauthenticated attacker can supply a group_id to assign themselves to any client group and access group-restricted promo codes.</div>
-        <div class="cr-meta">
-          <span class="cr-tag">CWE-915</span><span class="cr-tag">Mass Assignment</span><span class="cr-tag">FOSSBilling ≤ 0.7.2</span><span class="cr-tag">No Auth Required</span>
-        </div>
-        <div style="display:flex;gap:1rem;margin-top:.5rem;flex-wrap:wrap">
-          <span class="cr-date">Published 2026-06-04</span>
-          <span class="cr-ghsa">GHSA-q4rq-9844-r9w2</span>
-        </div>
-      </div>
-      <div class="cr-right">
-        <span class="cr-arrow">→</span>
-      </div>
-    </a>
-
-    <a class="cve-row" href="cve-2026-43927.html">
-      <div>
-        <div class="cr-id">CVE-2026-43927 <span class="badge badge-mod">MODERATE</span></div>
-        <div class="cr-title">Race Condition in Cart Checkout Bypasses Promo Code Usage Limits</div>
-        <div class="cr-desc">FOSSBilling's promo usage check and increment are non-atomic — three separate operations with no database locking. Concurrent checkout requests all read the same stale counter, all pass, and all create discounted orders. A single-use code can be exploited unlimited times.</div>
-        <div class="cr-meta">
-          <span class="cr-tag">CWE-367</span><span class="cr-tag">TOCTOU</span><span class="cr-tag">Race Condition</span><span class="cr-tag">FOSSBilling ≤ 0.7.2</span><span class="cr-tag">Client Auth Required</span>
-        </div>
-        <div style="display:flex;gap:1rem;margin-top:.5rem;flex-wrap:wrap">
-          <span class="cr-date">Published 2026-06-04</span>
-          <span class="cr-ghsa">GHSA-w898-cx35-25gh</span>
-        </div>
-      </div>
-      <div class="cr-right">
-        <span class="cr-arrow">→</span>
-      </div>
-    </a>
-
-  </div>
-
-  <div class="s-label">In Progress</div>
-  <div class="cve-list">
-
-    <div class="cve-row static">
-      <div>
-        <div class="cr-id">Akaunting ≤ 3.1.21 <span class="badge badge-ip">Awaiting CVE</span></div>
-        <div class="cr-title">Settings Namespace Injection → proc_open() RCE via sendmail_path Poisoning</div>
-        <div class="cr-desc">Injecting into the email settings namespace via _prefix parameter rewrites sendmail_path with shell metacharacters. Triggers on any outbound email. CVSS 9.9.</div>
-        <div class="cr-meta">
-          <span class="cr-tag">RCE</span><span class="cr-tag">Laravel</span><span class="cr-tag">Admin Auth Required</span><span class="cr-tag">CVSS 9.9</span>
-        </div>
-      </div>
-      <div class="cr-right"><span class="cr-soon">Awaiting vendor</span></div>
-    </div>
-
-    <div class="cve-row static">
-      <div>
-        <div class="cr-id">InvoiceNinja v5.13.19 <span class="badge badge-ip">Awaiting CVE</span></div>
-        <div class="cr-title">SSRF via SMTP Check Endpoint — Internal Port Oracle</div>
-        <div class="cr-desc">The SMTP test endpoint accepts an attacker-controlled host with no RFC1918 filtering, turning it into an internal network scanner that leaks service state via response timing and error messages.</div>
-        <div class="cr-meta">
-          <span class="cr-tag">CWE-918</span><span class="cr-tag">SSRF</span><span class="cr-tag">Laravel</span><span class="cr-tag">Admin Auth Required</span>
-        </div>
-      </div>
-      <div class="cr-right"><span class="cr-soon">Awaiting vendor</span></div>
-    </div>
-
-    <div class="cve-row static">
-      <div>
-        <div class="cr-id">Graylog ≤ 7.1.7 <span class="badge badge-ip">Awaiting CVE</span></div>
-        <div class="cr-title">SSRF via URL Allowlist Redirect Bypass → Internal OpenSearch &amp; Metadata Access</div>
-        <div class="cr-desc">The URL allowlist is validated once against the configured URL, then OkHttp follows 3xx redirects without re-checking each hop. An allowlisted or open-redirect host can pivot the server's requests into internal services, reading stored logs from an unauthenticated OpenSearch cluster or exfiltrating cloud instance-role credentials via IMDS. CVSS 9.9 Critical.</div>
-        <div class="cr-meta">
-          <span class="cr-tag">CWE-918</span><span class="cr-tag">SSRF</span><span class="cr-tag">Java</span><span class="cr-tag">Lookup/Notification Permission Required</span>
-        </div>
-        <div style="display:flex;gap:1rem;margin-top:.5rem;flex-wrap:wrap">
-          <span class="cr-date">Reported 2026-08</span>
-          <span class="cr-ghsa">GHSA-73c3-3q9x-5wq3</span>
-        </div>
-      </div>
-      <div class="cr-right"><span class="cr-soon">In triage</span></div>
-    </div>
-
-    <div class="cve-row static">
-      <div>
-        <div class="cr-id">Graylog ≤ 7.1.7 <span class="badge badge-ip">Awaiting CVE</span></div>
-        <div class="cr-title">Unauthenticated Decompression Bomb DoS in the Beats Input</div>
-        <div class="cr-desc">The Beats frame decoder bounds every frame type it handles except the compressed one, which inflates with no size limit. A modest concurrent burst of small zlib payloads drives a sustained OutOfMemoryError storm and JVM-wide GC stalls, denying Beats ingestion with no authentication required.</div>
-        <div class="cr-meta">
-          <span class="cr-tag">CWE-409</span><span class="cr-tag">DoS</span><span class="cr-tag">Netty</span><span class="cr-tag">No Auth Required</span>
-        </div>
-        <div style="display:flex;gap:1rem;margin-top:.5rem;flex-wrap:wrap">
-          <span class="cr-date">Reported 2026-08</span>
-          <span class="cr-ghsa">GHSA-6r58-hv2p-fgx2</span>
-        </div>
-      </div>
-      <div class="cr-right"><span class="cr-soon">In triage</span></div>
-    </div>
-
-  </div>
+<div class="ph">
+<div class="ph-label">// CVE Research</div>
+<h1>Assigned <em>CVEs</em></h1>
+<p>Vulnerabilities I discovered through source code review, responsibly disclosed to vendors, and received CVE assignments for.</p>
 </div>
-
+<div class="stats">
+<div class="stat"><div class="stat-num">4</div><div class="stat-label">CVEs Assigned</div></div>
+<div class="stat"><div class="stat-num">4</div><div class="stat-label">In Progress</div></div>
+<div class="stat"><div class="stat-num">1</div><div class="stat-label">High Severity</div></div>
+<div class="stat"><div class="stat-num">3</div><div class="stat-label">Moderate Severity</div></div>
+</div>
+<div class="s-label">Published</div>
+<div class="cve-list">
+<a class="cve-row" href="cve-2026-111055.html">
+<div>
+<div class="cr-id">CVE-2026-111055 <span class="badge badge-mod">MODERATE</span></div>
+<div class="cr-title">Concurrent Checkouts Reuse a once-per-client Promo Code Unlimited Times</div>
+<div class="cr-desc">A once_per_client promo validates eligibility with a non-atomic COUNT query and writes the redemption row much later with no lock or unique constraint. Concurrent POST /api/client/cart/checkout requests all read zero and pass, so one client can redeem a single-use-per-client code on many orders - free provisioning or draining a finite global pool.</div>
+<div class="cr-meta">
+<span class="cr-tag">CWE-367</span><span class="cr-tag">TOCTOU</span><span class="cr-tag">Race Condition</span><span class="cr-tag">FOSSBilling ≤ 0.8.7</span><span class="cr-tag">Client Auth Required</span>
+</div>
+<div style="display:flex;gap:1rem;margin-top:.5rem;flex-wrap:wrap">
+<span class="cr-date">Published 2026-10-28</span>
+<span class="cr-ghsa">GHSA-qpq2-vvh9-hwfw</span>
+</div>
+</div>
+<div class="cr-right">
+<span class="cr-arrow">→</span>
+</div>
+</a>
+<a class="cve-row" href="cve-2026-43921.html">
+<div>
+<div class="cr-id">CVE-2026-43921 <span class="badge badge-high">HIGH</span></div>
+<div class="cr-title">Arbitrary PHP Code Injection via Unescaped Config Serialization → Remote Code Execution</div>
+<div class="cr-desc">FOSSBilling serializes config values into a PHP file using string interpolation with no escaping. A single quote in any string value breaks out of the PHP string literal, injecting arbitrary code that executes on every subsequent HTTP request as www-data.</div>
+<div class="cr-meta">
+<span class="cr-tag">CWE-94</span><span class="cr-tag">RCE</span><span class="cr-tag">PHP</span><span class="cr-tag">FOSSBilling ≤ 0.7.2</span><span class="cr-tag">Admin Auth Required</span>
+</div>
+<div style="display:flex;gap:1rem;margin-top:.5rem;flex-wrap:wrap">
+<span class="cr-date">Published 2026-06-11</span>
+<span class="cr-ghsa">GHSA-v4j9-w6pj-38w5</span>
+</div>
+</div>
+<div class="cr-right">
+<span class="cr-arrow">→</span>
+</div>
+</a>
+<a class="cve-row" href="cve-2026-43925.html">
+<div>
+<div class="cr-id">CVE-2026-43925 <span class="badge badge-mod">MODERATE</span></div>
+<div class="cr-title">Mass Assignment of group_id in Guest Registration Allows Unauthorized Promo Code Use</div>
+<div class="cr-desc">The public registration endpoint passes the full request body into the internal client creation method without stripping admin-only fields. An unauthenticated attacker can supply a group_id to assign themselves to any client group and access group-restricted promo codes.</div>
+<div class="cr-meta">
+<span class="cr-tag">CWE-915</span><span class="cr-tag">Mass Assignment</span><span class="cr-tag">FOSSBilling ≤ 0.7.2</span><span class="cr-tag">No Auth Required</span>
+</div>
+<div style="display:flex;gap:1rem;margin-top:.5rem;flex-wrap:wrap">
+<span class="cr-date">Published 2026-06-04</span>
+<span class="cr-ghsa">GHSA-q4rq-9844-r9w2</span>
+</div>
+</div>
+<div class="cr-right">
+<span class="cr-arrow">→</span>
+</div>
+</a>
+<a class="cve-row" href="cve-2026-43927.html">
+<div>
+<div class="cr-id">CVE-2026-43927 <span class="badge badge-mod">MODERATE</span></div>
+<div class="cr-title">Race Condition in Cart Checkout Bypasses Promo Code Usage Limits</div>
+<div class="cr-desc">FOSSBilling's promo usage check and increment are non-atomic - three separate operations with no database locking. Concurrent checkout requests all read the same stale counter, all pass, and all create discounted orders. A single-use code can be exploited unlimited times.</div>
+<div class="cr-meta">
+<span class="cr-tag">CWE-367</span><span class="cr-tag">TOCTOU</span><span class="cr-tag">Race Condition</span><span class="cr-tag">FOSSBilling ≤ 0.7.2</span><span class="cr-tag">Client Auth Required</span>
+</div>
+<div style="display:flex;gap:1rem;margin-top:.5rem;flex-wrap:wrap">
+<span class="cr-date">Published 2026-06-04</span>
+<span class="cr-ghsa">GHSA-w898-cx35-25gh</span>
+</div>
+</div>
+<div class="cr-right">
+<span class="cr-arrow">→</span>
+</div>
+</a>
+</div>
+<div class="s-label">Coordinated Disclosure</div>
+<p style="color:var(--muted);margin-bottom:1rem">Additional reports are under vendor review. Technical details are withheld pending coordinated disclosure; CVE assignment and severity are not yet confirmed.</p>
+<div class="cve-list">
+<div class="cve-row static"><div><div class="cr-title">Akaunting</div><div class="cr-desc">Application security report · awaiting vendor response</div></div></div>
+<div class="cve-row static"><div><div class="cr-title">InvoiceNinja</div><div class="cr-desc">Application security report · awaiting vendor response</div></div></div>
+<div class="cve-row static"><div><div class="cr-title">Graylog</div><div class="cr-desc">Two security reports · in triage</div></div></div>
+</div>
+</div>
 <footer>
-  <a href="../index.html">dilip.</a> &nbsp;·&nbsp;
-  <a href="../about.html">About</a> &nbsp;·&nbsp;
-  <a href="../articles/index.html">Articles</a> &nbsp;·&nbsp;
-  <a href="../exploits/index.html">Exploits</a> &nbsp;·&nbsp;
-  <a href="../contact.html">Contact</a> &nbsp;·&nbsp;
+<a href="../index.html">dilip.</a>  · 
+  <a href="../about.html">About</a>  · 
+  <a href="../articles/index.html">Articles</a>  · 
+  <a href="../exploits/index.html">Exploits</a>  · 
+  <a href="../contact.html">Contact</a>  · 
   <a href="https://github.com/DilipMallavarapu">GitHub</a>
 </footer>
 </body>
