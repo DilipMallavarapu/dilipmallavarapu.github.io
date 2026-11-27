@@ -4,6 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<meta name="theme-color" content="#ffffff"/>
 <title>Selected Research - Dilip Mallavarapu</title>
 <meta content="Selected application, supply-chain and firmware security research — Dilip Mallavarapu" name="description"/>
 <link href="https://dilipmallavarapu.github.io/research.html" rel="canonical"/>
@@ -18,7 +19,6 @@
 <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
 <link href="assets/css/site.css" rel="stylesheet"/>
 <style>
     /* INTRO (matches index.html) */
@@ -75,12 +75,41 @@
     .tl-date{font-family:var(--mono);font-size:.7rem;color:var(--muted);white-space:nowrap}
     .tl-body{font-size:.85rem;color:var(--muted);line-height:1.65;margin-top:.35rem}
 
+    /* FEATURED RESEARCH (Trail of Bits / Fickling) */
+    .feat{border:1px solid var(--border);border-radius:10px;background:var(--bg2);padding:1.6rem 1.6rem 1.8rem;margin-bottom:1.5rem}
+    .feat code{font-family:var(--mono);font-size:.76rem;background:var(--bg3);padding:.05rem .35rem;border-radius:3px;color:var(--text)}
+    .feat-kicker{font-family:var(--mono);font-size:.66rem;letter-spacing:.09em;text-transform:uppercase;color:var(--blue);margin-bottom:.5rem}
+    .feat h3{font-size:1.25rem;color:var(--text);margin:0 0 .2rem;font-weight:800;letter-spacing:-.01em}
+    .feat-sub{font-size:.85rem;color:var(--muted);margin-bottom:1.1rem}
+    .feat-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.7rem 1.4rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:1rem 0;margin-bottom:1.2rem}
+    .fm-k{font-family:var(--mono);font-size:.61rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.25rem}
+    .fm-v{font-size:.82rem;color:var(--text);font-weight:600}
+    .feat-body{font-size:.88rem;color:var(--muted);line-height:1.72;margin-bottom:1.3rem;max-width:720px}
+
+    /* STAT ROW */
+    .stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:1.4rem}
+    .stat{background:var(--bg2);padding:1.1rem 1rem;text-align:center}
+    .stat b{display:block;font-size:1.5rem;font-weight:800;color:var(--green);line-height:1;margin-bottom:.4rem;font-family:var(--mono)}
+    .stat span{font-size:.72rem;color:var(--muted);line-height:1.4}
+
+    /* FINDINGS */
+    .find{border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:0 8px 8px 0;background:var(--bg2);padding:1.1rem 1.25rem;margin-bottom:.8rem}
+    .find-h{font-weight:700;font-size:.9rem;color:var(--text);margin-bottom:.45rem}
+    .find-h .fn{font-family:var(--mono);font-size:.78rem;color:var(--blue);margin-right:.5rem}
+    .find-d{font-size:.83rem;color:var(--muted);line-height:1.65;margin-bottom:.6rem}
+    .find-l{display:flex;flex-wrap:wrap;gap:.4rem .9rem;font-size:.75rem;align-items:center}
+    .find-l .fl-k{color:var(--muted)}
+    .find-l a{color:var(--green);text-decoration:none}
+    .find-l a:hover{text-decoration:underline}
+
     @media(max-width:640px){
       .intro-name{font-size:1.9rem}
       .research-grid,.skills-grid{grid-template-columns:1fr}
       .cve-mini-row{grid-template-columns:1fr}
     }
   </style>
+<script>try{document.documentElement.dataset.theme=localStorage.getItem('nf-theme')||'light'}catch(e){}</script>
+<script src="assets/js/theme.js"></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -88,15 +117,14 @@
 <a class="nav-logo" href="index.html">dilip.</a>
 <div class="nav-links">
 <a href="index.html">Home</a>
-<a href="about.html">About</a>
 <a href="cves/index.html">CVEs</a>
-<a href="firmware/index.html">Firmware</a>
 <a href="articles/index.html">Articles</a>
-<a href="exploits/index.html">Exploits</a>
+<a href="firmware/index.html">Firmware</a>
 <a href="contact.html">Contact</a>
-<a class="active" href="research.html">Research</a></div>
+<button id="theme" aria-label="Toggle light or dark theme">☼</button>
+</div>
 </nav>
-<div class="page" id="main"><h1>Selected security research</h1><p>Source-code auditing, variant analysis, controlled validation and coordinated remediation. Statuses reflect my latest resume; pending work is described at a high level.</p><section class="section"><h2>Application security</h2><p>Four assigned FOSSBilling CVEs covering code injection, mass assignment and checkout race conditions. <a href="cves/index.html">Published CVE case studies</a>.</p></section><section class="section"><h2>Open-source and supply-chain security</h2><p><strong>Fickling (Trail of Bits):</strong> scanner bypass identified through variant analysis; fix merged and credited. <a href="https://github.com/trailofbits/fickling/pull/347">PR #347</a>.</p><p><strong>it-depends:</strong> supply-chain security findings triaged High; remediation status not confirmed here.</p><p><strong>crytic-compile and LMCache:</strong> security reports submitted; technical details withheld pending coordinated disclosure.</p></section><section class="section"><h2>Firmware and embedded systems</h2><p><strong>U-Boot:</strong> five parser memory-safety findings; authored a btrfs patch reviewed by a maintainer.</p><p><strong>OpenBMC:</strong> configuration injection reproduced in an emulated BMC and coordinated with the security team.</p><p><strong>Hikvision:</strong> firmware reverse engineering and coordinated reports of cryptographic weaknesses.</p><p><a href="firmware/index.html">Firmware research archive</a></p></section><section class="section"><h2>Recognition and publications</h2><p>Microsoft Security Response Center Hall of Fame recognition for a validated report.</p><p>Co-author, “Indirect Prompt Injection Against LLM Copilots in Industrial Control Systems,” DCS-CI 2026, Springer CCIS 3109. Best Paper Award. <a href="articles/llm-copilot-prompt-injection-ics.html">Publication details</a>.</p></section></div>
+<div class="page" id="main"><h1>Selected security research</h1><p>Source-code auditing, variant analysis, controlled validation and coordinated remediation. Statuses reflect my latest resume; pending work is described at a high level.</p><section class="section" id="featured"><div class="s-label">Featured research</div><div class="feat"><div class="feat-kicker">Trail of Bits // Fickling</div><h3>Trail of Bits - Fickling Security Research</h3><div class="feat-sub">Three accepted security reports · Upstream fixes merged</div><div class="feat-meta"><div><div class="fm-k">Role</div><div class="fm-v">Independent Security Researcher</div></div><div><div class="fm-k">Disclosure</div><div class="fm-v">Coordinated Vulnerability Disclosure</div></div><div><div class="fm-k">Status</div><div class="fm-v">Accepted &amp; fixed upstream</div></div><div><div class="fm-k">Last updated</div><div class="fm-v">November 26, 2026</div></div></div><p class="feat-body">Independent security assessment of Fickling, Trail of Bits' Python pickle security-analysis and ML deserialization tool, focusing on the effectiveness of its pickle safety analysis, standard-library blocklist policies, and ML-specific deserialization protections. The research produced three accepted security reports, upstream remediation, and public researcher attribution.</p><div class="stat-row"><div class="stat"><b>03</b><span>Accepted security reports</span></div><div class="stat"><b>03</b><span>Upstream security fixes</span></div><div class="stat"><b>02</b><span>Merged security fix PRs</span></div><div class="stat"><b>Public</b><span>Researcher attribution</span></div></div><div class="find"><div class="find-h"><span class="fn">Finding 01</span> Standard-library file-write security bypass</div><div class="find-d">Identified gaps in Fickling's security analysis involving Python standard-library audio modules (<code>aifc</code>, <code>sunau</code>), left outside the blocklist policy that already covered their sibling module.</div><div class="find-l"><span class="fl-k">Status: Fix merged upstream</span><a href="https://github.com/trailofbits/fickling/pull/347">PR #347 ↗</a></div></div><div class="find"><div class="find-h"><span class="fn">Finding 02</span> Windows registry security bypass</div><div class="find-d">Identified unsafe Windows registry operations (<code>winreg</code>, <code>_winreg</code>) that were not covered by Fickling's standard-library blocklist.</div><div class="find-l"><span class="fl-k">Status: Fix merged November 26, 2026</span><a href="https://github.com/trailofbits/fickling/commit/3548ee4">commit 3548ee4 ↗</a></div></div><div class="find"><div class="find-h"><span class="fn">Finding 03</span> Nested PyTorch deserialization security bypass</div><div class="find-d">Identified a security-boundary weakness involving nested deserialization in Fickling's ML unpickler (<code>torch.storage._load_from_bytes</code>). The upstream remediation restricts nested unpicklers to the active ML security hook by default. Research area: AI/ML model security.</div><div class="find-l"><span class="fl-k">Status: Fix merged November 26, 2026</span><a href="https://github.com/trailofbits/fickling/commit/eadc057">commit eadc057 ↗</a></div></div><p class="feat-body" style="margin-top:1.3rem;margin-bottom:.7rem"><strong style="color:var(--text)">Upstream contributions.</strong> Coordinated with Trail of Bits maintainers through disclosure and remediation. <a href="https://github.com/trailofbits/fickling/pull/362" style="color:var(--green);text-decoration:none">PR #362 ↗</a> was merged into <code>master</code> on November 26, 2026 (merge commit bde7d1a, 12 passing checks); both the Windows registry and nested ML deserialization findings received explicit public researcher attribution.</p><p class="feat-body" style="margin-bottom:0">All three reports have been accepted and the corresponding fixes merged upstream. Full technical write-ups and advisory identifiers will be published following coordinated public disclosure.</p></div></section><section class="section"><h2>Application security</h2><p>Four assigned FOSSBilling CVEs covering code injection, mass assignment and checkout race conditions. <a href="cves/index.html">Published CVE case studies</a>.</p></section><section class="section"><h2>Open-source and supply-chain security</h2><p><strong>Fickling (Trail of Bits):</strong> three accepted pickle-safety and ML-deserialization reports, with upstream fixes merged and public researcher attribution. See <a href="#featured">featured research</a> above.</p><p><strong>it-depends:</strong> supply-chain security findings triaged High; remediation status not confirmed here.</p><p><strong>crytic-compile and LMCache:</strong> security reports submitted; technical details withheld pending coordinated disclosure.</p></section><section class="section"><h2>Firmware and embedded systems</h2><p><strong>U-Boot:</strong> five parser memory-safety findings; authored a btrfs patch reviewed by a maintainer.</p><p><strong>OpenBMC:</strong> configuration injection reproduced in an emulated BMC and coordinated with the security team.</p><p><strong>Hikvision:</strong> firmware reverse engineering and coordinated reports of cryptographic weaknesses.</p><p><a href="firmware/index.html">Firmware research archive</a></p></section><section class="section"><h2>Recognition and publications</h2><p>Microsoft Security Response Center Hall of Fame recognition for a validated report.</p><p>Co-author, “Indirect Prompt Injection Against LLM Copilots in Industrial Control Systems,” DCS-CI 2026, Springer CCIS 3109. Best Paper Award. <a href="articles/llm-copilot-prompt-injection-ics.html">Publication details</a>.</p></section></div>
 <footer>
 <a href="index.html">dilip.</a>  · 
   <a href="cves/index.html">CVEs</a>  · 

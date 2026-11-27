@@ -1,285 +1,207 @@
-<!DOCTYPE html>
-
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="theme-color" content="#ffffff"/>
 <title>Home - Dilip Mallavarapu</title>
-<meta content="Security researcher specializing in CVEs, responsible disclosure, web application security, IoT firmware, and mobile SDK research. M.S. Cybersecurity at UAB." name="description"/>
+<meta name="description" content="Dilip Mallavarapu - security researcher. Four assigned CVEs, 20+ coordinated disclosures, AI/ML security and firmware reverse-engineering. M.S. Cybersecurity at UAB."/>
 <link href="https://dilipmallavarapu.github.io/index.html" rel="canonical"/>
 <meta content="website" property="og:type"/>
-<meta content="Dilip Mallavarapu — Security Researcher" property="og:title"/>
-<meta content="Security researcher specializing in CVEs, responsible disclosure, web application security, IoT firmware, and mobile SDK research. M.S. Cybersecurity at UAB." property="og:description"/>
+<meta content="Dilip Mallavarapu - Security Researcher" property="og:title"/>
+<meta content="Four assigned CVEs, 20+ coordinated disclosures, AI/ML security and firmware research." property="og:description"/>
 <meta content="https://dilipmallavarapu.github.io/index.html" property="og:url"/>
 <meta content="https://dilipmallavarapu.github.io/assets/img/og-image.png" property="og:image"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <link href="favicon.svg" rel="icon" type="image/svg+xml"/>
 <link href="assets/img/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
 <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
-<link href="assets/css/site.css" rel="stylesheet"/>
 <style>
-    /* INTRO */
-    .intro{padding-bottom:3rem;margin-bottom:3.5rem;border-bottom:1px solid var(--border)}
-    .intro-eyebrow{font-family:var(--mono);font-size:.7rem;color:var(--green);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.9rem}
-    .intro-name{font-weight:800;font-size:2.6rem;color:var(--text);line-height:1.1;letter-spacing:-.03em;margin-bottom:.45rem}
-    .intro-sub{font-size:.97rem;color:var(--muted);font-weight:500;margin-bottom:.3rem}
-    .intro-grad{font-family:var(--mono);font-size:.76rem;color:var(--muted);margin-bottom:1.4rem}
-    .intro-bio{font-size:.95rem;color:var(--text);line-height:1.78;max-width:660px;margin-bottom:1.4rem}
-    .open-badges{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.4rem}
-    .open-badge{display:inline-flex;align-items:center;padding:.25rem .8rem;border-radius:99px;font-size:.75rem;font-weight:600;border:1px solid var(--green);color:var(--green);background:rgba(63,185,80,.06)}
-    .open-badge.neutral{border-color:var(--border);color:var(--muted);background:transparent;font-weight:500}
-    .open-badge.gold{border-color:var(--gold);color:var(--gold);background:rgba(227,179,65,.06)}
-    .intro-links{display:flex;gap:.5rem;flex-wrap:wrap}
-    .ilink{display:inline-flex;align-items:center;padding:.38rem .9rem;border-radius:6px;font-size:.8rem;font-weight:500;text-decoration:none;border:1px solid var(--border);color:var(--text);transition:border-color .15s,color .15s}
-    .ilink:hover{border-color:var(--green);color:var(--green)}
-
-    /* SECTIONS */
-    .section{margin-bottom:3.5rem}
-    .s-label{margin-bottom:1.5rem}
-
-    /* PROJECTS */
-    .proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem}
-    .proj-card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:1.4rem;position:relative;overflow:hidden;transition:border-color .15s;display:flex;flex-direction:column}
-    .proj-card:hover{border-color:rgba(63,185,80,.4)}
-    .proj-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--green),transparent)}
-    .proj-card.wip::before{background:linear-gradient(90deg,var(--orange),transparent)}
-    .proj-card.wip:hover{border-color:rgba(210,153,34,.4)}
-    .proj-card.research::before{background:linear-gradient(90deg,var(--purple),transparent)}
-    .proj-card.research:hover{border-color:rgba(188,140,255,.4)}
-    .proj-name{font-weight:700;font-size:.97rem;color:var(--text);margin-bottom:.3rem}
-    .proj-status{display:inline-block;font-family:var(--mono);font-size:.63rem;padding:.1rem .45rem;border-radius:3px;border:1px solid var(--border);color:var(--muted);margin-bottom:.75rem}
-    .proj-desc{font-size:.84rem;color:var(--muted);line-height:1.65;margin-bottom:1rem;flex:1}
-    .proj-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:.9rem}
-    .ptag{font-family:var(--mono);font-size:.63rem;padding:.1rem .4rem;border-radius:3px;background:rgba(63,185,80,.05);border:1px solid rgba(63,185,80,.15);color:var(--green)}
-    .ptag.orange{background:rgba(210,153,34,.05);border-color:rgba(210,153,34,.15);color:var(--orange)}
-    .ptag.purple{background:rgba(188,140,255,.05);border-color:rgba(188,140,255,.15);color:var(--purple)}
-    .proj-link{display:inline-flex;align-items:center;gap:.3rem;font-size:.78rem;color:var(--green);text-decoration:none;font-weight:500;margin-top:auto}
-    .proj-link:hover{text-decoration:underline}
-
-    /* RECENT WORK */
-    .work-list{border:1px solid var(--border);border-radius:8px;overflow:hidden}
-    .work-item{display:grid;grid-template-columns:auto 80px 1fr auto;gap:.75rem;align-items:center;padding:.85rem 1.1rem;background:var(--bg2);border-bottom:1px solid var(--border);font-size:.85rem;transition:background .15s}
-    .work-item:last-child{border-bottom:none}
-    .work-item:hover{background:var(--bg3)}
-    .work-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-    .wd-green{background:var(--green)}
-    .wd-blue{background:var(--blue)}
-    .wd-orange{background:var(--orange)}
-    .work-type{font-family:var(--mono);font-size:.65rem;color:var(--muted)}
-    .work-text{color:var(--text)}
-    .work-text strong{color:var(--text);font-weight:600}
-    .work-text a{color:var(--text);text-decoration:none}
-    .work-text a:hover{color:var(--green)}
-    .work-meta{font-family:var(--mono);font-size:.65rem;color:var(--muted);text-align:right;white-space:nowrap}
-
-    @media(max-width:640px){
-      .intro-name{font-size:1.9rem}
-      .proj-grid,.skills-grid{grid-template-columns:1fr}
-      .exp-item{grid-template-columns:1fr}
-      .work-item{grid-template-columns:auto 1fr auto;gap:.5rem}
-      .work-type{display:none}
-    }
-  </style>
+:root{color-scheme:light;--bg:#ffffff;--fg:#17181a;--mut:#5a6069;--line:#1718201c;--panel:#f5f6f8;--accent:#2f4b6e}
+html[data-theme=dark]{color-scheme:dark;--bg:#070809;--fg:#f1f1ef;--mut:#a4a8b0;--line:#ffffff25;--panel:#101317;--accent:#a8c4e9}
+html[data-theme=light]{color-scheme:light;--bg:#ffffff;--fg:#17181a;--mut:#5a6069;--line:#1718201c;--panel:#f5f6f8;--accent:#2f4b6e}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 Arial,Helvetica,sans-serif}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:1px solid var(--line);cursor:pointer;border-radius:40px;padding:8px 15px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+nav{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:18px 6%;border-bottom:1px solid var(--line);gap:20px;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(10px)}
+nav .links{display:flex;align-items:center;gap:22px;flex-wrap:wrap;font-size:13px}
+nav .links a:hover{color:var(--accent)}
+.logo{font-size:26px;font-weight:bold;letter-spacing:-2px}
+.hero{position:relative;min-height:650px;display:flex;align-items:flex-end;padding:80px 7% 65px;overflow:hidden}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%}
+.copy{position:relative;max-width:850px}
+.eyebrow{font:11px monospace;letter-spacing:2px;text-transform:uppercase;color:var(--mut)}
+h1,h2,h3{font-weight:400;line-height:1.02;letter-spacing:-.055em;margin:20px 0}
+h1{font-size:clamp(48px,8vw,116px)}
+h2{font-size:clamp(36px,5vw,72px)}
+h3{font-size:clamp(28px,3vw,44px)}
+p{color:var(--mut);max-width:560px}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:40px;padding:12px 22px;margin:8px 6px 0 0;font-size:13px;transition:background .15s,color .15s,border-color .15s}
+.pill:hover{border-color:var(--accent)}
+.primary{background:var(--fg);color:var(--bg)}
+.primary:hover{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);border-block:1px solid var(--line)}
+.metrics div{padding:30px 6%;border-right:1px solid var(--line)}
+.metrics div:last-child{border-right:0}
+.metrics strong{font-size:clamp(30px,5vw,65px);font-weight:400;letter-spacing:-.06em;display:block}
+.metrics span,.small{font-size:12px;color:var(--mut)}
+section{padding:80px 7%;border-bottom:1px solid var(--line)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:7%;align-items:center;margin:45px 0}
+.visual{position:relative;aspect-ratio:1.35;background:var(--panel);border:1px solid var(--line);overflow:hidden}
+.visual canvas{width:100%;height:100%;display:block}
+.visual span{position:absolute;bottom:14px;left:16px}
+.status{font:11px monospace;color:var(--accent);letter-spacing:1px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:25px 0}
+.filters button.active{background:var(--fg);color:var(--bg)}
+.record{display:flex;gap:20px;align-items:center;border-top:1px solid var(--line);padding:22px 0}
+.record div{flex:1}
+.record[hidden]{display:none}
+.record a{font-size:22px}
+footer{padding:30px 7%;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.pause{position:absolute;right:6%;top:22px;z-index:2}
+@media(max-width:650px){
+  nav{align-items:flex-start}
+  nav .links{gap:10px}
+  .hero{min-height:560px;padding:45px 6%}
+  .split{grid-template-columns:1fr;gap:20px}
+  .metrics{grid-template-columns:repeat(2,1fr)}
+  .metrics div:nth-child(2){border-right:0}
+  section{padding:50px 6%}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+<script>try{document.documentElement.dataset.theme=localStorage.getItem('nf-theme')||'light'}catch(e){}</script>
 </head>
-<body class="home">
-<a class="skip-link" href="#main">Skip to content</a>
+<body>
 <nav>
-<a class="nav-logo" href="index.html">dilip.</a>
-<div class="nav-links">
-<a class="active" href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="cves/index.html">CVEs</a>
-<a href="firmware/index.html">Firmware</a>
-<a href="articles/index.html">Articles</a>
-<a href="exploits/index.html">Exploits</a>
-<a href="contact.html">Contact</a>
-<a href="research.html">Research</a></div>
+  <a class="logo" href="index.html">dilip.</a>
+  <div class="links">
+    <a href="index.html">Home</a>
+    <a href="cves/index.html">CVEs</a>
+    <a href="articles/index.html">Articles</a>
+    <a href="firmware/index.html">Firmware</a>
+    <a href="contact.html">Contact</a>
+    <button id="theme" aria-label="Toggle light or dark theme">☼</button>
+  </div>
 </nav>
-<div class="page" id="main">
-<!-- HOME -->
-<div class="intro"><div class="hero-copy"><div class="intro-eyebrow"><span class="status-dot"></span> Open to full-time opportunities</div><h1 class="intro-name">Dilip Mallavarapu<span>.</span></h1><div class="intro-sub">Application Security Engineer &amp; Vulnerability Researcher</div><p class="intro-bio">I investigate how software and embedded systems fail, validate vulnerabilities, and help developers fix them. My work spans application security, software supply chains, AI infrastructure and firmware.</p><p class="intro-grad">M.S. Cybersecurity · University of Alabama at Birmingham · Dec 2026</p><div class="intro-links">
-<a class="ilink primary-link" href="research.html">Explore security research →</a>
-<a class="ilink" href="https://github.com/DilipMallavarapu">GitHub</a>
-<a class="ilink" href="https://linkedin.com/in/dilip-mallavarapu-18b96626b">LinkedIn</a>
-<a class="ilink" href="https://bugcrowd.com/DilipMallavarapu">Bugcrowd</a>
-<a class="ilink" href="mailto:dilipchowdary21@gmail.com">Email</a>
-<a class="ilink" href="contact.html">Request resume</a></div></div></div><div class="impact-grid"><a href="cves/index.html"><strong>4</strong><span>Assigned CVEs</span></a><a href="research.html"><strong>20+</strong><span>Coordinated disclosures</span></a><a href="articles/llm-copilot-prompt-injection-ics.html"><strong>Best Paper</strong><span>DCS-CI 2026</span></a><a href="research.html"><strong>MSRC</strong><span>Hall of Fame recognition</span></a></div><section class="section" id="featured"><div class="s-label">01 / Selected research</div><h2 class="display-heading">Research with real-world impact.</h2><p class="section-intro">From source-code review to coordinated remediation. Explore the evidence behind my work.</p><div class="feature-grid"><article class="feature-main"><div class="feature-kicker">01 / APPLICATION SECURITY <span>Patched</span></div><div aria-hidden="true" class="diagram"><span>Source audit</span><b>→</b><span>Validation</span><b>→</b><span>Remediation</span></div><h3>FOSSBilling</h3><p>Four assigned CVEs covering remote code execution, mass assignment and checkout race conditions.</p><a href="cves/index.html">Explore all four CVEs ↗</a></article><article class="feature-tile blue"><small>02 / TRAIL OF BITS</small><h3>Fickling</h3><p>Variant analysis of a prior fix uncovered a scanner bypass. Remediation merged in PR #347.</p><a href="https://github.com/trailofbits/fickling/pull/347">View merged fix ↗</a><a href="exploits/fickling-dossier.html">Research dossier ↗</a></article><article class="feature-tile sand"><small>03 / EMBEDDED SYSTEMS</small><h3>U-Boot</h3><p>Five parser memory-safety findings. Authored a btrfs patch reviewed by a maintainer.</p><a href="research.html">Explore research ↗</a></article><article class="feature-tile sage"><small>04 / BEST PAPER AWARD</small><h3>LLM security</h3><p>Published research on indirect prompt injection against industrial control system copilots.</p><a href="articles/llm-copilot-prompt-injection-ics.html">Read publication ↗</a></article><article class="feature-tile rose"><small>05 / FIRMWARE SECURITY</small><h3>OpenBMC</h3><p>Configuration security research validated in an emulated BMC. Coordinated disclosure.</p><a href="firmware/index.html">Firmware research ↗</a></article></div></section><div class="section" id="skills">
-<div class="s-label">02 / Technical expertise</div><h2 class="display-heading">My engineering toolkit.</h2>
-<div class="skills-grid">
-<div class="skill-group">
-<div class="sg-title">Offensive Security</div>
-<ul class="sg-list">
-<li>Web Application Pentesting</li>
-<li>Source Code Review</li>
-<li>Binary Analysis (ARM ELF)</li>
-<li>Mobile SDK Analysis</li>
-<li>Race Condition Testing</li>
-<li>OSINT Automation</li>
-<li>API security</li><li>SAST / DAST / SCA</li><li>Threat modeling</li><li>OWASP Top 10</li><li>SSRF / SSTI / RCE</li><li>Insecure deserialization</li><li>Mass assignment / TOCTOU</li><li>Memory safety</li><li>CVSS / CWE</li><li>Coordinated disclosure</li></ul>
-</div>
-<div class="skill-group">
-<div class="sg-title">Tools</div>
-<ul class="sg-list">
-<li>Burp Suite Pro</li>
-<li>Ghidra / Binary Ninja</li>
-<li>Nmap / ZGrab2</li>
-<li>Metasploit</li>
-<li>Wireshark</li>
-<li>Docker</li>
-<li>radare2</li><li>Binwalk</li><li>QEMU</li><li>ASAN / UBSAN</li><li>Git / GitHub</li></ul>
-</div>
-<div class="skill-group">
-<div class="sg-title">Languages</div>
-<ul class="sg-list">
-<li>Python (exploit dev)</li>
-<li>PHP (source review)</li>
-<li>Bash scripting</li>
-<li>Kotlin (Android)</li>
-<li>SQL</li>
-<li>Java</li><li>JavaScript / Node.js</li><li>Go</li><li>C/C++ (security code review)</li></ul>
-</div>
-<div class="skill-group">
-<div class="sg-title">Platforms</div>
-<ul class="sg-list">
-<li>Linux / Kali</li>
-<li>AWS / GCP</li>
-<li>Azure AD</li>
-<li>IoT / Embedded</li>
-<li>Windows Server AD</li>
-<li>CI/CD pipelines</li></ul>
-</div>
-</div>
-</div><div class="section" id="experience">
-<div class="s-label">Experience</div><h2 class="display-heading">Experience</h2>
-<div class="exp-list"><div class="exp-item"><div><div class="exp-role">IT Specialist</div><div class="exp-org">Bentley Automotive Group</div><div class="exp-body">Conducted an authorized assessment of dealership websites, identified exposure to seven known CVEs in outdated WordPress components, and delivered prioritized remediation guidance. Support network security across dealership locations and develop tested CRM-integrated call-routing workflows.</div></div><div class="exp-date">Aug 2026 - Present</div></div><div class="exp-item"><div><div class="exp-role">Security Researcher Intern</div><div class="exp-org">Appsecrew</div><div class="exp-body">Performed web application and API assessments across 5+ client environments. Delivered 10+ findings with proof-of-concept evidence and remediation guidance; collaborated with developers on secure coding fixes.</div></div><div class="exp-date">Aug - Dec 2024</div></div><div class="exp-item"><div><div class="exp-role">Independent Vulnerability Researcher</div><div class="exp-org">d3sec</div><div class="exp-body">Conduct source audits, variant analysis, controlled validation and coordinated disclosure across applications, security tooling and firmware. Research includes four assigned CVEs and maintainer-merged remediation.</div></div><div class="exp-date">2024 - Present</div></div></div>
-</div><div class="section" id="projects">
-<div class="s-label">Projects</div><h2 class="display-heading">Projects</h2>
-<div class="proj-grid">
-<div class="proj-card">
-<div class="proj-name">CRYPT</div>
-<span class="proj-status">Python · HTML</span>
-<p class="proj-desc">Symmetric file encryption utility with recursive directory traversal. Implements AES-256 in four modes (CBC/CTR/OFB/CFB) and ChaCha20 with per-file IV randomization. Ships both a Python CLI for batch operations and a zero-dependency browser GUI built on the WebCrypto API, drag-and-drop, no server required.</p>
-<div class="proj-tags">
-<span class="ptag">AES-256</span><span class="ptag">ChaCha20</span><span class="ptag">Python</span><span class="ptag">WebCrypto</span>
-</div>
-<a class="proj-link" href="https://github.com/DilipMallavarapu/cipher">View on GitHub →</a>
-</div>
-<div class="proj-card wip">
-<div class="proj-name">ASN Intelligence Mapper</div>
-<span class="proj-status">In progress</span>
-<p class="proj-desc">Python automation pipeline that ingests an organization name or ASN and outputs a workflow diagram of all associated IPs, domains, netblocks, and infrastructure relationships. Integrates BGP ASN data, passive DNS, and certificate transparency logs for OSINT-driven attack surface enumeration, designed for recon at scale.</p>
-<div class="proj-tags">
-<span class="ptag orange">Python</span><span class="ptag orange">ASN</span><span class="ptag orange">OSINT</span><span class="ptag orange">Automation</span>
-</div>
-</div>
-<div class="proj-card research">
-<div class="proj-name">LLM Security Research</div>
-<span class="proj-status" style="border-color:rgba(227,179,65,.4);color:var(--gold)">🏆 Best Paper, DCS-CI'26</span>
-<p class="proj-desc">Peer-reviewed research on indirect prompt injection against LLM SOC copilots in industrial control systems, published and awarded Best Paper at DCS-CI'26. The study evaluates three attack channels using a SWaT and OpenPLC testbed and reports an 8.1% attack success rate with layered defenses.</p>
-<div class="proj-tags">
-<span class="ptag purple">LLM</span><span class="ptag purple">Prompt Injection</span><span class="ptag purple">ICS Security</span>
-</div>
-<a class="proj-link" href="articles/llm-copilot-prompt-injection-ics.html">Read the writeup →</a>
-</div>
-<article class="proj-card"><h3 class="proj-name">AI Security Agent</h3><span class="proj-status">In progress</span><p class="proj-desc">AI-assisted source-code review workflow designed to identify security vulnerabilities.</p></article><article class="proj-card"><h3 class="proj-name">Sentinel</h3><p class="proj-desc">Firmware analysis with re-verifiable evidence and full-system emulation.</p><a class="proj-link" href="firmware/sentinel.html">Explore project ↗</a></article></div>
-</div>
-<!-- RECENT WORK -->
-<div class="section" id="disclosures">
-<div class="s-label">Selected Vulnerabilities &amp; Disclosures</div><h2 class="display-heading">Selected Vulnerabilities &amp; Disclosures</h2>
-<div class="work-list">
-<a class="work-item" href="cves/cve-2026-111055.html" style="text-decoration:none"><div class="work-dot wd-green"></div><div class="work-type">CVE</div><div class="work-text"><strong>CVE-2026-111055</strong> - Concurrent checkout bypass of per-client promotion limits</div><div class="work-meta" style="color:var(--orange)">MODERATE</div></a>
-<a class="work-item" href="cves/cve-2026-43921.html" style="text-decoration:none">
-<div class="work-dot wd-green"></div>
-<div class="work-type">CVE</div>
-<div class="work-text"><strong>CVE-2026-43921</strong> - PHP Code Injection via unescaped config serialization → RCE in FOSSBilling</div>
-<div class="work-meta" style="color:var(--red)">HIGH</div>
-</a>
-<a class="work-item" href="cves/cve-2026-43925.html" style="text-decoration:none">
-<div class="work-dot wd-green"></div>
-<div class="work-type">CVE</div>
-<div class="work-text"><strong>CVE-2026-43925</strong> - Mass assignment of group_id in FOSSBilling guest registration → promo code bypass</div>
-<div class="work-meta" style="color:var(--orange)">MODERATE</div>
-</a>
-<a class="work-item" href="cves/cve-2026-43927.html" style="text-decoration:none">
-<div class="work-dot wd-green"></div>
-<div class="work-type">CVE</div>
-<div class="work-text"><strong>CVE-2026-43927</strong> - TOCTOU race condition in FOSSBilling cart checkout → unlimited promo use</div>
-<div class="work-meta" style="color:var(--orange)">MODERATE</div>
-</a>
-<div class="work-item">
-<div class="work-dot wd-blue"></div>
-<div class="work-type">Bug Bounty</div>
-<div class="work-text"><strong>Microsoft</strong> - Stored HTML injection, MSRC Case 101912</div>
-<div class="work-meta">Sep 2025</div>
-</div>
-<div class="work-item">
-<div class="work-dot wd-orange"></div>
-<div class="work-type">Bug Bounty</div>
-<div class="work-text"><strong>Western Union</strong> - Sensitive data exposure via ServiceNow instance (P3, Bugcrowd)</div>
-<div class="work-meta">Jul 2024</div>
-</div>
-<div class="work-item">
-<div class="work-dot wd-orange"></div>
-<div class="work-type">Bug Bounty</div>
-<div class="work-text"><strong>Cisco</strong> - Reflected XSS via return_url parameter (P3, Bugcrowd VDP)</div>
-<div class="work-meta">Jan 2024</div>
-</div>
-<div class="work-item">
-<div class="work-dot wd-orange"></div>
-<div class="work-type">Bug Bounty</div>
-<div class="work-text"><strong>Mastercard</strong> - Open redirect in customer portal login (P4, Bugcrowd)</div>
-<div class="work-meta">Jan 2025</div>
-</div>
-</div>
-</div>
-<!-- EXPERIENCE -->
 
-<!-- PROJECTS -->
+<main>
+  <div class="hero">
+    <canvas data-kind="hero" aria-hidden="true"></canvas>
+    <button class="pause" id="pause">Pause motion</button>
+    <div class="copy">
+      <div class="eyebrow">Dilip Mallavarapu / Independent security researcher</div>
+      <h1>Intelligence.<br>Without blind trust.</h1>
+      <p>Investigating the security boundaries of artificial intelligence, software, and embedded systems, from source-code review through coordinated remediation.</p>
+      <a class="pill primary" href="#research">Explore research ↗</a>
+      <a class="pill" href="https://github.com/DilipMallavarapu">GitHub ↗</a>
+      <a class="pill" href="contact.html">Request resume ↗</a>
+      <p class="small">● Open to security engineering opportunities</p>
+    </div>
+  </div>
 
-<!-- FIRMWARE SECURITY -->
-<div class="section" id="firmware">
-<div class="s-label">Firmware Security</div><h2 class="display-heading">Firmware Security</h2>
-<p style="font-size:.9rem;color:var(--muted);max-width:640px;margin-bottom:1.5rem;line-height:1.7">
-      Static analysis and reverse engineering of router, camera, and BMC firmware, plus the tooling behind it. Research emphasizes reproducible measurements and evidence derived directly from firmware binaries.
-    </p>
-<div class="proj-grid">
-<div class="proj-card">
-<div class="proj-name">OpenWrt hardening study</div>
-<span class="proj-status">Measurement · Published</span>
-<p class="proj-desc">Measured stack canary coverage across three OpenWrt 23.05 architectures. Protection is on by default (74 to 80 percent), and the same core packages opt out on every build. Includes the measurement bug that made an earlier pass read zero.</p>
-<div class="proj-tags"><span class="ptag">OpenWrt</span><span class="ptag">MIPS</span><span class="ptag">x86-64</span></div>
-<a class="proj-link" href="firmware/openwrt-ssp.html">Read the study →</a>
-</div>
-<div class="proj-card">
-<div class="proj-name">Sentinel</div>
-<span class="proj-status">Tool · Open source</span>
-<p class="proj-desc">A firmware scanner whose confirmed findings carry a proof you can re-check offline, and which reports present, absent, or unknown rather than reporting a mitigation as missing when it could not read it.</p>
-<div class="proj-tags"><span class="ptag">Go</span><span class="ptag">Python</span><span class="ptag">ELF</span></div>
-<a class="proj-link" href="firmware/sentinel.html">Read →</a>
-</div>
-<div class="proj-card wip">
-<div class="proj-name">Vendor disclosures</div>
-<span class="proj-status">Hikvision · OpenBMC · QNAP</span>
-<p class="proj-desc">Device firmware research across a Hikvision access terminal (reported to HSRC), an OpenBMC finding under coordinated disclosure, and an ongoing QNAP QTS review. Details on the firmware page.</p>
-<div class="proj-tags"><span class="ptag orange">ARM ELF</span><span class="ptag orange">IoT</span><span class="ptag orange">BMC</span></div>
-<a class="proj-link" href="firmware/index.html">View all →</a>
-</div>
-</div>
-</div>
-<!-- SKILLS -->
+  <div class="metrics">
+    <div><strong>20+</strong><span>Coordinated disclosures</span></div>
+    <div><strong>04</strong><span>Assigned CVEs</span></div>
+    <div><strong>03</strong><span>Accepted Fickling reports</span></div>
+    <div><strong>Best Paper</strong><span>DCS-CI 2026</span></div>
+  </div>
 
-</div>
+  <section id="research">
+    <div class="eyebrow">01 / Selected research</div>
+    <h2>Where trust meets its limits.</h2>
+
+    <div class="split">
+      <div class="visual"><canvas data-kind="model" aria-hidden="true"></canvas><span class="eyebrow">Model security / 001</span></div>
+      <div>
+        <div class="eyebrow">Trail of Bits / Fickling</div>
+        <h3>The hidden risks of model deserialization.</h3>
+        <div class="status">UPSTREAM FIXES MERGED</div>
+        <p>Three accepted security reports investigating pickle analysis and ML deserialization. Public researcher attribution for two fixes in PR #362.</p>
+        <a class="pill" href="https://github.com/trailofbits/fickling/pull/362">Upstream evidence ↗</a>
+        <a class="pill" href="research.html#featured">Research summary ↗</a>
+      </div>
+    </div>
+
+    <div class="split">
+      <div>
+        <div class="eyebrow">02 / Adversarial intelligence</div>
+        <h3>When AI becomes the attack surface.</h3>
+        <div class="status">BEST PAPER AWARD · DCS-CI 2026</div>
+        <p>Indirect prompt injection against LLM SOC copilots in industrial control systems, evaluated on a SWaT / OpenPLC testbed with a layered defense.</p>
+        <a class="pill" href="articles/llm-copilot-prompt-injection-ics.html">Publication ↗</a>
+      </div>
+      <div class="visual"><canvas data-kind="wave" aria-hidden="true"></canvas><span class="eyebrow">Adversarial signal / 002</span></div>
+    </div>
+
+    <div class="split">
+      <div class="visual"><canvas data-kind="chip" aria-hidden="true"></canvas><span class="eyebrow">Embedded architecture / 003</span></div>
+      <div>
+        <div class="eyebrow">03 / Firmware security</div>
+        <h3>Beyond the software boundary.</h3>
+        <p>Reverse-engineering and configuration-security research across camera, router, and BMC firmware, reproduced in emulation and coordinated with vendors.</p>
+        <a class="pill" href="firmware/index.html">Firmware research ↗</a>
+      </div>
+    </div>
+
+    <div class="split">
+      <div>
+        <div class="eyebrow">04 / Application security</div>
+        <h3>Breaking software assumptions.</h3>
+        <p>Source-code auditing, vulnerability discovery, and coordinated remediation. Four assigned CVEs in FOSSBilling spanning RCE, mass assignment, and race conditions.</p>
+        <a class="pill" href="cves/index.html">Assigned CVEs ↗</a>
+      </div>
+      <div class="visual"><canvas data-kind="model" aria-hidden="true"></canvas><span class="eyebrow">Security boundaries / 004</span></div>
+    </div>
+
+    <div class="split">
+      <div class="visual"><canvas data-kind="chain" aria-hidden="true"></canvas><span class="eyebrow">Memory safety / 005</span></div>
+      <div>
+        <div class="eyebrow">05 / Embedded exploitation</div>
+        <h3>Down to the bootloader.</h3>
+        <p>Five parser memory-safety findings in Das U-Boot, with a btrfs patch reviewed by a maintainer. Low-level analysis where a single byte decides the boot.</p>
+        <a class="pill" href="research.html">Research portfolio ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="index">
+    <div class="eyebrow">Research index</div>
+    <h2>Discovery to remediation.</h2>
+    <div class="filters">
+      <button class="active" data-filter="all">All</button>
+      <button data-filter="ai">AI / ML</button>
+      <button data-filter="app">AppSec</button>
+      <button data-filter="firm">Firmware</button>
+    </div>
+    <div class="record" data-cat="ai"><span>001</span><div>Fickling - Nested ML deserialization<br><span class="small">Fix merged upstream</span></div><a href="https://github.com/trailofbits/fickling/commit/eadc057" aria-label="Fickling nested ML deserialization fix">↗</a></div>
+    <div class="record" data-cat="ai"><span>002</span><div>Fickling - Windows registry bypass<br><span class="small">Fix merged upstream</span></div><a href="https://github.com/trailofbits/fickling/commit/3548ee4" aria-label="Fickling Windows registry fix">↗</a></div>
+    <div class="record" data-cat="app"><span>003</span><div>FOSSBilling - Remote code execution<br><span class="small">CVE-2026-43921</span></div><a href="cves/cve-2026-43921.html" aria-label="CVE-2026-43921">↗</a></div>
+    <div class="record" data-cat="ai"><span>004</span><div>Industrial LLM copilot security<br><span class="small">Best Paper, DCS-CI 2026</span></div><a href="articles/llm-copilot-prompt-injection-ics.html" aria-label="LLM copilot security publication">↗</a></div>
+    <div class="record" data-cat="firm"><span>005</span><div>OpenBMC - Configuration injection<br><span class="small">Coordinated disclosure</span></div><a href="firmware/index.html" aria-label="OpenBMC research">↗</a></div>
+    <div class="record" data-cat="firm"><span>006</span><div>Das U-Boot - Parser memory safety<br><span class="small">Maintainer-reviewed patch</span></div><a href="research.html" aria-label="U-Boot research">↗</a></div>
+  </section>
+
+  <section id="about">
+    <div class="eyebrow">The researcher</div>
+    <h2>Curiosity. Precision. Impact.</h2>
+    <p>M.S. Cybersecurity candidate at the University of Alabama at Birmingham (Dec 2026). Focused on application security, AI/ML security, and vulnerability research, with four assigned CVEs, 20+ coordinated disclosures, and maintainer-merged fixes.</p>
+    <a class="pill" href="about.html">About ↗</a>
+    <a class="pill" href="https://github.com/DilipMallavarapu">GitHub ↗</a>
+    <a class="pill" href="https://linkedin.com/in/dilip-mallavarapu-18b96626b">LinkedIn ↗</a>
+    <a class="pill" href="contact.html">Contact ↗</a>
+  </section>
+</main>
+
 <footer>
-<a href="index.html">dilip.</a>  · 
-  <a href="about.html">About</a>  · 
-  <a href="cves/index.html">CVEs</a>  · 
-  <a href="articles/index.html">Articles</a>  · 
-  <a href="exploits/index.html">Exploits</a>  · 
-  <a href="contact.html">Contact</a>  · 
-  <a href="https://github.com/DilipMallavarapu">GitHub</a>
+  <b>dilip.</b>
+  <span class="small">Independent security research · 2026 · coordinated disclosure only</span>
+  <a href="#">Back to top ↑</a>
 </footer>
+
+<script src="assets/js/neural.js"></script>
 </body>
 </html>

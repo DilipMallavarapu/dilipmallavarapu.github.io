@@ -4,6 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<meta name="theme-color" content="#ffffff"/>
 <title>Indirect Prompt Injection Against LLM Copilots in Industrial Control Systems - Dilip Mallavarapu</title>
 <meta content="Best Paper Award (DCS-CI'26). How SOC copilots built on LangChain can be hijacked through poisoned advisories and telemetry, and the layered defense that cuts attack success rate from 68.8% to 8.1%." name="description"/>
 <link href="https://dilipmallavarapu.github.io/articles/llm-copilot-prompt-injection-ics.html" rel="canonical"/>
@@ -18,7 +19,6 @@
 <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
 <link href="../assets/css/site.css" rel="stylesheet"/>
 <style>
     body{line-height:1.8}
@@ -71,6 +71,8 @@
     .back-link{color:var(--green);font-size:.85rem;font-weight:500}
     @media(max-width:640px){.post-title{font-size:1.4rem}}
   </style>
+<script>try{document.documentElement.dataset.theme=localStorage.getItem('nf-theme')||'light'}catch(e){}</script>
+<script src="../assets/js/theme.js"></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -78,13 +80,12 @@
 <a class="nav-logo" href="../index.html">dilip.</a>
 <div class="nav-links">
 <a href="../index.html">Home</a>
-<a href="../about.html">About</a>
 <a href="../cves/index.html">CVEs</a>
+<a class="active" href="../articles/index.html">Articles</a>
 <a href="../firmware/index.html">Firmware</a>
-<a class="active" href="index.html">Articles</a>
-<a href="../exploits/index.html">Exploits</a>
 <a href="../contact.html">Contact</a>
-<a href="../research.html">Research</a></div>
+<button id="theme" aria-label="Toggle light or dark theme">☼</button>
+</div>
 </nav>
 <div class="page" id="main">
 <div class="post-top">
@@ -122,11 +123,11 @@
 <line marker-end="url(#arrow1)" stroke-width="1.5" style="stroke:var(--muted)" x1="540" x2="576" y1="90" y2="90"></line>
 <line marker-end="url(#arrow1)" marker-start="url(#arrow1)" stroke-width="1.5" style="stroke:var(--muted)" x1="440" x2="440" y1="145" y2="163"></line>
 <rect height="60" rx="8" style="fill:var(--bg);stroke:var(--border)" width="140" x="10" y="60"></rect>
-<text style="fill:#fff;font:700 12px var(--sans)" text-anchor="middle" x="80" y="86">OpenPLC +</text>
-<text style="fill:#fff;font:700 12px var(--sans)" text-anchor="middle" x="80" y="102">SWaT Replay</text>
+<text style="fill:var(--text);font:700 12px var(--sans)" text-anchor="middle" x="80" y="86">OpenPLC +</text>
+<text style="fill:var(--text);font:700 12px var(--sans)" text-anchor="middle" x="80" y="102">SWaT Replay</text>
 <rect height="60" rx="8" style="fill:var(--bg);stroke:var(--border)" width="110" x="200" y="60"></rect>
-<text style="fill:#fff;font:700 12px var(--sans)" text-anchor="middle" x="255" y="86">Kafka</text>
-<text style="fill:#fff;font:700 12px var(--sans)" text-anchor="middle" x="255" y="102">Log Bus</text>
+<text style="fill:var(--text);font:700 12px var(--sans)" text-anchor="middle" x="255" y="86">Kafka</text>
+<text style="fill:var(--text);font:700 12px var(--sans)" text-anchor="middle" x="255" y="102">Log Bus</text>
 <rect height="110" rx="8" style="fill:var(--bg);stroke:var(--green)" width="200" x="340" y="35"></rect>
 <text style="fill:var(--green);font:700 13px var(--sans)" text-anchor="middle" x="440" y="57">SOCSENTINEL</text>
 <text style="fill:var(--muted);font:500 9.5px var(--sans)" text-anchor="middle" x="440" y="72">LangChain ReAct Agent</text>
@@ -138,8 +139,8 @@
 <text style="fill:var(--blue);font:700 11px var(--sans)" text-anchor="middle" x="440" y="184">Chroma</text>
 <text style="fill:var(--muted);font:500 9px var(--sans)" text-anchor="middle" x="440" y="199">RAG Corpus (advisories, runbooks)</text>
 <rect height="60" rx="8" style="fill:var(--bg);stroke:var(--border)" width="130" x="580" y="60"></rect>
-<text style="fill:#fff;font:700 12px var(--sans)" text-anchor="middle" x="645" y="86">Human</text>
-<text style="fill:#fff;font:700 12px var(--sans)" text-anchor="middle" x="645" y="102">Operator</text>
+<text style="fill:var(--text);font:700 12px var(--sans)" text-anchor="middle" x="645" y="86">Human</text>
+<text style="fill:var(--text);font:700 12px var(--sans)" text-anchor="middle" x="645" y="102">Operator</text>
 </svg>
 <div class="diagram-caption">Fig. 1 - End-to-end pipeline: telemetry flows through Kafka into the LangChain agent, which augments its context from a Chroma vector store and emits actions through four constrained tools.</div>
 </div>

@@ -4,6 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<meta name="theme-color" content="#ffffff"/>
 <title>About - Dilip Mallavarapu</title>
 <meta content="Dilip Mallavarapu — security researcher and M.S. Cybersecurity candidate at UAB. Research interests in web application security, IoT firmware, mobile SDKs, and LLM/AI security. Open to PhD positions and full-time roles." name="description"/>
 <link href="https://dilipmallavarapu.github.io/about.html" rel="canonical"/>
@@ -18,7 +19,6 @@
 <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
 <link href="assets/css/site.css" rel="stylesheet"/>
 <style>
     /* INTRO (matches index.html) */
@@ -81,6 +81,8 @@
       .cve-mini-row{grid-template-columns:1fr}
     }
   </style>
+<script>try{document.documentElement.dataset.theme=localStorage.getItem('nf-theme')||'light'}catch(e){}</script>
+<script src="assets/js/theme.js"></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -88,13 +90,12 @@
 <a class="nav-logo" href="index.html">dilip.</a>
 <div class="nav-links">
 <a href="index.html">Home</a>
-<a class="active" href="about.html">About</a>
 <a href="cves/index.html">CVEs</a>
-<a href="firmware/index.html">Firmware</a>
 <a href="articles/index.html">Articles</a>
-<a href="exploits/index.html">Exploits</a>
+<a href="firmware/index.html">Firmware</a>
 <a href="contact.html">Contact</a>
-<a href="research.html">Research</a></div>
+<button id="theme" aria-label="Toggle light or dark theme">☼</button>
+</div>
 </nav>
 <div class="page" id="main">
 <!-- INTRO -->
@@ -194,7 +195,7 @@
 <!-- EXPERIENCE -->
 <div class="section">
 <div class="s-label">Experience</div>
-<div class="exp-list"><div class="exp-item"><div><div class="exp-role">IT Specialist</div><div class="exp-org">Bentley Automotive Group</div><div class="exp-body">Conducted an authorized assessment of dealership websites, identified exposure to seven known CVEs in outdated WordPress components, and delivered prioritized remediation guidance. Support network security across dealership locations and develop tested CRM-integrated call-routing workflows.</div></div><div class="exp-date">Aug 2026 - Present</div></div><div class="exp-item"><div><div class="exp-role">Security Researcher Intern</div><div class="exp-org">Appsecrew</div><div class="exp-body">Performed web application and API assessments across 5+ client environments. Delivered 10+ findings with proof-of-concept evidence and remediation guidance; collaborated with developers on secure coding fixes.</div></div><div class="exp-date">Aug - Dec 2024</div></div><div class="exp-item"><div><div class="exp-role">Independent Vulnerability Researcher</div><div class="exp-org">d3sec</div><div class="exp-body">Conduct source audits, variant analysis, controlled validation and coordinated disclosure across applications, security tooling and firmware. Research includes four assigned CVEs and maintainer-merged remediation.</div></div><div class="exp-date">2024 - Present</div></div></div>
+<div class="exp-list"><div class="exp-item"><div><div class="exp-role">IT Specialist</div><div class="exp-org">Bentley Automotive Group</div><div class="exp-body">Conducted an authorized assessment of dealership websites, identified exposure to seven known CVEs in outdated WordPress components, and delivered prioritized remediation guidance. Support network security across dealership locations and develop tested CRM-integrated call-routing workflows.</div></div><div class="exp-date">Aug 2026 - Present</div></div><div class="exp-item"><div><div class="exp-role">Security Researcher Intern</div><div class="exp-org">Appsecrew</div><div class="exp-body">Performed web application and API assessments across 5+ client environments. Delivered 10+ findings with proof-of-concept evidence and remediation guidance; collaborated with developers on secure coding fixes.</div></div><div class="exp-date">Aug - Dec 2024</div></div><div class="exp-item"><div><div class="exp-role">Independent Vulnerability Researcher</div><div class="exp-org">d3sec</div><div class="exp-body">Conduct source audits, variant analysis, controlled validation and coordinated disclosure across applications, security tooling and firmware. Recent work includes three accepted security reports in Trail of Bits' Fickling, spanning pickle security analysis and AI/ML deserialization, with upstream fixes merged and public researcher attribution, alongside four assigned CVEs and maintainer-merged remediation.</div></div><div class="exp-date">2024 - Present</div></div></div>
 </div>
 <!-- EDUCATION -->
 <div class="section">

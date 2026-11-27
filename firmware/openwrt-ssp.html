@@ -4,6 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<meta name="theme-color" content="#ffffff"/>
 <title>OpenWrt stack canary coverage - Dilip Mallavarapu</title>
 <meta content="Measuring how much of OpenWrt 23.05 ships with stack canaries across three architectures, and the measurement bug that made an earlier pass read zero." name="description"/>
 <link href="https://dilipmallavarapu.github.io/firmware/openwrt-ssp.html" rel="canonical"/>
@@ -18,7 +19,6 @@
 <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
 <link href="../assets/css/site.css" rel="stylesheet"/>
 <style>
     body{line-height:1.8}
@@ -48,6 +48,8 @@
     .callout{background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--orange);border-radius:6px;padding:1.1rem 1.3rem;margin:1.6rem 0;font-size:.9rem;color:var(--muted)}
     .callout strong{color:var(--text)}
   </style>
+<script>try{document.documentElement.dataset.theme=localStorage.getItem('nf-theme')||'light'}catch(e){}</script>
+<script src="../assets/js/theme.js"></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -55,13 +57,12 @@
 <a class="nav-logo" href="../index.html">dilip.</a>
 <div class="nav-links">
 <a href="../index.html">Home</a>
-<a href="../about.html">About</a>
 <a href="../cves/index.html">CVEs</a>
-<a class="active" href="index.html">Firmware</a>
 <a href="../articles/index.html">Articles</a>
-<a href="../exploits/index.html">Exploits</a>
+<a class="active" href="../firmware/index.html">Firmware</a>
 <a href="../contact.html">Contact</a>
-<a href="../research.html">Research</a></div>
+<button id="theme" aria-label="Toggle light or dark theme">☼</button>
+</div>
 </nav>
 <div class="page" id="main">
 <a class="back" href="index.html">← Firmware Security</a>

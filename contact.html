@@ -4,6 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<meta name="theme-color" content="#ffffff"/>
 <title>Contact - Dilip Mallavarapu</title>
 <meta content="Get in touch with Dilip Mallavarapu — open to PhD research positions, full-time security engineering roles, and research collaborations." name="description"/>
 <link href="https://dilipmallavarapu.github.io/contact.html" rel="canonical"/>
@@ -18,7 +19,6 @@
 <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
 <link href="assets/css/site.css" rel="stylesheet"/>
 <style>
     .page{max-width:680px}
@@ -41,6 +41,8 @@
     footer{margin-top:4rem}
     @media(max-width:640px){.ph h1{font-size:1.7rem}}
   </style>
+<script>try{document.documentElement.dataset.theme=localStorage.getItem('nf-theme')||'light'}catch(e){}</script>
+<script src="assets/js/theme.js"></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -48,13 +50,12 @@
 <a class="nav-logo" href="index.html">dilip.</a>
 <div class="nav-links">
 <a href="index.html">Home</a>
-<a href="about.html">About</a>
 <a href="cves/index.html">CVEs</a>
-<a href="firmware/index.html">Firmware</a>
 <a href="articles/index.html">Articles</a>
-<a href="exploits/index.html">Exploits</a>
+<a href="firmware/index.html">Firmware</a>
 <a class="active" href="contact.html">Contact</a>
-<a href="research.html">Research</a></div>
+<button id="theme" aria-label="Toggle light or dark theme">☼</button>
+</div>
 </nav>
 <div class="page" id="main">
 <div class="s-label">// Contact</div>
